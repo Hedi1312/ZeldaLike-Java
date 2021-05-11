@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controleur.Controleur">
-   <top>
-      <Label text="MHD ZELDA" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="45.0" />
-         </font>
-      </Label>
-   </top>
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controleur.Controleur">
    <center>
-      <TilePane fx:id="Map" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <TilePane fx:id="panneauDeTuiles" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="240.0" prefWidth="320.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

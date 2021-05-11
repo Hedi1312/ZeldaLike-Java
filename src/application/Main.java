@@ -1,8 +1,9 @@
 package src.application;
 	
-import java.io.File;
-import java.net.URL;
 
+
+
+import src.application.controleur.Controleur;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -14,8 +15,14 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = FXMLLoader.load(getClass().getResource("vue/vue.fxml"));
-			Scene scene = new Scene(root,800,600);
+			FXMLLoader loader  = new FXMLLoader(getClass().getResource("application/vue/vue.fxml"));
+			Scene scene = new Scene(loader.load());
+			
+			 Controleur controller = loader.getController();
+			 
+			
+			 scene.setOnKeyPressed(keyAction -> controller.deplacement(keyAction));
+			 
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
@@ -27,4 +34,3 @@ public class Main extends Application {
 		launch(args);
 	}
 }
-
