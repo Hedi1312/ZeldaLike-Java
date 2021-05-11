@@ -28,7 +28,7 @@ public class Terrain {
 	
 	public Terrain(TilePane tP) {
 		super();
-		this.img = new Image("tileset.png");
+		this.img = new Image("src/tileset.png");
 		this.mapARemplir = tP;
 	}
 	

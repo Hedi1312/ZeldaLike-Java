@@ -13,7 +13,7 @@ public class Hero {
 	
 	public Hero(TilePane tP) {
 		super();
-		this.img = new Image("Sans titre.png");
+		this.img = new Image("src/Sans titre.png");
 		this.mapARemplir=tP;
 		this.iv= new ImageView(img);
 	}

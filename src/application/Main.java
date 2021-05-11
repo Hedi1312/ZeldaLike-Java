@@ -15,7 +15,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader  = new FXMLLoader(getClass().getResource("application/vue/vue.fxml"));
+			FXMLLoader loader  = new FXMLLoader(getClass().getResource("vue/vue.fxml"));
 			Scene scene = new Scene(loader.load());
 			
 			 Controleur controller = loader.getController();
