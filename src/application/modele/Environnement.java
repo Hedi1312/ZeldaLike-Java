@@ -1,4 +1,4 @@
-package application.modele;
+package src.application.modele;
 
 import javafx.scene.layout.TilePane;
 

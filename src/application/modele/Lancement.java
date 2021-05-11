@@ -1,4 +1,4 @@
-package application.modele;
+package src.application.modele;
 
 public class Lancement {
 
