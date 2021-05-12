@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import src.application.modele.Environnement;
 import src.application.modele.Hero;
 import src.application.modele.Terrain;
+import javafx.animation.Animation.Status;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.EventHandler;
@@ -41,15 +42,15 @@ public class Controleur implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		
-		this.panneauDeTuiles.setPrefColumns(320);
-		
-		this.env = new Environnement();
-
-		
 		Terrain terrain =new Terrain(panneauDeTuiles);
 		terrain.chargerTerrain();
 		
+		this.panneauDeTuiles.setPrefColumns(terrain.getWidth()*16);
+
+		
+		
+		this.env = new Environnement();
+
 		
 		
 		Hero hero = new Hero();
@@ -66,6 +67,7 @@ public class Controleur implements Initializable{
 	    	switch (event.getCode()) {
 	    	case UP:    
 	    		System.out.println("haut");
+	    		//if(env.terrain.estDansTerrain(env.hero.getIV.getLayoutX()))
 	    		env.getHero().allerEnHaut();  		
 	    		break;
 	    	case DOWN:  
@@ -80,6 +82,19 @@ public class Controleur implements Initializable{
 	    		System.out.println("droite");
 	    		env.getHero().allerADroite();
 	    		break;
+	    	case P:
+	    		
+	    	
+	    		if (gameLoop.getStatus()==Status.PAUSED) {
+	    			System.out.println("UNPAUSE");
+                    gameLoop.play();
+                    
+                }
+                else {
+                	System.out.println("PAUSE");
+                    gameLoop.pause();
+                }
+	    		break;
 
       }
 	}
@@ -88,19 +103,22 @@ public class Controleur implements Initializable{
 		gameLoop = new Timeline();
 		temps=0;
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
-
+		
+		
 		KeyFrame kf = new KeyFrame(
+				
 				// on définit le FPS (nbre de frame par seconde)
 				Duration.seconds(0.017), 
 				// on définit ce qui se passe à chaque frame 
 				// c'est un eventHandler d'ou le lambda
 				(ev ->{
-					if(temps==100){
-					System.out.println("temps = 100");
+					if(temps%60==0){
+					
+					System.out.println("1 sec");
 					
 					}
 					else if (temps%5==0){
-						System.out.println("un tour");
+						//System.out.println("un tour");
         		
 					}
 					temps++;

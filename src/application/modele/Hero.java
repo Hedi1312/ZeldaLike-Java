@@ -13,7 +13,7 @@ public class Hero {
 	
 	public Hero() {
 		super();
-		this.img = new Image("src/Sans titre.png");
+		this.img = new Image("src/images/Sans titre.png");
 		this.iv= new ImageView(img);
 	}
 
@@ -30,6 +30,7 @@ public class Hero {
 	}
 	
 	public void allerEnHaut() {
+		
 		iv.relocate(iv.getLayoutX(), iv.getLayoutY()-5);
 	}
 	
@@ -43,5 +44,7 @@ public class Hero {
 	public void allerADroite() {
 		iv.relocate(iv.getLayoutX()+5, iv.getLayoutY());
 	}
+	
+	
 }	
 	
