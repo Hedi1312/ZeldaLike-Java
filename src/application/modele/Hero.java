@@ -8,40 +8,38 @@ import javafx.scene.layout.TilePane;
 
 public class Hero {
 	
-	private Image img;
-	private ImageView iv ;
+	private int x,y;
+	protected Environnement env;
 	
-	public Hero() {
-		super();
-		this.img = new Image("src/Sans titre.png");
-		this.iv= new ImageView(img);
+	public Hero(Environnement env) {
+		this.x=0;
+		this.y=0;
+		this.env=env;
 	}
-
-	public Image getImg() {
-		return img;
+	
+	public Environnement getEnv() {
+		return env;
 	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
+	public void setX(int x) {
+		this.x=x;
+	}
+	public void setY(int y) {
+		this.y=y;
+	}
+	
 	
 //	public void spawnHero() {
 // 		mapARemplir.getChildren().add(iv);
 //	}
 	
-	public ImageView getIV() {
-		return iv;
-	}
-	
-	public void allerEnHaut() {
-		iv.relocate(iv.getLayoutX(), iv.getLayoutY()-5);
-	}
-	
-	public void allerEnBas() {
-		iv.relocate(iv.getLayoutX(), iv.getLayoutY()+5);
-	}
-	public void allerAGauche() {
-		iv.relocate(iv.getLayoutX()-5, iv.getLayoutY());
-	}
-	
-	public void allerADroite() {
-		iv.relocate(iv.getLayoutX()+5, iv.getLayoutY());
-	}
 }	
 	

@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 import src.application.modele.Environnement;
 import src.application.modele.Hero;
 import src.application.modele.Terrain;
+import src.application.vue.HeroVue;
+import src.application.vue.TerrainVue;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.EventHandler;
@@ -38,6 +40,10 @@ public class Controleur implements Initializable{
 	private Timeline gameLoop;
 	private int temps;
 	
+	private TerrainVue terrainVue;
+	
+	private HeroVue heroVue;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -46,16 +52,8 @@ public class Controleur implements Initializable{
 		
 		this.env = new Environnement();
 
-		
-		Terrain terrain =new Terrain(panneauDeTuiles);
-		terrain.chargerTerrain();
-		
-		
-		
-		Hero hero = new Hero();
-		env.ajouterHero(hero);
-		
-		pane.getChildren().add(hero.getIV());
+		lancement();
+	
 		
 		initAnimation();
 		gameLoop.play();
@@ -66,19 +64,19 @@ public class Controleur implements Initializable{
 	    	switch (event.getCode()) {
 	    	case UP:    
 	    		System.out.println("haut");
-	    		env.getHero().allerEnHaut();  		
+	    		heroVue.allerEnHaut();  		
 	    		break;
 	    	case DOWN:  
 	    		System.out.println("bas");
-	    		env.getHero().allerEnBas();
+	    		heroVue.allerEnBas();
 	    		break;
 	    	case LEFT: 
 	    		System.out.println("gauche");
-	    		env.getHero().allerAGauche();
+	    		heroVue.allerAGauche();
 	    		break;
 	    	case RIGHT:
 	    		System.out.println("droite");
-	    		env.getHero().allerADroite();
+	    		heroVue.allerADroite();
 	    		break;
 
       }
@@ -105,10 +103,21 @@ public class Controleur implements Initializable{
 					}
 					temps++;
 				})
-				);
+		);
 		gameLoop.getKeyFrames().add(kf);
 	}
 	
+	public void lancement() {
+		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
+		terrainVue.chargerTerrain();
+		
+		Hero hero = new Hero(env);
+		env.ajouterHero(hero);
+		
+		heroVue = new HeroVue(env.getHero());
+		pane.getChildren().add(heroVue.getIV());
+		env.ajouterHero(hero);
+	}
 	
 	
 }
