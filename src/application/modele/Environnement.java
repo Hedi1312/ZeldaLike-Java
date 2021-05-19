@@ -23,6 +23,6 @@ public class Environnement {
 	}
 	
 	public boolean dansTerrain(int x, int y) {
-		return (0 <= x && x<terrain.getWidth()*16 && 0<=y && y<terrain.getHeight()*16);
+		return (0 <= x && x<terrain.getWidth()*16-13 && 0<=y && y<terrain.getHeight()*16-13);
 	}
 }

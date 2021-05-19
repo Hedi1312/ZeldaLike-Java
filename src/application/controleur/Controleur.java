@@ -8,6 +8,7 @@ import src.application.modele.Hero;
 import src.application.modele.Terrain;
 import src.application.vue.HeroVue;
 import src.application.vue.TerrainVue;
+import javafx.animation.Animation.Status;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.EventHandler;
@@ -60,52 +61,70 @@ public class Controleur implements Initializable{
 	}
 	
 	public void deplacement(KeyEvent event){
-	    
-	    	switch (event.getCode()) {
-	    	case UP:    
-	    		System.out.println("haut");
-	    		heroVue.allerEnHaut();  		
-	    		break;
-	    	case DOWN:  
-	    		System.out.println("bas");
-	    		heroVue.allerEnBas();
-	    		break;
-	    	case LEFT: 
-	    		System.out.println("gauche");
-	    		heroVue.allerAGauche();
-	    		break;
-	    	case RIGHT:
-	    		System.out.println("droite");
-	    		heroVue.allerADroite();
-	    		break;
 
-      }
+		switch (event.getCode()) {
+		case UP:    
+			System.out.println("haut");
+			heroVue.allerEnHaut();          
+			break;
+		case DOWN:  
+			System.out.println("bas");
+			heroVue.allerEnBas();
+			break;
+		case LEFT: 
+			System.out.println("gauche");
+			heroVue.allerAGauche();
+			break;
+		case RIGHT:
+			System.out.println("droite");
+			heroVue.allerADroite();
+			break;
+		case P:
+
+
+			if (gameLoop.getStatus()==Status.PAUSED) {
+				System.out.println("UNPAUSE");
+				gameLoop.play();
+
+			}
+			else {
+				System.out.println("PAUSE");
+				gameLoop.pause();
+			}
+			break;
+
+		}
 	}
-	
+
 	public void initAnimation() {
 		gameLoop = new Timeline();
 		temps=0;
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 
+
 		KeyFrame kf = new KeyFrame(
+
 				// on définit le FPS (nbre de frame par seconde)
 				Duration.seconds(0.017), 
 				// on définit ce qui se passe à chaque frame 
 				// c'est un eventHandler d'ou le lambda
 				(ev ->{
-					if(temps==100){
-					System.out.println("temps = 100");
-					
+					if(temps%60==0){
+
+						System.out.println("1 sec");
+
 					}
 					else if (temps%5==0){
-						System.out.println("un tour");
-        		
+						//System.out.println("un tour");
+
 					}
 					temps++;
 				})
-		);
+				);
+
 		gameLoop.getKeyFrames().add(kf);
 	}
+
 	
 	public void lancement() {
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());

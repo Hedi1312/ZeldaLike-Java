@@ -11,18 +11,9 @@ public class HeroVue {
 	
 	public HeroVue(Hero hero) {
 		super();
-		this.img = new Image("src/images/Sans titre.png");
+		this.img = new Image("src/images/moi16x16.png");
 		this.iv= new ImageView(img);
 		this.hero=hero;
-		//spawnHero(hero);
-	}
-	
-	public void spawnHero(Hero hero) {
-		//Image img = new Image(getClass().getResourceAsStream("Sans titre.png"));
-		ImageView heroView = new ImageView(img);
-		
-		//heroView.translateXProperty().bind(hero.getXProperty());
-		//heroView.translateYProperty().bind(hero.getYProperty());
 	}
 	
 	public ImageView getIV() {
@@ -34,33 +25,29 @@ public class HeroVue {
 	}
 	
 	public void allerEnHaut() {
-		int nposY=hero.getY()-5;
+		int nposY=hero.getY()-8;
 		if(hero.getEnv().dansTerrain(hero.getX(),nposY)){
 			hero.setY(nposY);
 		}
-		//iv.relocate(iv.getLayoutX(), iv.getLayoutY()-5);
 	}
 	
 	public void allerEnBas() {
-		int nposY=hero.getY()+5;
+		int nposY=hero.getY()+8;
 		if(hero.getEnv().dansTerrain(hero.getX(),nposY)){
 			hero.setY(nposY);
 		}
-		//iv.relocate(iv.getLayoutX(), iv.getLayoutY()+5);
 	}
 	public void allerAGauche() {
-		int nposX=hero.getX()-5;
+		int nposX=hero.getX()-8;
 		if(hero.getEnv().dansTerrain(nposX,hero.getY())){
 			hero.setX(nposX);
 		}
-		//iv.relocate(iv.getLayoutX()-5, iv.getLayoutY());
 	}
 	
 	public void allerADroite() {
-		int nposX=hero.getX()+5;
+		int nposX=hero.getX()+8;
 		if(hero.getEnv().dansTerrain(nposX,hero.getY())){
 			hero.setX(nposX);
 		}
-		//iv.relocate(iv.getLayoutX()+5, iv.getLayoutY());
 	}
 }

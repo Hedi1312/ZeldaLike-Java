@@ -47,9 +47,5 @@ public class Hero {
 		return this.y;
 	}
 	
-//	public void spawnHero() {
-// 		mapARemplir.getChildren().add(iv);
-//	}
-	
 }	
 	
