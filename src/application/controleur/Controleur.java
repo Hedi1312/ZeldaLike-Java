@@ -27,7 +27,7 @@ import javafx.util.Duration;
 
 public class Controleur implements Initializable{
 	private Environnement env;
-	//test
+	
 	@FXML
 	private BorderPane borderPane;
 
