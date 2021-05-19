@@ -52,8 +52,8 @@ public class Controleur implements Initializable{
 		
 		this.env = new Environnement();
 
+		
 		lancement();
-	
 		
 		initAnimation();
 		gameLoop.play();
@@ -117,6 +117,9 @@ public class Controleur implements Initializable{
 		heroVue = new HeroVue(env.getHero());
 		pane.getChildren().add(heroVue.getIV());
 		env.ajouterHero(hero);
+		
+		heroVue.getIV().translateXProperty().bind(hero.getXProperty());
+		heroVue.getIV().translateYProperty().bind(hero.getYProperty());
 	}
 	
 	
