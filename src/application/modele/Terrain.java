@@ -43,7 +43,8 @@ public class Terrain {
 	public int getHeight() {
 		return height;
 	}
-
+	
+	//A deplacer dans TerrainVUe
 	public void chargerTerrain() {
 		for(int i = 0; i < map.length; i++){
 			for(int j=0 ; j <map[i].length; j++) {
@@ -71,9 +72,11 @@ public class Terrain {
 			}
 		   }
 	}
-	public boolean dansTerrain(int x, int y){
-        return (0 <= x && x<this.width*16 && 0<=y && y< this.height*16);
-    }
+	
+//	public boolean dansTerrain(int x, int y){
+//        return (0 <= x && x<this.width*16 && 0<=y && y< this.height*16);
+//    }
+//	
 //	public boolean traversable(int tuile) {
 //		int[] tab = {505};
 //		for(int element : tab) {

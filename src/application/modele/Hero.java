@@ -9,7 +9,7 @@ import javafx.scene.layout.TilePane;
 public class Hero {
 	
 	private Image img;
-	private ImageView iv ;
+	private ImageView iv;
 	
 	public Hero() {
 		super();
@@ -19,6 +19,11 @@ public class Hero {
 
 	public Image getImg() {
 		return img;
+	}
+	
+	public void setImg(String url) {
+		this.img = new Image(url);
+		
 	}
 	
 //	public void spawnHero() {

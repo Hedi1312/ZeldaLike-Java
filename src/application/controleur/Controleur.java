@@ -49,7 +49,7 @@ public class Controleur implements Initializable{
 
 		
 		
-		this.env = new Environnement();
+		this.env = new Environnement(terrain);
 
 		
 		
@@ -67,7 +67,6 @@ public class Controleur implements Initializable{
 	    	switch (event.getCode()) {
 	    	case UP:    
 	    		System.out.println("haut");
-	    		//if(env.terrain.estDansTerrain(env.hero.getIV.getLayoutX()))
 	    		env.getHero().allerEnHaut();  		
 	    		break;
 	    	case DOWN:  
@@ -124,6 +123,7 @@ public class Controleur implements Initializable{
 					temps++;
 				})
 				);
+		
 		gameLoop.getKeyFrames().add(kf);
 	}
 	
