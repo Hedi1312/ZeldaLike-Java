@@ -13,7 +13,6 @@ public class Hero {
 	private IntegerProperty x,y;
 	protected Environnement env;
 	
-	
 	public Hero(Environnement env) {
 		this.x= new SimpleIntegerProperty();
 		this.y= new SimpleIntegerProperty();

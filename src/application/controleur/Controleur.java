@@ -3,9 +3,11 @@ package src.application.controleur;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import src.application.modele.Ennemi;
 import src.application.modele.Environnement;
 import src.application.modele.Hero;
 import src.application.modele.Terrain;
+import src.application.vue.EnnemiVue;
 import src.application.vue.HeroVue;
 import src.application.vue.TerrainVue;
 import javafx.animation.Animation.Status;
@@ -44,6 +46,8 @@ public class Controleur implements Initializable{
 	private TerrainVue terrainVue;
 	
 	private HeroVue heroVue;
+	
+	private EnnemiVue ennemiVue;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -104,15 +108,15 @@ public class Controleur implements Initializable{
 
 		KeyFrame kf = new KeyFrame(
 
-				// on définit le FPS (nbre de frame par seconde)
+				// on dï¿½finit le FPS (nbre de frame par seconde)
 				Duration.seconds(0.017), 
-				// on définit ce qui se passe à chaque frame 
+				// on dï¿½finit ce qui se passe ï¿½ chaque frame 
 				// c'est un eventHandler d'ou le lambda
 				(ev ->{
 					if(temps%60==0){
 
 						System.out.println("1 sec");
-
+						ennemiVue.seDeplace();
 					}
 					else if (temps%5==0){
 						//System.out.println("un tour");
@@ -130,6 +134,7 @@ public class Controleur implements Initializable{
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
 		terrainVue.chargerTerrain();
 		
+		//hero
 		Hero hero = new Hero(env);
 		env.ajouterHero(hero);
 		
@@ -139,6 +144,17 @@ public class Controleur implements Initializable{
 		
 		heroVue.getIV().translateXProperty().bind(hero.getXProperty());
 		heroVue.getIV().translateYProperty().bind(hero.getYProperty());
+		
+		//ennemi
+		Ennemi ennemi = new Ennemi(5,5,env);
+		env.ajouterEnnemi(ennemi);
+		
+		ennemiVue = new EnnemiVue(env.getEnnemi());
+		pane.getChildren().add(ennemiVue.getIV());
+		env.ajouterEnnemi(ennemi);
+		
+		ennemiVue.getIV().translateXProperty().bind(ennemi.getXProperty());
+		ennemiVue.getIV().translateYProperty().bind(ennemi.getYProperty());
 	}
 	
 	
