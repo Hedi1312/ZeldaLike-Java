@@ -1,6 +1,9 @@
 package src.application.modele;
 
+
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
@@ -12,12 +15,14 @@ public class Hero {
 	
 	private IntegerProperty x,y;
 	protected Environnement env;
+	private DoubleProperty pv;
 	
 	
 	public Hero(Environnement env) {
 		this.x= new SimpleIntegerProperty();
 		this.y= new SimpleIntegerProperty();
 		this.env=env;
+		this.pv=new SimpleDoubleProperty(100);
 	}
 	
 	public Environnement getEnv() {
@@ -46,6 +51,21 @@ public class Hero {
 	public IntegerProperty getYProperty() {
 		return this.y;
 	}
+	
+	public DoubleProperty getPvProperty () {
+		return pv;
+	}
+	
+	public void setPv(double n) {
+		pv.setValue(n/100);
+	}
+	
+	public double getPv() {
+		return pv.getValue();
+	}
+	
+	
+	
 	
 }	
 	
