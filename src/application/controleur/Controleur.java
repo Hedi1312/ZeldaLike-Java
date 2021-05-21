@@ -71,6 +71,10 @@ public class Controleur implements Initializable{
 		case UP:    
 			System.out.println("haut");
 			heroVue.allerEnHaut(); 
+			//System.out.println(env.typeTuile(heroVue.getHero().getX(), heroVue.getHero().getY()));
+//			if(env.typeTuile(heroVue.getHero().getX(), heroVue.getHero().getY()).contains("feu")) {
+//				heroVue.getHero().perdrePv(10);
+//			}
 			break;
 		case DOWN:  
 			
@@ -84,22 +88,17 @@ public class Controleur implements Initializable{
 		case RIGHT:
 			System.out.println("droite");
 			heroVue.allerADroite();
-			heroVue.getHero().setPv(80);
 			break;
 		case P:
-
-
 			if (gameLoop.getStatus()==Status.PAUSED) {
 				System.out.println("UNPAUSE");
 				gameLoop.play();
-
 			}
 			else {
 				System.out.println("PAUSE");
 				gameLoop.pause();
 			}
 			break;
-
 		}
 	}
 

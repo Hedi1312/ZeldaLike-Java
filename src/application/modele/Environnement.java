@@ -48,4 +48,25 @@ public class Environnement {
 		}
 		return true;
 	}
+	
+//	public String typeTuile(int x,int y) {
+//		String nomTuile;
+//		int tuile= terrain.getMap()[y][x];
+//		
+//		switch(tuile) {
+//		case 352:
+//			nomTuile="mur";
+//			break;
+//		case 914:
+//			nomTuile="feu";
+//			break; 	
+//		case 505 :
+//			nomTuile="sol";
+//			break;
+//		default:
+//			nomTuile="inconnu";
+//		}
+//		return nomTuile;
+//	}
+
 }

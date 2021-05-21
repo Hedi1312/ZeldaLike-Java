@@ -21,7 +21,7 @@ public class HeroVue {
 		this.barreDeVie=new ProgressBar(1);
 		barreDeVie.setLayoutY(-40);
 		barreDeVie.setStyle("-fx-accent: red;");
-		barreDeVie.progressProperty().bind(hero.getPvProperty());
+		barreDeVie.progressProperty().bind(hero.getPvProperty().divide(100));
 	}
 	
 	public ImageView getIV() {

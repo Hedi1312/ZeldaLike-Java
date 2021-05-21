@@ -23,7 +23,9 @@ public class Hero {
 		this.env=env;
 		this.pv=new SimpleDoubleProperty(100);
 	}
-	
+	public void perdrePv(double n) {
+		pv.setValue(pv.getValue()-n);
+	}
 	public Environnement getEnv() {
 		return env;
 	}
