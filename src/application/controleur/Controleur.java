@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -33,9 +34,11 @@ public class Controleur implements Initializable{
 	
 	@FXML
 	private BorderPane borderPane;
+	
 
 	@FXML
 	private Pane pane;
+	
 	
 	@FXML
 	private TilePane panneauDeTuiles;
@@ -56,8 +59,6 @@ public class Controleur implements Initializable{
 		this.panneauDeTuiles.setPrefColumns(320);
 		
 		this.env = new Environnement();
-
-		
 		lancement();
 		
 		initAnimation();
@@ -69,9 +70,10 @@ public class Controleur implements Initializable{
 		switch (event.getCode()) {
 		case UP:    
 			System.out.println("haut");
-			heroVue.allerEnHaut();          
+			heroVue.allerEnHaut(); 
 			break;
 		case DOWN:  
+			
 			System.out.println("bas");
 			heroVue.allerEnBas();
 			break;
@@ -82,6 +84,7 @@ public class Controleur implements Initializable{
 		case RIGHT:
 			System.out.println("droite");
 			heroVue.allerADroite();
+			heroVue.getHero().setPv(80);
 			break;
 		case P:
 
@@ -140,6 +143,7 @@ public class Controleur implements Initializable{
 		
 		heroVue = new HeroVue(env.getHero());
 		pane.getChildren().add(heroVue.getIV());
+		pane.getChildren().add(heroVue.getBarreDeVie());
 		env.ajouterHero(hero);
 		
 		heroVue.getIV().translateXProperty().bind(hero.getXProperty());
