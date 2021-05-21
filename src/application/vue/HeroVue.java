@@ -26,7 +26,7 @@ public class HeroVue {
 	
 	public void allerEnHaut() {
 		int nposY=hero.getY()-8;
-		if(hero.getEnv().dansTerrain(hero.getX(),nposY)){
+		if(hero.getEnv().dansTerrain(hero.getX(),nposY) && hero.getEnv().traversable(hero.getX()/16, nposY/16)){
 			hero.setY(nposY);
 		}
 	}

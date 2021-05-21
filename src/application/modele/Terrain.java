@@ -41,19 +41,7 @@ public class Terrain {
 	
 	
 	
-//	public boolean dansTerrain(int x, int y){
-//        return (0 <= x && x<this.width*16 && 0<=y && y< this.height*16);
-//    }
-//	
-//	public boolean traversable(int tuile) {
-//		int[] tab = {505};
-//		for(int element : tab) {
-//			if(tuile==element)
-//				return true;
-//		}
-//		
-//		return false;
-//	}
+
 	
 	public int[][] getMap() {
 		return map;

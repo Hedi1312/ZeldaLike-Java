@@ -36,4 +36,16 @@ public class Environnement {
 	public boolean dansTerrain(int x, int y) {
 		return (0 <= x && x<terrain.getWidth()*16-13 && 0<=y && y<terrain.getHeight()*16-13);
 	}
+	
+	public boolean traversable(int x,int y) {
+		int[] tab = {352};
+		if(dansTerrain(x, y)) {
+			int tuile= terrain.getMap()[y][x];
+			for(int element : tab) {
+				if(tuile==element)
+					return false;
+			}
+		}
+		return true;
+	}
 }
