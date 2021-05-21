@@ -123,6 +123,9 @@ public class Controleur implements Initializable{
 					if(temps%60==0){
 						
 						ennemiVue.seDeplace();
+						if(!env.estVivant()) {
+							pane.getChildren().remove(ennemiVue.getIV());
+						}
 					}
 					else if (temps%5==0){
 						//System.out.println("un tour");

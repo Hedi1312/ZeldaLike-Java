@@ -48,4 +48,24 @@ public class Environnement {
 		}
 		return true;
 	}
+	
+	public void trouverEnnemi(int x , int y) {
+		if(x==ennemi.getX()/16 && y== ennemi.getY()/16) {
+			ennemi.setPv(ennemi.getPv()-10);
+			System.out.println("Touché");
+		}
+		else
+			System.out.println("Pas touché");
+		System.out.println("Ennemi en " + ennemi.getX()/16 + " : "+ ennemi.getY()/16);
+		
+		System.out.println("Ennemi PV : " + ennemi.getPv());
+		
+	}
+	
+	public boolean estVivant() {
+		if(ennemi.getPv()<=0) {
+			return false;
+		}
+		return true;
+	}
 }

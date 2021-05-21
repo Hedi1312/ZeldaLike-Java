@@ -56,7 +56,7 @@ public class HeroVue {
 		
 		hero.setDx(0);
 		hero.setDy(1);
-		
+
 		if(hero.getEnv().dansTerrain(hero.getX(),nposY) && hero.getEnv().traversable(hero.getX(), nposY)){
 			hero.setY(nposY);
 		}
@@ -88,9 +88,12 @@ public class HeroVue {
 		int xAttaque , yAttaque;
 		xAttaque = hero.getX() + (hero.getDx()*16);
 		yAttaque = hero.getY() + (hero.getDy()*16);
-				
+		
+		
 		System.out.println("Attaque en " + xAttaque/16 + " : " + yAttaque/16);
 		System.out.println("Hero en " + hero.getX()/16 + " : " + hero.getY()/16);
+		
+		hero.getEnv().trouverEnnemi(xAttaque/16, yAttaque/16);
 	}
 	
 }
