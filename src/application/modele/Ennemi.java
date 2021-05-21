@@ -3,6 +3,7 @@ package src.application.modele;
 import java.util.Random;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
@@ -17,7 +18,7 @@ public class Ennemi {
 	
 	
 	public Ennemi(int x, int y, Environnement env) {
-		this.pv=5;
+		this.pv= 30;
 		this.x = new SimpleIntegerProperty(x);
 		this.y = new SimpleIntegerProperty(y);
 		this.env=env;
@@ -53,6 +54,18 @@ public class Ennemi {
 		return this.y;
 	}
 	
+	public int getPv() {
+		return pv;
+	}
+	
+	
+	public void setPv(int n) {
+		pv=n;
+	}
+
+
+	
+
 	public int getId() {
 		return id;
 	}

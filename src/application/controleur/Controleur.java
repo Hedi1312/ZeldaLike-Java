@@ -99,6 +99,10 @@ public class Controleur implements Initializable{
 				gameLoop.pause();
 			}
 			break;
+		
+		case SPACE:
+			
+			heroVue.attaquer();
 
 		}
 	}
@@ -117,8 +121,7 @@ public class Controleur implements Initializable{
 				// c'est un eventHandler d'ou le lambda
 				(ev ->{
 					if(temps%60==0){
-
-						System.out.println("1 sec");
+						
 						ennemiVue.seDeplace();
 					}
 					else if (temps%5==0){
@@ -150,7 +153,7 @@ public class Controleur implements Initializable{
 		heroVue.getIV().translateYProperty().bind(hero.getYProperty());
 		
 		//ennemi
-		Ennemi ennemi = new Ennemi(5,5,env);
+		Ennemi ennemi = new Ennemi(50,50,env);
 		env.ajouterEnnemi(ennemi);
 		
 		ennemiVue = new EnnemiVue(env.getEnnemi());

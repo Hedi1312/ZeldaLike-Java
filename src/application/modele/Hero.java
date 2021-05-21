@@ -16,12 +16,15 @@ public class Hero {
 	private IntegerProperty x,y;
 	protected Environnement env;
 	private DoubleProperty pv;
+	private int dx,dy;
 	
 	public Hero(Environnement env) {
 		this.x= new SimpleIntegerProperty();
 		this.y= new SimpleIntegerProperty();
 		this.env=env;
 		this.pv=new SimpleDoubleProperty(100);
+		this.dx = 0;
+		this.dy = -1;
 	}
 	
 	public Environnement getEnv() {
@@ -63,8 +66,21 @@ public class Hero {
 		return pv.getValue();
 	}
 	
+	public int getDx(){
+		return dx;
+	}
 	
+	public int getDy() {
+		return dy;
+	}
 	
+	public void setDx(int n) {
+		this.dx=n;
+	}
+	
+	public void setDy(int n) {
+		this.dy=n;
+	}
 	
 	
 	

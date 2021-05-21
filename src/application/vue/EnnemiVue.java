@@ -11,7 +11,7 @@ public class EnnemiVue {
 	
 	public EnnemiVue(Ennemi ennemi) {
 		super();
-		this.img = new Image("src/images/chevalier.png");
+		this.img = new Image("src/images/moi16x16.png");
 		this.iv= new ImageView(img);
 		this.ennemi=ennemi;
 	}
@@ -32,7 +32,7 @@ public class EnnemiVue {
 		}
 		int nposX=ennemi.getX()+(ennemi.getDx()*8);
 		int nposY=ennemi.getY()+(ennemi.getDy()*8);
-		while(!ennemi.getEnv().dansTerrain(nposX, nposY)){
+		while(!(ennemi.getEnv().dansTerrain(nposX, nposY) && ennemi.getEnv().traversable(nposX, nposY))){
 			ennemi.tirerDirection();
 			nposX=ennemi.getX()+(ennemi.getDx()*8);
 			nposY=ennemi.getY()+(ennemi.getDy()*8);

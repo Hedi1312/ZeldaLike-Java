@@ -42,28 +42,55 @@ public class HeroVue {
 	
 	public void allerEnHaut() {
 		int nposY=hero.getY()-8;
-		if(hero.getEnv().dansTerrain(hero.getX(),nposY) && hero.getEnv().traversable(hero.getX()/16, nposY/16)){
+		
+		hero.setDx(0);
+		hero.setDy(-1);
+		
+		if(hero.getEnv().dansTerrain(hero.getX(),nposY) && hero.getEnv().traversable(hero.getX(), nposY)){
 			hero.setY(nposY);
 		}
 	}
 	
 	public void allerEnBas() {
 		int nposY=hero.getY()+8;
-		if(hero.getEnv().dansTerrain(hero.getX(),nposY)){
+		
+		hero.setDx(0);
+		hero.setDy(1);
+		
+		if(hero.getEnv().dansTerrain(hero.getX(),nposY) && hero.getEnv().traversable(hero.getX(), nposY)){
 			hero.setY(nposY);
 		}
 	}
 	public void allerAGauche() {
 		int nposX=hero.getX()-8;
-		if(hero.getEnv().dansTerrain(nposX,hero.getY())){
+		
+		hero.setDx(-1);
+		hero.setDy(0);
+		
+		if(hero.getEnv().dansTerrain(nposX,hero.getY()) && hero.getEnv().traversable(nposX, hero.getY())){
 			hero.setX(nposX);
 		}
 	}
 	
 	public void allerADroite() {
 		int nposX=hero.getX()+8;
-		if(hero.getEnv().dansTerrain(nposX,hero.getY())){
+		
+		hero.setDx(1);
+		hero.setDy(0);
+		
+		if(hero.getEnv().dansTerrain(nposX,hero.getY()) && hero.getEnv().traversable(nposX, hero.getY())){
 			hero.setX(nposX);
 		}
 	}
+	
+	
+	public void attaquer() {
+		int xAttaque , yAttaque;
+		xAttaque = hero.getX() + (hero.getDx()*16);
+		yAttaque = hero.getY() + (hero.getDy()*16);
+				
+		System.out.println("Attaque en " + xAttaque/16 + " : " + yAttaque/16);
+		System.out.println("Hero en " + hero.getX()/16 + " : " + hero.getY()/16);
+	}
+	
 }

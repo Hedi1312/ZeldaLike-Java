@@ -40,7 +40,7 @@ public class Environnement {
 	public boolean traversable(int x,int y) {
 		int[] tab = {352};
 		if(dansTerrain(x, y)) {
-			int tuile= terrain.getMap()[y][x];
+			int tuile= terrain.getMap()[y/16][x/16];
 			for(int element : tab) {
 				if(tuile==element)
 					return false;
