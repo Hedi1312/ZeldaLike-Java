@@ -71,10 +71,6 @@ public class Controleur implements Initializable{
 		case UP:    
 			System.out.println("haut");
 			heroVue.allerEnHaut(); 
-			//System.out.println(env.typeTuile(heroVue.getHero().getX(), heroVue.getHero().getY()));
-//			if(env.typeTuile(heroVue.getHero().getX(), heroVue.getHero().getY()).contains("feu")) {
-//				heroVue.getHero().perdrePv(10);
-//			}
 			break;
 		case DOWN:  
 			
@@ -99,6 +95,12 @@ public class Controleur implements Initializable{
 				gameLoop.pause();
 			}
 			break;
+		
+		case SPACE:
+			
+			heroVue.attaquer();
+			heroVue.getHero().perdrePv(20);
+
 		}
 	}
 
@@ -116,9 +118,15 @@ public class Controleur implements Initializable{
 				// c'est un eventHandler d'ou le lambda
 				(ev ->{
 					if(temps%60==0){
-
-						System.out.println("1 sec");
+						
 						ennemiVue.seDeplace();
+						if(!env.estVivant()) {
+							pane.getChildren().remove(ennemiVue.getIV());
+						}
+						
+						if(env.dansLeFeu(heroVue.getHero().getX(),heroVue.getHero().getY())) {
+							heroVue.getHero().perdrePv(10);
+						}
 					}
 					else if (temps%5==0){
 						//System.out.println("un tour");
@@ -149,7 +157,7 @@ public class Controleur implements Initializable{
 		heroVue.getIV().translateYProperty().bind(hero.getYProperty());
 		
 		//ennemi
-		Ennemi ennemi = new Ennemi(5,5,env);
+		Ennemi ennemi = new Ennemi(0,0,env);
 		env.ajouterEnnemi(ennemi);
 		
 		ennemiVue = new EnnemiVue(env.getEnnemi());

@@ -11,7 +11,7 @@ public class EnnemiVue {
 	
 	public EnnemiVue(Ennemi ennemi) {
 		super();
-		this.img = new Image("src/images/chevalier.png");
+		this.img = new Image("src/images/pixil-frame-0.png");
 		this.iv= new ImageView(img);
 		this.ennemi=ennemi;
 	}
@@ -30,12 +30,12 @@ public class EnnemiVue {
 		if(reussitProba(20)) {
 			ennemi.tirerDirection();
 		}
-		int nposX=ennemi.getX()+(ennemi.getDx()*8);
-		int nposY=ennemi.getY()+(ennemi.getDy()*8);
-		while(!ennemi.getEnv().dansTerrain(nposX, nposY)){
+		int nposX=ennemi.getX()+(ennemi.getDx()*16);
+		int nposY=ennemi.getY()+(ennemi.getDy()*16);
+		while(!(ennemi.getEnv().dansTerrain(nposX, nposY) && ennemi.getEnv().traversable(nposX, nposY))){
 			ennemi.tirerDirection();
-			nposX=ennemi.getX()+(ennemi.getDx()*8);
-			nposY=ennemi.getY()+(ennemi.getDy()*8);
+			nposX=ennemi.getX()+(ennemi.getDx()*16);
+			nposY=ennemi.getY()+(ennemi.getDy()*16);
 		}
 		ennemi.setX(nposX);;
 		ennemi.setY(nposY);		

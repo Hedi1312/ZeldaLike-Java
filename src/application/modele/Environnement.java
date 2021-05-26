@@ -40,7 +40,7 @@ public class Environnement {
 	public boolean traversable(int x,int y) {
 		int[] tab = {352};
 		if(dansTerrain(x, y)) {
-			int tuile= terrain.getMap()[y][x];
+			int tuile= terrain.getMap()[y/16][x/16];
 			for(int element : tab) {
 				if(tuile==element)
 					return false;
@@ -49,6 +49,7 @@ public class Environnement {
 		return true;
 	}
 	
+<<<<<<< HEAD
 //	public String typeTuile(int x,int y) {
 //		String nomTuile;
 //		int tuile= terrain.getMap()[y][x];
@@ -69,4 +70,38 @@ public class Environnement {
 //		return nomTuile;
 //	}
 
+=======
+	public boolean dansLeFeu(int x, int y ) {
+		int[] tab = {914};
+		if(dansTerrain(x, y)) {
+			int tuile= terrain.getMap()[y/16][x/16];
+			for(int element : tab) {
+				if(tuile==element)
+					return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	public void trouverEnnemi(int x , int y) {
+		if(x==ennemi.getX()/16 && y== ennemi.getY()/16) {
+			ennemi.setPv(ennemi.getPv()-10);
+			System.out.println("Touché");
+		}
+		else
+			System.out.println("Pas touché");
+		System.out.println("Ennemi en " + ennemi.getX()/16 + " : "+ ennemi.getY()/16);
+		
+		System.out.println("Ennemi PV : " + ennemi.getPv());
+		
+	}
+	
+	public boolean estVivant() {
+		if(ennemi.getPv()<=0) {
+			return false;
+		}
+		return true;
+	}
+>>>>>>> refs/heads/david
 }
