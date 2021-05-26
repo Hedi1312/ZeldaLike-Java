@@ -49,7 +49,6 @@ public class Environnement {
 		return true;
 	}
 	
-<<<<<<< HEAD
 //	public String typeTuile(int x,int y) {
 //		String nomTuile;
 //		int tuile= terrain.getMap()[y][x];
@@ -70,7 +69,6 @@ public class Environnement {
 //		return nomTuile;
 //	}
 
-=======
 	public boolean dansLeFeu(int x, int y ) {
 		int[] tab = {914};
 		if(dansTerrain(x, y)) {
@@ -103,5 +101,5 @@ public class Environnement {
 		}
 		return true;
 	}
->>>>>>> refs/heads/david
+
 }

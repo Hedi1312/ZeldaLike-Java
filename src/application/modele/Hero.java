@@ -26,9 +26,8 @@ public class Hero {
 		this.dx = 0;
 		this.dy = -1;
 	}
-	public void perdrePv(double n) {
-		pv.setValue(pv.getValue()-n);
-	}
+	
+	
 	public Environnement getEnv() {
 		return env;
 	}
