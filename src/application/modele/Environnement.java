@@ -49,6 +49,19 @@ public class Environnement {
 		return true;
 	}
 	
+	public boolean dansLeFeu(int x, int y ) {
+		int[] tab = {914};
+		if(dansTerrain(x, y)) {
+			int tuile= terrain.getMap()[y/16][x/16];
+			for(int element : tab) {
+				if(tuile==element)
+					return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	public void trouverEnnemi(int x , int y) {
 		if(x==ennemi.getX()/16 && y== ennemi.getY()/16) {
 			ennemi.setPv(ennemi.getPv()-10);

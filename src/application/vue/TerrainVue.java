@@ -27,21 +27,21 @@ public class TerrainVue {
 				switch(idTuile) { 
 				case 505 :
 					ImageView iv = new ImageView(img);
-					Rectangle2D tuile = new Rectangle2D(0*16,0,16,16);		 		
+					Rectangle2D tuile = new Rectangle2D(0*16,0*16,16,16);		 		
 					iv.setViewport(tuile);
 					mapARemplir.getChildren().add(iv);
 					break;
 					
 				case 352 :
 					ImageView iv2 = new ImageView(img);
-					Rectangle2D tuile2 = new Rectangle2D(1*16,0,16,16);		 		
+					Rectangle2D tuile2 = new Rectangle2D(1*16,0*16,16,16);		 		
 					iv2.setViewport(tuile2);
 					mapARemplir.getChildren().add(iv2);
 					break;
 					
 				case 914: 
 					ImageView iv3 = new ImageView(img);
-					Rectangle2D tuile3 = new Rectangle2D(2*16,0,16,16);		 		
+					Rectangle2D tuile3 = new Rectangle2D(2*16,0*16,16,16);		 		
 					iv3.setViewport(tuile3);
 					mapARemplir.getChildren().add(iv3);
 					break;

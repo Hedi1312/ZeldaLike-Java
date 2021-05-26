@@ -21,7 +21,7 @@ public class HeroVue {
 		this.barreDeVie=new ProgressBar(1);
 		barreDeVie.setLayoutY(-40);
 		barreDeVie.setStyle("-fx-accent: red;");
-		barreDeVie.progressProperty().bind(hero.getPvProperty());
+		barreDeVie.progressProperty().bind(hero.getPvProperty().divide(100));
 	}
 	
 	public ImageView getIV() {
@@ -41,7 +41,7 @@ public class HeroVue {
 	}
 	
 	public void allerEnHaut() {
-		int nposY=hero.getY()-8;
+		int nposY=hero.getY()-16;
 		
 		hero.setDx(0);
 		hero.setDy(-1);
@@ -52,7 +52,7 @@ public class HeroVue {
 	}
 	
 	public void allerEnBas() {
-		int nposY=hero.getY()+8;
+		int nposY=hero.getY()+16;
 		
 		hero.setDx(0);
 		hero.setDy(1);
@@ -62,7 +62,7 @@ public class HeroVue {
 		}
 	}
 	public void allerAGauche() {
-		int nposX=hero.getX()-8;
+		int nposX=hero.getX()-16;
 		
 		hero.setDx(-1);
 		hero.setDy(0);
@@ -73,7 +73,7 @@ public class HeroVue {
 	}
 	
 	public void allerADroite() {
-		int nposX=hero.getX()+8;
+		int nposX=hero.getX()+16;
 		
 		hero.setDx(1);
 		hero.setDy(0);
@@ -94,6 +94,8 @@ public class HeroVue {
 		System.out.println("Hero en " + hero.getX()/16 + " : " + hero.getY()/16);
 		
 		hero.getEnv().trouverEnnemi(xAttaque/16, yAttaque/16);
+		
+		System.out.println("Hero PV : " + hero.getPv());
 	}
 	
 }

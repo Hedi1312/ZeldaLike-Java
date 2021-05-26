@@ -84,7 +84,6 @@ public class Controleur implements Initializable{
 		case RIGHT:
 			System.out.println("droite");
 			heroVue.allerADroite();
-			heroVue.getHero().setPv(80);
 			break;
 		case P:
 
@@ -103,6 +102,7 @@ public class Controleur implements Initializable{
 		case SPACE:
 			
 			heroVue.attaquer();
+			heroVue.getHero().perdrePv(20);
 
 		}
 	}
@@ -125,6 +125,10 @@ public class Controleur implements Initializable{
 						ennemiVue.seDeplace();
 						if(!env.estVivant()) {
 							pane.getChildren().remove(ennemiVue.getIV());
+						}
+						
+						if(env.dansLeFeu(heroVue.getHero().getX(),heroVue.getHero().getY())) {
+							heroVue.getHero().perdrePv(10);
 						}
 					}
 					else if (temps%5==0){
@@ -156,7 +160,7 @@ public class Controleur implements Initializable{
 		heroVue.getIV().translateYProperty().bind(hero.getYProperty());
 		
 		//ennemi
-		Ennemi ennemi = new Ennemi(50,50,env);
+		Ennemi ennemi = new Ennemi(0,0,env);
 		env.ajouterEnnemi(ennemi);
 		
 		ennemiVue = new EnnemiVue(env.getEnnemi());
