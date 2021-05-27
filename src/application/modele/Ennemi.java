@@ -2,6 +2,7 @@ package src.application.modele;
 
 import java.util.Random;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -10,18 +11,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public class Ennemi extends Personnage {
-	private int pv;
+	
 	private String id;
 	private int dx,dy;
-	public static int compteur=0;
 	
 	
 	public Ennemi(int x, int y, Environnement env) {
-		super(x,y,env);
-		this.pv= 30;
+		super(x,y,env,30);
+		
 		this.tirerDirection();
-		this.id="A"+compteur;
-		compteur++;
 		
 	}
 	
@@ -29,20 +27,7 @@ public class Ennemi extends Personnage {
 		return env;
 	}
 	
-	
-	public int getPv() {
-		return pv;
-	}
-	
-	
-	public void setPv(int n) {
-		pv=n;
-	}
-	
 
-	public String getId() {
-		return id;
-	}
 	
 	public int getDy() {
 		return this.dx;

@@ -13,32 +13,14 @@ import javafx.scene.layout.TilePane;
 
 public class Hero extends Personnage {
 	
-	private DoubleProperty pv;
 	private int dx,dy;
 	
 	public Hero(int x, int y , Environnement env) {
-		super(x,y,env);
-		this.pv=new SimpleDoubleProperty(100);
+		super(x,y,env,100);
 		this.dx = 0;
 		this.dy = -1;
 	}
 	
-	
-	public DoubleProperty getPvProperty () {
-		return pv;
-	}
-	
-	public void setPv(double n) {
-		pv.setValue(n);
-	}
-	
-	public double getPv() {
-		return pv.getValue();
-	}
-	
-	public void perdrePv(double n) {
-		pv.setValue(pv.getValue()-n);
-	}
 	
 	public int getDx(){
 		return dx;
@@ -112,7 +94,7 @@ public class Hero extends Personnage {
 		
 		getEnv().trouverEnnemi(xAttaque/16, yAttaque/16);
 		
-		System.out.println("Hero PV : " + this.pv);
+		System.out.println("Hero PV : " + getPv());
 	}
 
 

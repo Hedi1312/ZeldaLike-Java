@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import src.application.modele.Ennemi;
 import src.application.modele.Environnement;
 import src.application.modele.Hero;
+import src.application.modele.Personnage;
 import src.application.modele.Terrain;
 import src.application.vue.EnnemiVue;
 import src.application.vue.HeroVue;
@@ -99,7 +100,6 @@ public class Controleur implements Initializable{
 		case SPACE:
 			
 			heroVue.getHero().attaquer();
-			heroVue.getHero().perdrePv(20);
 
 		}
 	}
@@ -119,9 +119,6 @@ public class Controleur implements Initializable{
 				(ev ->{
 					if(temps%60==0){
 						
-						if(!env.estVivant()) {
-							pane.getChildren().remove(ennemiVue.getIV());
-						}
 						env.unTour();
 						
 					}
@@ -150,9 +147,11 @@ public class Controleur implements Initializable{
 		
 		//ennemi
 		Ennemi ennemi = new Ennemi(0,0,env);
-		env.ajouterEnnemi(ennemi);
+		env.ajouterPerso(ennemi);
 		
-		ennemiVue = new EnnemiVue(env.getEnnemi(),pane);
+		ennemiVue = new EnnemiVue(ennemi,pane);
+		
+		this.env.getPersonnages().addListener(new MonObservateurPersonnages(this.pane, ennemiVue));
 		
 	}
 	
