@@ -2,18 +2,31 @@ package src.application.vue;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import src.application.modele.Ennemi;
+import src.application.modele.Hero;
 
 public class EnnemiVue {
 	private Ennemi ennemi;
 	private Image img;
 	private ImageView iv ;
+	private Pane pane;
 	
-	public EnnemiVue(Ennemi ennemi) {
+	public EnnemiVue(Ennemi ennemi, Pane pane) {
 		super();
 		this.img = new Image("src/images/pixil-frame-0.png");
 		this.iv= new ImageView(img);
 		this.ennemi=ennemi;
+		this.pane = pane;
+		
+		pane.getChildren().add(this.iv);
+		
+		this.iv.translateXProperty().bind(ennemi.getXProperty());
+		this.iv.translateYProperty().bind(ennemi.getYProperty());
+	}
+	
+	public Ennemi getEnnemi() {
+		return this.ennemi;
 	}
 	
 	public ImageView getIV() {
@@ -24,26 +37,4 @@ public class EnnemiVue {
 		return img;
 	}
 	
-	public void seDeplace(){
-		// 20% de chance de changer de direction
-		// if(Math.random()*100< pourentageRepro )
-		if(reussitProba(20)) {
-			ennemi.tirerDirection();
-		}
-		int nposX=ennemi.getX()+(ennemi.getDx()*16);
-		int nposY=ennemi.getY()+(ennemi.getDy()*16);
-		while(!(ennemi.getEnv().dansTerrain(nposX, nposY) && ennemi.getEnv().traversable(nposX, nposY))){
-			ennemi.tirerDirection();
-			nposX=ennemi.getX()+(ennemi.getDx()*16);
-			nposY=ennemi.getY()+(ennemi.getDy()*16);
-		}
-		ennemi.setX(nposX);;
-		ennemi.setY(nposY);		
-	}
-	
-	public static boolean reussitProba(double pourcent){
-		double x= Math.random();
-		double pp=pourcent/100;
-		return (x<=pp);
-	}
 }

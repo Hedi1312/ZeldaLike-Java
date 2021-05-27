@@ -70,20 +70,20 @@ public class Controleur implements Initializable{
 		switch (event.getCode()) {
 		case UP:    
 			System.out.println("haut");
-			heroVue.allerEnHaut(); 
+			heroVue.getHero().allerEnHaut(); 
 			break;
 		case DOWN:  
 			
 			System.out.println("bas");
-			heroVue.allerEnBas();
+			heroVue.getHero().allerEnBas();
 			break;
 		case LEFT: 
 			System.out.println("gauche");
-			heroVue.allerAGauche();
+			heroVue.getHero().allerAGauche();
 			break;
 		case RIGHT:
 			System.out.println("droite");
-			heroVue.allerADroite();
+			heroVue.getHero().allerADroite();
 			break;
 		case P:
 			if (gameLoop.getStatus()==Status.PAUSED) {
@@ -98,7 +98,7 @@ public class Controleur implements Initializable{
 		
 		case SPACE:
 			
-			heroVue.attaquer();
+			heroVue.getHero().attaquer();
 			heroVue.getHero().perdrePv(20);
 
 		}
@@ -119,7 +119,7 @@ public class Controleur implements Initializable{
 				(ev ->{
 					if(temps%60==0){
 						
-						ennemiVue.seDeplace();
+						ennemiVue.getEnnemi().seDeplace();
 						if(!env.estVivant()) {
 							pane.getChildren().remove(ennemiVue.getIV());
 						}
@@ -148,24 +148,15 @@ public class Controleur implements Initializable{
 		Hero hero = new Hero(env);
 		env.ajouterHero(hero);
 		
-		heroVue = new HeroVue(env.getHero());
-		pane.getChildren().add(heroVue.getIV());
-		pane.getChildren().add(heroVue.getBarreDeVie());
-		env.ajouterHero(hero);
+		heroVue = new HeroVue(env.getHero(), pane);
 		
-		heroVue.getIV().translateXProperty().bind(hero.getXProperty());
-		heroVue.getIV().translateYProperty().bind(hero.getYProperty());
 		
 		//ennemi
 		Ennemi ennemi = new Ennemi(0,0,env);
 		env.ajouterEnnemi(ennemi);
 		
-		ennemiVue = new EnnemiVue(env.getEnnemi());
-		pane.getChildren().add(ennemiVue.getIV());
-		env.ajouterEnnemi(ennemi);
+		ennemiVue = new EnnemiVue(env.getEnnemi(),pane);
 		
-		ennemiVue.getIV().translateXProperty().bind(ennemi.getXProperty());
-		ennemiVue.getIV().translateYProperty().bind(ennemi.getYProperty());
 	}
 	
 	

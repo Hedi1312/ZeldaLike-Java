@@ -87,7 +87,64 @@ public class Hero {
 		this.dy=n;
 	}
 	
+
+	public void allerEnHaut() {
+		int nposY=getY()-16;
+		
+		setDx(0);
+		setDy(-1);
+		
+		if(getEnv().dansTerrain(getX(),nposY) && getEnv().traversable(getX(), nposY)){
+			setY(nposY);
+		}
+	}
 	
+	public void allerEnBas() {
+		int nposY=getY()+16;
+		
+		setDx(0);
+		setDy(1);
+
+		if(this.env.dansTerrain(getX(),nposY) && getEnv().traversable(getX(), nposY)){
+			setY(nposY);
+		}
+	}
+	public void allerAGauche() {
+		int nposX=getX()-16;
+		
+		setDx(-1);
+		setDy(0);
+		
+		if(this.env.dansTerrain(nposX,getY()) && getEnv().traversable(nposX, getY())){
+			setX(nposX);
+		}
+	}
+	
+	public void allerADroite() {
+		int nposX=getX()+16;
+		
+		setDx(1);
+		setDy(0);
+		
+		if(this.env.dansTerrain(nposX,getY()) && getEnv().traversable(nposX, getY())){
+			setX(nposX);
+		}
+	}
+	
+	
+	public void attaquer() {
+		int xAttaque , yAttaque;
+		xAttaque = getX() + (dx*16);
+		yAttaque = getY() + (dy*16);
+		
+		
+		System.out.println("Attaque en " + xAttaque/16 + " : " + yAttaque/16);
+		System.out.println("Hero en " + getX()/16 + " : " + getY()/16);
+		
+		getEnv().trouverEnnemi(xAttaque/16, yAttaque/16);
+		
+		System.out.println("Hero PV : " + this.pv);
+	}
 	
 }	
 	

@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import src.application.modele.Hero;
 
 public class HeroVue {
@@ -12,9 +13,11 @@ public class HeroVue {
 	private Image img;
 	private ImageView iv;
 	private ProgressBar barreDeVie;
+	private Pane pane;
 	
-	public HeroVue(Hero hero) {
+	public HeroVue(Hero hero, Pane pane) {
 		super();
+		this.pane = pane;
 		this.img = new Image("src/images/moi16x16.png");
 		this.iv= new ImageView(img);
 		this.hero=hero;
@@ -22,6 +25,12 @@ public class HeroVue {
 		barreDeVie.setLayoutY(-40);
 		barreDeVie.setStyle("-fx-accent: red;");
 		barreDeVie.progressProperty().bind(hero.getPvProperty().divide(100));
+		
+		pane.getChildren().add(this.iv);
+		pane.getChildren().add(getBarreDeVie());
+	
+		this.iv.translateXProperty().bind(hero.getXProperty());
+		this.iv.translateYProperty().bind(hero.getYProperty());
 	}
 	
 	public ImageView getIV() {
@@ -40,62 +49,5 @@ public class HeroVue {
 		return barreDeVie;
 	}
 	
-	public void allerEnHaut() {
-		int nposY=hero.getY()-16;
-		
-		hero.setDx(0);
-		hero.setDy(-1);
-		
-		if(hero.getEnv().dansTerrain(hero.getX(),nposY) && hero.getEnv().traversable(hero.getX(), nposY)){
-			hero.setY(nposY);
-		}
-	}
-	
-	public void allerEnBas() {
-		int nposY=hero.getY()+16;
-		
-		hero.setDx(0);
-		hero.setDy(1);
-
-		if(hero.getEnv().dansTerrain(hero.getX(),nposY) && hero.getEnv().traversable(hero.getX(), nposY)){
-			hero.setY(nposY);
-		}
-	}
-	public void allerAGauche() {
-		int nposX=hero.getX()-16;
-		
-		hero.setDx(-1);
-		hero.setDy(0);
-		
-		if(hero.getEnv().dansTerrain(nposX,hero.getY()) && hero.getEnv().traversable(nposX, hero.getY())){
-			hero.setX(nposX);
-		}
-	}
-	
-	public void allerADroite() {
-		int nposX=hero.getX()+16;
-		
-		hero.setDx(1);
-		hero.setDy(0);
-		
-		if(hero.getEnv().dansTerrain(nposX,hero.getY()) && hero.getEnv().traversable(nposX, hero.getY())){
-			hero.setX(nposX);
-		}
-	}
-	
-	
-	public void attaquer() {
-		int xAttaque , yAttaque;
-		xAttaque = hero.getX() + (hero.getDx()*16);
-		yAttaque = hero.getY() + (hero.getDy()*16);
-		
-		
-		System.out.println("Attaque en " + xAttaque/16 + " : " + yAttaque/16);
-		System.out.println("Hero en " + hero.getX()/16 + " : " + hero.getY()/16);
-		
-		hero.getEnv().trouverEnnemi(xAttaque/16, yAttaque/16);
-		
-		System.out.println("Hero PV : " + hero.getPv());
-	}
 	
 }

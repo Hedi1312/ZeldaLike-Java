@@ -7,24 +7,26 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 public class Ennemi {
-	private IntegerProperty x,y;
-	private int dx,dy;//direction
 	private int pv;
+	private IntegerProperty x,y;
 	protected Environnement env;
-	private int id;
+	private String id;
+	private int dx,dy;
 	public static int compteur=0;
 	
 	
 	public Ennemi(int x, int y, Environnement env) {
 		this.pv= 30;
-		this.x = new SimpleIntegerProperty(x);
-		this.y = new SimpleIntegerProperty(y);
+		this.x= new SimpleIntegerProperty(x);
+		this.y= new SimpleIntegerProperty(y);
 		this.env=env;
 		this.tirerDirection();
-		this.id=compteur;
+		this.id="A"+compteur;
 		compteur++;
+		
 	}
 	
 	public Environnement getEnv() {
@@ -66,7 +68,7 @@ public class Ennemi {
 
 	
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	
@@ -94,5 +96,32 @@ public class Ennemi {
 		else{
 			dy=random.nextInt(3)-1;
 		}
+	}
+	
+	public void seDeplace(){
+		// 20% de chance de changer de direction
+		// if(Math.random()*100< pourentageRepro )
+		if(reussitProba(20)) {
+			tirerDirection();
+		}
+		int nposX=getX()+(dx*16);
+		int nposY=getY()+(dy*16);
+		while(!(this.env.dansTerrain(nposX, nposY) && this.env.traversable(nposX, nposY))){
+			tirerDirection();
+			nposX=getX()+(dx*16);
+			nposY=getY()+(dy*16);
+		}
+		setX(nposX);;
+		setY(nposY);		
+	}
+	
+	public static boolean reussitProba(double pourcent){
+		double x= Math.random();
+		double pp=pourcent/100;
+		return (x<=pp);
+	}
+	
+	public void agit() {
+		
 	}
 }
