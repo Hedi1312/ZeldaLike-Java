@@ -1,5 +1,7 @@
 package src.application.modele;
 
+import src.application.vue.HeroVue;
+
 public class Environnement {
 	private Hero hero;
 	private Ennemi ennemi;
@@ -102,4 +104,8 @@ public class Environnement {
 		return true;
 	}
 
+	public void unTour() {
+		getHero().agit();
+		getEnnemi().agit();
+	}
 }

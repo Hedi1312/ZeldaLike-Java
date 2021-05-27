@@ -11,49 +11,18 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 
-public class Hero {
+public class Hero extends Personnage {
 	
-	private IntegerProperty x,y;
-	protected Environnement env;
 	private DoubleProperty pv;
 	private int dx,dy;
 	
-	public Hero(Environnement env) {
-		this.x= new SimpleIntegerProperty();
-		this.y= new SimpleIntegerProperty();
-		this.env=env;
+	public Hero(int x, int y , Environnement env) {
+		super(x,y,env);
 		this.pv=new SimpleDoubleProperty(100);
 		this.dx = 0;
 		this.dy = -1;
 	}
 	
-	
-	public Environnement getEnv() {
-		return env;
-	}
-	
-	public int getX() {
-		return x.getValue();
-	}
-	
-	public int getY() {
-		return y.getValue();
-	}
-	
-	public void setX(int n) {
-		x.setValue(n);
-	}
-	public void setY(int n) {
-		y.setValue(n);
-	}
-	
-	public IntegerProperty getXProperty() {
-		return this.x;
-	}
-	
-	public IntegerProperty getYProperty() {
-		return this.y;
-	}
 	
 	public DoubleProperty getPvProperty () {
 		return pv;
@@ -144,6 +113,15 @@ public class Hero {
 		getEnv().trouverEnnemi(xAttaque/16, yAttaque/16);
 		
 		System.out.println("Hero PV : " + this.pv);
+	}
+
+
+	@Override
+	public void agit() {
+		if(env.dansLeFeu(getX(),getY())) {
+			perdrePv(10);
+		}
+		
 	}
 	
 }	

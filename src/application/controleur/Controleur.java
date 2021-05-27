@@ -119,14 +119,11 @@ public class Controleur implements Initializable{
 				(ev ->{
 					if(temps%60==0){
 						
-						ennemiVue.getEnnemi().seDeplace();
 						if(!env.estVivant()) {
 							pane.getChildren().remove(ennemiVue.getIV());
 						}
+						env.unTour();
 						
-						if(env.dansLeFeu(heroVue.getHero().getX(),heroVue.getHero().getY())) {
-							heroVue.getHero().perdrePv(10);
-						}
 					}
 					else if (temps%5==0){
 						//System.out.println("un tour");
@@ -145,7 +142,7 @@ public class Controleur implements Initializable{
 		terrainVue.chargerTerrain();
 		
 		//hero
-		Hero hero = new Hero(env);
+		Hero hero = new Hero(160,112,env);
 		env.ajouterHero(hero);
 		
 		heroVue = new HeroVue(env.getHero(), pane);
