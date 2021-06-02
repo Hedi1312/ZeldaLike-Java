@@ -1,26 +1,26 @@
 package src.application.controleur;
 
 import javafx.collections.ListChangeListener;
+import javafx.collections.ListChangeListener.Change;
 import javafx.scene.layout.Pane;
 import src.application.modele.Personnage;
-import src.application.vue.EnnemiVue;
+import src.application.vue.EnnemiBasiqueVue;
 
-public class MonObservateurPersonnages implements ListChangeListener<Personnage>{
-
+public class MonObservateurEnnemiBasique implements ListChangeListener<Personnage>{
 	private Pane pane;
-	private EnnemiVue ennemiVue;
+	private EnnemiBasiqueVue ennemiBasiqueVue;
 
-	public MonObservateurPersonnages(Pane pane, EnnemiVue ennemiVue) {
+	public MonObservateurEnnemiBasique(Pane pane, EnnemiBasiqueVue ennemiBasiqueVue) {
 		this.pane=pane;
-		this.ennemiVue=ennemiVue;
+		this.ennemiBasiqueVue=ennemiBasiqueVue;
 	}
 
 	private void enleverPerso(Personnage mort) {
 		//System.out.println("enlever sprite");
-		this.pane.getChildren().remove(ennemiVue.getIV());
+		this.pane.getChildren().remove(ennemiBasiqueVue.getIV());
+		System.out.println(mort.getId());
 		this.pane.getChildren().remove(this.pane.lookup("#"+mort.getId()));
-
-
+		
 	} 
 
 	@Override
@@ -31,7 +31,6 @@ public class MonObservateurPersonnages implements ListChangeListener<Personnage>
 				enleverPerso(mort);
 			}
 		}
-
 	}
 
 

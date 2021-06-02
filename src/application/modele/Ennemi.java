@@ -10,24 +10,20 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-public class Ennemi extends Personnage {
+public abstract class Ennemi extends Personnage {
 	
 	private String id;
 	private int dx,dy;
 	
 	
-	public Ennemi(int x, int y, Environnement env) {
+	public Ennemi(int x, int y, Environnement env, int pv) {
 		super(x,y,env,30);
-		
 		this.tirerDirection();
-		
 	}
 	
 	public Environnement getEnv() {
 		return env;
 	}
-	
-
 	
 	public int getDy() {
 		return this.dx;
@@ -79,22 +75,9 @@ public class Ennemi extends Personnage {
 	}
 	
 	@Override
-	public void agit() {
-		seDeplace();
-		attaquer();
-	}
+	public abstract void agit();
+
 	
-	public void attaquer() {
-		int xAttaque , yAttaque;
-		xAttaque = getX() + (dx*16);
-		yAttaque = getY() + (dy*16);
+	public abstract void attaquer();
 		
-		
-		System.out.println("Attaque en " + xAttaque/16 + " : " + yAttaque/16);
-		System.out.println("Hero en " + getX()/16 + " : " + getY()/16);
-		
-		getEnv().trouverHero(xAttaque/16, yAttaque/16);
-		
-		System.out.println("Hero PV : " + getPv());
-	}
 }

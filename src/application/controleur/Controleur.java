@@ -4,11 +4,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import src.application.modele.Ennemi;
+import src.application.modele.EnnemiBasique;
+import src.application.modele.EnnemiExplosif;
 import src.application.modele.Environnement;
 import src.application.modele.Hero;
 import src.application.modele.Personnage;
 import src.application.modele.Terrain;
-import src.application.vue.EnnemiVue;
+import src.application.vue.EnnemiBasiqueVue;
+import src.application.vue.EnnemiExplosifVue;
 import src.application.vue.HeroVue;
 import src.application.vue.TerrainVue;
 import javafx.animation.Animation.Status;
@@ -51,7 +54,9 @@ public class Controleur implements Initializable{
 	
 	private HeroVue heroVue;
 	
-	private EnnemiVue ennemiVue;
+	private EnnemiExplosifVue ennemiExplosifVue;
+	
+	private EnnemiBasiqueVue ennemiBasiqueVue;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -146,13 +151,20 @@ public class Controleur implements Initializable{
 		
 		
 		//ennemi
-		Ennemi ennemi = new Ennemi(0,0,env);
+		Ennemi ennemi = new EnnemiBasique(0,0,env);
 		env.ajouterPerso(ennemi);
 		
-		ennemiVue = new EnnemiVue(ennemi,pane);
+		ennemiBasiqueVue = new EnnemiBasiqueVue(ennemi,pane);
 		
-		this.env.getPersonnages().addListener(new MonObservateurPersonnages(this.pane, ennemiVue));
+		this.env.getPersonnages().addListener(new MonObservateurEnnemiBasique(this.pane, ennemiBasiqueVue));
 		
+		//ennemiExplosif
+		Ennemi ennemi2 = new EnnemiExplosif(16,16,env);
+		env.ajouterPerso(ennemi2);
+		
+		ennemiExplosifVue = new EnnemiExplosifVue(ennemi2,pane);
+		
+		this.env.getPersonnages().addListener(new MonObservateurEnnemiExplosif(this.pane, ennemiExplosifVue));
 	}
 	
 	

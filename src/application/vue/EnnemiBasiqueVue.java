@@ -4,15 +4,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import src.application.modele.Ennemi;
-import src.application.modele.Hero;
+import src.application.modele.Personnage;
 
-public class EnnemiVue {
-	private Ennemi ennemi;
+public class EnnemiBasiqueVue {
+	private Personnage ennemi;
 	private Image img;
 	private ImageView iv ;
 	private Pane pane;
 	
-	public EnnemiVue(Ennemi ennemi, Pane pane) {
+	public EnnemiBasiqueVue(Ennemi ennemi, Pane pane) {
 		super();
 		this.img = new Image("src/images/pixil-frame-0.png");
 		this.iv= new ImageView(img);
@@ -25,7 +25,7 @@ public class EnnemiVue {
 		this.iv.translateYProperty().bind(ennemi.getYProperty());
 	}
 	
-	public Ennemi getEnnemi() {
+	public Personnage getEnnemi() {
 		return this.ennemi;
 	}
 	
