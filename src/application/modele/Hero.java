@@ -94,7 +94,6 @@ public class Hero extends Personnage {
 		
 		getEnv().trouverEnnemi(xAttaque/16, yAttaque/16);
 		
-		System.out.println("Hero PV : " + getPv());
 	}
 
 
@@ -103,7 +102,6 @@ public class Hero extends Personnage {
 		if(env.dansLeFeu(getX(),getY())) {
 			perdrePv(10);
 		}
-		
 	}
 	
 }	

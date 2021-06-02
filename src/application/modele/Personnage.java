@@ -23,6 +23,8 @@ public abstract class Personnage {
 	}
 	
 	public abstract void agit();
+	
+	public abstract void attaquer();
 
 	public Environnement getEnv() {
 		return env;

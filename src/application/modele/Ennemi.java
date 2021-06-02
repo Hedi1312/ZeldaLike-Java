@@ -81,5 +81,20 @@ public class Ennemi extends Personnage {
 	@Override
 	public void agit() {
 		seDeplace();
+		attaquer();
+	}
+	
+	public void attaquer() {
+		int xAttaque , yAttaque;
+		xAttaque = getX() + (dx*16);
+		yAttaque = getY() + (dy*16);
+		
+		
+		System.out.println("Attaque en " + xAttaque/16 + " : " + yAttaque/16);
+		System.out.println("Hero en " + getX()/16 + " : " + getY()/16);
+		
+		getEnv().trouverHero(xAttaque/16, yAttaque/16);
+		
+		System.out.println("Hero PV : " + getPv());
 	}
 }

@@ -93,7 +93,7 @@ public class Environnement {
 			if(x==p.getX()/16 && y== p.getY()/16) {
 				p.setPv(p.getPv()-10);
 				System.out.println("Touché");
-				System.out.println("Oulala j'ai encore " + p.getPv() + " hp");
+				System.out.println("Personnage touché " + p.getPv() + " hp");
 			}
 			else
 				System.out.println("Pas touché");
@@ -101,6 +101,19 @@ public class Environnement {
 //		
 //			System.out.println("Ennemi PV : " + ennemi.getPv());
 		}
+	}
+	
+	public void trouverHero(int x , int y) {
+		if(x==hero.getX()/16 && y== hero.getY()/16) {
+			hero.setPv(hero.getPv()-10);
+			System.out.println("Touché");
+			System.out.println("Hero touché " + hero.getPv() + " hp");
+		}
+		else
+			System.out.println("Hero Pas touché");
+		//			System.out.println("Ennemi en " + ennemi.getX()/16 + " : "+ ennemi.getY()/16);
+		//		
+		//			System.out.println("Ennemi PV : " + ennemi.getPv());
 	}
 
 
