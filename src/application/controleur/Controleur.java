@@ -100,8 +100,10 @@ public class Controleur implements Initializable{
 		case SPACE:
 			
 			heroVue.getHero().attaquer();
-
+			break;
 		}
+			
+			
 	}
 
 	public void initAnimation() {
