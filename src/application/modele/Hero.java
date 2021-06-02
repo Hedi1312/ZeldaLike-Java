@@ -1,6 +1,8 @@
 package src.application.modele;
 
 
+import java.util.ArrayList;
+
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -14,13 +16,25 @@ import javafx.scene.layout.TilePane;
 public class Hero extends Personnage {
 	
 	private int dx,dy;
+	private ArrayList<Arme> armes;
+	private Arme armeActuelle;
 	
 	public Hero(int x, int y , Environnement env) {
 		super(x,y,env,100);
 		this.dx = 0;
 		this.dy = -1;
+		this.armes = new ArrayList<>();
+		armes.add(new Batte());
+		armeActuelle = armes.get(0);
 	}
 	
+	public Arme getArmeActuelle() {
+		return armeActuelle;
+	}
+	
+	public void setArmeActtuelle(int emplacement) {
+		armeActuelle = armes.get(emplacement-1);
+	}
 	
 	public int getDx(){
 		return dx;

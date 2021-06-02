@@ -91,7 +91,7 @@ public class Environnement {
 	public void trouverEnnemi(int x , int y) {
 		for(Personnage p : personnages) {
 			if(x==p.getX()/16 && y== p.getY()/16) {
-				p.setPv(p.getPv()-10);
+				p.setPv(p.getPv()-hero.getArmeActuelle().getPtAttaque());
 				System.out.println("Touché");
 				System.out.println("Personnage touché " + p.getPv() + " hp");
 			}
