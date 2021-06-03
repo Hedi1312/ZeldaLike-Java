@@ -29,7 +29,6 @@ public class EnnemiExplosif extends Ennemi {
 		
 		if(xAttaque/16==env.getHero().getX()/16 && yAttaque/16== env.getHero().getY()/16) {
 			explosion=true;
-			env.getHero().setPv(env.getHero().getPv()-10);
 			System.out.println("Touch�");
 			System.out.println("Hero touch� " + env.getHero().getPv() + " hp");
 		}

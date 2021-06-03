@@ -59,7 +59,7 @@ public abstract class Ennemi extends Personnage {
 		}
 		int nposX=getX()+(dx*16);
 		int nposY=getY()+(dy*16);
-		while(!(this.env.dansTerrain(nposX, nposY) && this.env.traversable(nposX, nposY))){
+		while(!(this.env.dansTerrain(nposX, nposY) && this.env.traversable(nposX, nposY)) && env.caseVide(nposX/16, nposY/16)){
 			tirerDirection();
 			nposX=getX()+(dx*16);
 			nposY=getY()+(dy*16);

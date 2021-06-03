@@ -59,7 +59,7 @@ public class Hero extends Personnage {
 		setDx(0);
 		setDy(-1);
 		
-		if(getEnv().dansTerrain(getX(),nposY) && getEnv().traversable(getX(), nposY)){
+		if(getEnv().dansTerrain(getX(),nposY)&& env.caseVide(getX()/16, nposY/16) && getEnv().traversable(getX(), nposY)){
 			setY(nposY);
 		}
 	}
@@ -70,7 +70,7 @@ public class Hero extends Personnage {
 		setDx(0);
 		setDy(1);
 
-		if(this.env.dansTerrain(getX(),nposY) && getEnv().traversable(getX(), nposY)){
+		if(this.env.dansTerrain(getX(),nposY) && env.caseVide(getX()/16, nposY/16) && getEnv().traversable(getX(), nposY)){
 			setY(nposY);
 		}
 	}
@@ -80,7 +80,7 @@ public class Hero extends Personnage {
 		setDx(-1);
 		setDy(0);
 		
-		if(this.env.dansTerrain(nposX,getY()) && getEnv().traversable(nposX, getY())){
+		if(this.env.dansTerrain(nposX,getY())&& env.caseVide(nposX/16, getY()/16) && getEnv().traversable(nposX, getY())){
 			setX(nposX);
 		}
 	}
@@ -91,23 +91,14 @@ public class Hero extends Personnage {
 		setDx(1);
 		setDy(0);
 		
-		if(this.env.dansTerrain(nposX,getY()) && getEnv().traversable(nposX, getY())){
+		if(this.env.dansTerrain(nposX,getY())&& env.caseVide(nposX/16, getY()/16) && getEnv().traversable(nposX, getY())){
 			setX(nposX);
 		}
 	}
 	
 	
 	public void attaquer() {
-		int xAttaque , yAttaque;
-		xAttaque = getX() + (dx*16);
-		yAttaque = getY() + (dy*16);
-		
-		
-		System.out.println("Attaque en " + xAttaque/16 + " : " + yAttaque/16);
-		System.out.println("Hero en " + getX()/16 + " : " + getY()/16);
-		
-		getEnv().trouverEnnemi(xAttaque/16, yAttaque/16);
-		
+		armeActuelle.attaquer(getX(),getY(),dx,dy,env);
 	}
 
 
