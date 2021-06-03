@@ -20,7 +20,8 @@ public class EnnemiBasiqueVue {
 		this.pane = pane;
 		
 		pane.getChildren().add(this.iv);
-		
+
+		iv.setId(ennemi.getId());
 		this.iv.translateXProperty().bind(ennemi.getXProperty());
 		this.iv.translateYProperty().bind(ennemi.getYProperty());
 	}

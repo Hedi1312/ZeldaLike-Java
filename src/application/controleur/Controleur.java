@@ -158,15 +158,13 @@ public class Controleur implements Initializable{
 		
 		ennemiBasiqueVue = new EnnemiBasiqueVue(ennemi,pane);
 		
-		this.env.getPersonnages().addListener(new MonObservateurEnnemiBasique(this.pane, ennemiBasiqueVue));
+		this.env.getPersonnages().addListener(new MonObservateurEnnemi(this.pane));
 		
 		//ennemiExplosif
 		Ennemi ennemi2 = new EnnemiExplosif(16,16,env);
 		env.ajouterPerso(ennemi2);
 		
 		ennemiExplosifVue = new EnnemiExplosifVue(ennemi2,pane);
-		
-		this.env.getPersonnages().addListener(new MonObservateurEnnemiExplosif(this.pane, ennemiExplosifVue));
 	}
 	
 	
