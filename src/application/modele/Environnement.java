@@ -88,19 +88,15 @@ public class Environnement {
 		return false;
 	}
 	
-	public void trouverEnnemi(int x , int y) {
+	public Personnage trouverEnnemi(int x , int y) {
 		for(Personnage p : personnages) {
 			if(x==p.getX()/16 && y== p.getY()/16) {
-				p.setPv(p.getPv()-hero.getArmeActuelle().getPtAttaque());
-				System.out.println("Touché");
-				System.out.println("Personnage touché " + p.getPv() + " hp");
+				return p;
 			}
 			else
-				System.out.println("Pas touché");
-//			System.out.println("Ennemi en " + ennemi.getX()/16 + " : "+ ennemi.getY()/16);
-//		
-//			System.out.println("Ennemi PV : " + ennemi.getPv());
+				return null;
 		}
+		return null;
 	}
 
 	public void unTour() {

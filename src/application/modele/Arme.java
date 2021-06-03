@@ -1,6 +1,6 @@
 package src.application.modele;
 
-public class Arme {
+public abstract class Arme {
 	
 	private int ptAttaque;
 	
@@ -11,5 +11,7 @@ public class Arme {
 	public int getPtAttaque() {
 		return ptAttaque;
 	}
+	
+	public abstract void attaquer(int x, int y, int dx, int dy, Environnement env);
 	
 }

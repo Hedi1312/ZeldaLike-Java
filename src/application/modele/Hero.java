@@ -32,8 +32,8 @@ public class Hero extends Personnage {
 		return armeActuelle;
 	}
 	
-	public void setArmeActtuelle(int emplacement) {
-		armeActuelle = armes.get(emplacement-1);
+	public void setArmeActuelle(int emplacement) {
+		armeActuelle = armes.get(emplacement);
 	}
 	
 	public int getDx(){
@@ -98,15 +98,20 @@ public class Hero extends Personnage {
 	
 	
 	public void attaquer() {
-		int xAttaque , yAttaque;
-		xAttaque = getX() + (dx*16);
-		yAttaque = getY() + (dy*16);
-		
-		
-		System.out.println("Attaque en " + xAttaque/16 + " : " + yAttaque/16);
-		System.out.println("Hero en " + getX()/16 + " : " + getY()/16);
-		
-		getEnv().trouverEnnemi(xAttaque/16, yAttaque/16);
+//		if(armeActuelle == armes.get(0)) {
+//			int xAttaque , yAttaque;
+//			xAttaque = getX() + (dx*16);
+//			yAttaque = getY() + (dy*16);
+//			
+//			System.out.println("Attaque en " + xAttaque/16 + " : " + yAttaque/16);
+//			System.out.println("Hero en " + getX()/16 + " : " + getY()/16);
+//			
+//			Personnage p=getEnv().trouverEnnemi(xAttaque/16, yAttaque/16);
+//			if(p!=null) {
+//				p.setPv(p.getPv()-getArmeActuelle().getPtAttaque());
+//			}
+//		}
+		armeActuelle.attaquer(getX(),getY(),dx,dy,env);
 		
 	}
 

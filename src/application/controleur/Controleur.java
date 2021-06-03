@@ -74,39 +74,55 @@ public class Controleur implements Initializable{
 	public void deplacement(KeyEvent event){
 
 		switch (event.getCode()) {
-		case UP:    
-			System.out.println("haut");
-			heroVue.getHero().allerEnHaut(); 
-			break;
-		case DOWN:  
+			case UP:    
+				System.out.println("haut");
+				heroVue.getHero().allerEnHaut(); 
+				break;
+			case DOWN:  
+				
+				System.out.println("bas");
+				heroVue.getHero().allerEnBas();
+				break;
+			case LEFT: 
+				System.out.println("gauche");
+				heroVue.getHero().allerAGauche();
+				break;
+			case RIGHT:
+				System.out.println("droite");
+				heroVue.getHero().allerADroite();
+				break;
+			case P:
+				if (gameLoop.getStatus()==Status.PAUSED) {
+					System.out.println("UNPAUSE");
+					gameLoop.play();
+				}
+				else {
+					System.out.println("PAUSE");
+					gameLoop.pause();
+				}
+				break;
 			
-			System.out.println("bas");
-			heroVue.getHero().allerEnBas();
-			break;
-		case LEFT: 
-			System.out.println("gauche");
-			heroVue.getHero().allerAGauche();
-			break;
-		case RIGHT:
-			System.out.println("droite");
-			heroVue.getHero().allerADroite();
-			break;
-		case P:
-			if (gameLoop.getStatus()==Status.PAUSED) {
-				System.out.println("UNPAUSE");
-				gameLoop.play();
-			}
-			else {
-				System.out.println("PAUSE");
-				gameLoop.pause();
-			}
-			break;
-		
-		case SPACE:
+			case SPACE:
+				
+				heroVue.getHero().attaquer();
+				break;
+				
 			
-			heroVue.getHero().attaquer();
-			break;
+			case F1:
+				System.out.println("1");
+				env.getHero().setArmeActuelle(0);
+				break;
+			
+			case F2:
+				System.out.println("2");
+				env.getHero().setArmeActuelle(1);
+				break;
+			case DIGIT3:
+				System.out.println("3");
+				break;
+			
 		}
+			
 			
 			
 	}
