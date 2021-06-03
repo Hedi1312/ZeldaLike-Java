@@ -24,17 +24,17 @@ public class EnnemiExplosif extends Ennemi {
 	
 	public void attaquer() {
 		int xAttaque , yAttaque;
-		xAttaque = getX() + (getDx()*16);
-		yAttaque = getY() + (getDy()*16);
+		xAttaque = getX() + (getDy()*16);
+		yAttaque = getY() + (getDx()*16);
 		
 		if(xAttaque/16==env.getHero().getX()/16 && yAttaque/16== env.getHero().getY()/16) {
 			explosion=true;
 			env.getHero().setPv(env.getHero().getPv()-10);
-			System.out.println("Touché");
-			System.out.println("Hero touché " + env.getHero().getPv() + " hp");
+			System.out.println("Touchï¿½");
+			System.out.println("Hero touchï¿½ " + env.getHero().getPv() + " hp");
 		}
 		else
-			System.out.println("Hero Pas touché");
+			System.out.println("Hero Pas touchï¿½");
 	}
 	
 	public void explosion() {
@@ -43,10 +43,10 @@ public class EnnemiExplosif extends Ennemi {
 			){
 			env.getHero().setPv(env.getHero().getPv()-35);
 			setPv(0);
-			System.out.println("Hero explosé " + env.getHero().getPv() + " hp");
+			System.out.println("Hero explosï¿½ " + env.getHero().getPv() + " hp");
 		}
 		else
-			System.out.println("Explosion esquivé");
+			System.out.println("Explosion esquivï¿½");
 	}
 }
 
