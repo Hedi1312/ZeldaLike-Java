@@ -58,13 +58,16 @@ public class Controleur implements Initializable{
 	
 	private EnnemiBasiqueVue ennemiBasiqueVue;
 	
+
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		
+			
 		this.panneauDeTuiles.setPrefColumns(320);
 		
 		this.env = new Environnement();
+		
+		this.env.getBalles().addListener(new MonObservateurBalle(pane));
 		lancement();
 		
 		initAnimation();
@@ -76,20 +79,20 @@ public class Controleur implements Initializable{
 		switch (event.getCode()) {
 			case UP:    
 				System.out.println("haut");
-				heroVue.getHero().allerEnHaut(); 
+				env.getHero().allerEnHaut(); 
 				break;
 			case DOWN:  
 				
 				System.out.println("bas");
-				heroVue.getHero().allerEnBas();
+				env.getHero().allerEnBas();
 				break;
 			case LEFT: 
 				System.out.println("gauche");
-				heroVue.getHero().allerAGauche();
+				env.getHero().allerAGauche();
 				break;
 			case RIGHT:
 				System.out.println("droite");
-				heroVue.getHero().allerADroite();
+				env.getHero().allerADroite();
 				break;
 			case P:
 				if (gameLoop.getStatus()==Status.PAUSED) {
@@ -104,16 +107,16 @@ public class Controleur implements Initializable{
 			
 			case SPACE:
 				
-				heroVue.getHero().attaquer();
+				env.getHero().attaquer();
 				break;
 				
 			
-			case F1:
+			case DIGIT1:
 				System.out.println("1");
 				env.getHero().setArmeActuelle(0);
 				break;
 			
-			case F2:
+			case DIGIT2:
 				System.out.println("2");
 				env.getHero().setArmeActuelle(1);
 				break;
@@ -161,6 +164,8 @@ public class Controleur implements Initializable{
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
 		terrainVue.chargerTerrain();
 		
+		this.env.getPersonnages().addListener(new MonObservateurEnnemi(this.pane));
+		
 		//hero
 		Hero hero = new Hero(160,112,env);
 		env.ajouterHero(hero);
@@ -172,15 +177,13 @@ public class Controleur implements Initializable{
 		Ennemi ennemi = new EnnemiBasique(0,0,env);
 		env.ajouterPerso(ennemi);
 		
-		ennemiBasiqueVue = new EnnemiBasiqueVue(ennemi,pane);
 		
-		this.env.getPersonnages().addListener(new MonObservateurEnnemi(this.pane));
 		
 		//ennemiExplosif
 		Ennemi ennemi2 = new EnnemiExplosif(16,16,env);
 		env.ajouterPerso(ennemi2);
 		
-		ennemiExplosifVue = new EnnemiExplosifVue(ennemi2,pane);
+		
 	}
 	
 	
