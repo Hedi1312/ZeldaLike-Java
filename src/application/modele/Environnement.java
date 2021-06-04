@@ -93,15 +93,13 @@ public class Environnement {
 			if(x==p.getX()/16 && y== p.getY()/16) {
 				return p;
 			}
-			else
-				return null;
 		}
 		return null;
 	}
 	
 	public boolean caseVide(int x , int y) {
 		for(Personnage p : personnages) {
-			if(x==p.getX()/16 && y== p.getY()/16) {
+			if((x==p.getX()/16 && y== p.getY()/16) || (x==getHero().getX()/16 && y==getHero().getY()/16)) {
 				return false;
 			}
 		}

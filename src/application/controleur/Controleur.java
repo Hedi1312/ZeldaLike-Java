@@ -148,7 +148,6 @@ public class Controleur implements Initializable{
 		//hero
 		Hero hero = new Hero(160,112,env);
 		env.ajouterHero(hero);
-		env.ajouterPerso(hero);
 		heroVue = new HeroVue(env.getHero(), pane);
 		
 		

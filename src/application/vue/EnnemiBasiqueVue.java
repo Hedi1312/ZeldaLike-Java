@@ -38,4 +38,5 @@ public class EnnemiBasiqueVue {
 		return img;
 	}
 	
+	
 }

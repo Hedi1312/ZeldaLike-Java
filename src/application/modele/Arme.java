@@ -4,6 +4,7 @@ public abstract class Arme {
 	
 	private int ptAttaque;
 	
+	
 	public Arme(int a) {
 		ptAttaque=a;
 	}
