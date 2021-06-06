@@ -150,7 +150,7 @@ public class Controleur implements Initializable{
 					}
 					else if (temps%5==0){
 						//System.out.println("un tour");
-
+						env.unTourProjectile();
 					}
 					temps++;
 				})

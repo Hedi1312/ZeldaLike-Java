@@ -99,19 +99,7 @@ public class Hero extends Personnage {
 	
 	
 	public void attaquer() {
-//		if(armeActuelle == armes.get(0)) {
-//			int xAttaque , yAttaque;
-//			xAttaque = getX() + (dx*16);
-//			yAttaque = getY() + (dy*16);
-//			
-//			System.out.println("Attaque en " + xAttaque/16 + " : " + yAttaque/16);
-//			System.out.println("Hero en " + getX()/16 + " : " + getY()/16);
-//			
-//			Personnage p=getEnv().trouverEnnemi(xAttaque/16, yAttaque/16);
-//			if(p!=null) {
-//				p.setPv(p.getPv()-getArmeActuelle().getPtAttaque());
-//			}
-//		}
+
 		armeActuelle.attaquer(getX(),getY(),dx,dy,env);
 		
 	}

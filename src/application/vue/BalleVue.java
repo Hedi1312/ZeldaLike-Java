@@ -14,7 +14,12 @@ public class BalleVue {
 	
 	public BalleVue(Balle balle, Pane pane) {
 		super();
-		this.img = new Image("src/images/balle.png");
+		if(balle.getDx()!=0) {
+			this.img = new Image("src/images/horizontal.png");
+		}
+		else
+			this.img = new Image("src/images/vertical.png");
+		
 		this.iv= new ImageView(img);
 		this.balle=balle;
 		this.pane = pane;

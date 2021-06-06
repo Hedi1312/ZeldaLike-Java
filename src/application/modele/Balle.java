@@ -10,17 +10,31 @@ public class Balle {
 	private String id;
 	public static int compteurB=0;
 	public boolean toucher = false;
+	private int dx,dy;
+	private Environnement env;
+	private int ptAttaque;
 	
-	
-	public Balle() {
-		xAttaque = new SimpleIntegerProperty();
-		yAttaque = new SimpleIntegerProperty();
+	public Balle(int x, int y, int dx, int dy, Environnement env, int ptAttaque) {
+		xAttaque = new SimpleIntegerProperty(x);
+		yAttaque = new SimpleIntegerProperty(y);
+		this.dx=dx;
+		this.dy=dy;
 		this.id="B"+compteurB;
 		compteurB++;
+		this.env=env;
+		this.ptAttaque=ptAttaque;
 	}
 	
 	public String getId() {
 		return id;
+	}
+	
+	public int getDx() {
+		return dx;
+	}
+	
+	public int getDy() {
+		return dy;
 	}
 	
 	public final int getXAttaque() {
@@ -50,26 +64,29 @@ public class Balle {
 		return toucher;
 	}
 	
-	public void tirer(int x, int y, int dx, int dy , Environnement env, int range) {
-		//mettre if
+	public void attaquer() {
+
 		
-		for(int i=0 ; i<range ;i++) {
-			setXAttaque(x+dx*16*i);
-			setYAttaque(y+dy*16*i);
-			
-			
-			if(!env.traversable( getXAttaque(),  getYAttaque()))
-				break;
-			
-			Personnage p=env.trouverEnnemi( getXAttaque()/16,  getYAttaque()/16);
-			
-			System.out.println("Attaque en " + getXAttaque()/16 + " : " +  getYAttaque()/16 );
-			if(p!=null) {
-				p.setPv(p.getPv()-30);
-				
+		
+		Personnage p=env.trouverEnnemi(getXAttaque()/16, getYAttaque()/16);
+		System.out.println(p);
+		if(p!=null) {
+			System.out.println("touché");
+			p.setPv(p.getPv()-ptAttaque);
+			toucher=true;
+		}
+		else {
+			int nposX=getXAttaque()+(dx*16);
+			int nposY=getYAttaque()+(dy*16);
+			if(!(this.env.dansTerrain(nposX, nposY) && this.env.traversable(nposX, nposY))){
+				toucher=true;
 			}
+			setXAttaque(nposX);
+			setYAttaque(nposY);		
+			System.out.println("Hero Pas touché");
 		}
 	}
+	
 	
 }
 

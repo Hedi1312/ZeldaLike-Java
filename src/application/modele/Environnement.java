@@ -101,18 +101,7 @@ public class Environnement {
 
 	public void unTour() {
 		getHero().agit();
-		
-		for(Balle b : balles) {
-			//b.agit();
-		}
-		
-		for(int i=balles.size()-1; i>=0;i--){
-			Balle b = balles.get(i);
-			if(!b.estLa()){
-				balles.remove(i);
-			}
-		}
-		
+				
 		for(Ennemi p : ennemis) {
 			p.agit();
 		}
@@ -124,5 +113,18 @@ public class Environnement {
 			}
 		}
 		
+	}
+	
+	public void unTourProjectile() {
+		for(Balle b : balles) {
+			b.attaquer();
+		}
+		
+		for(int i=balles.size()-1; i>=0;i--){
+			Balle b = balles.get(i);
+			if(b.estLa()){
+				balles.remove(i);
+			}
+		}
 	}
 }
