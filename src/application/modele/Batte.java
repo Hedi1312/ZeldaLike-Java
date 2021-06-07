@@ -17,9 +17,12 @@ public class Batte extends Arme{
 		System.out.println("Hero en " + x/16 + " : " + y/16);
 		
 		Personnage p=env.trouverEnnemi(xAttaque/16, yAttaque/16);
+		System.out.println(p);
 		if(p!=null) {
 			p.setPv(p.getPv()-getPtAttaque());
+			System.out.println("touché");
 		}
+		System.out.println("fin du if");
 		
 	}
 

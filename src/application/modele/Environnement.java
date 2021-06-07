@@ -93,8 +93,6 @@ public class Environnement {
 			if(x==p.getX()/16 && y== p.getY()/16) {
 				return p;
 			}
-			else
-				return null;
 		}
 		return null;
 	}

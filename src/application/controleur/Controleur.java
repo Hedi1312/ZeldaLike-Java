@@ -62,7 +62,7 @@ public class Controleur implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		
-		this.panneauDeTuiles.setPrefColumns(320);
+		this.panneauDeTuiles.setPrefColumns(576);
 		
 		this.env = new Environnement();
 		lancement();
