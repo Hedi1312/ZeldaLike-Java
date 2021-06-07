@@ -110,17 +110,22 @@ public class Environnement {
 	}
 	
 	public void unTour() {
-						
+
+		for(int i=ennemis.size()-1; i>=0;i--){
+			Ennemi p = ennemis.get(i);
+			if(!p.estVivant()){
+				if(p.getId().equals("A1")) {
+					Ramassable pistolet = new PistoletRamassable(p.getX(),p.getY(),this);
+					ajouterRamassable(pistolet);
+				}
+				ennemis.remove(i);
+			}
+		}
+		
 		for(Ennemi p : ennemis) {
 			p.agit();
 		}
 		
-		for(int i=ennemis.size()-1; i>=0;i--){
-			Ennemi p = ennemis.get(i);
-			if(!p.estVivant()){
-				ennemis.remove(i);
-			}
-		}
 		
 	}
 	

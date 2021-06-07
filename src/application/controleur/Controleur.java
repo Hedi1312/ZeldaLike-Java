@@ -70,6 +70,7 @@ public class Controleur implements Initializable{
 		this.env = new Environnement();
 		
 		this.env.getBalles().addListener(new MonObservateurBalle(pane));
+		this.env.getRamassables().addListener(new MonObservateurRamassable(this.pane));
 		lancement();
 		
 		initAnimation();
@@ -172,7 +173,7 @@ public class Controleur implements Initializable{
 		terrainVue.chargerTerrain();
 		
 		this.env.getPersonnages().addListener(new MonObservateurEnnemi(this.pane));
-		this.env.getRamassables().addListener(new MonObservateurRamassable(this.pane));
+		
 		
 		//hero
 		Hero hero = new Hero(160,112,env);
@@ -188,11 +189,6 @@ public class Controleur implements Initializable{
 		//ennemiExplosif
 		Ennemi ennemi2 = new EnnemiExplosif(16,16,env);
 		env.ajouterPerso(ennemi2);
-		
-		//Pistolet ramassable
-		
-		Ramassable pistolet = new PistoletRamassable(128,128,env);
-		env.ajouterRamassable(pistolet);
 		
 		
 	}
