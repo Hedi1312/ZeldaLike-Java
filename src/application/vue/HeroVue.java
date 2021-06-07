@@ -33,6 +33,7 @@ public class HeroVue {
 		this.iv.translateYProperty().bind(hero.getYProperty());
 	}
 	
+	
 	public ImageView getIV() {
 		return iv;
 	}

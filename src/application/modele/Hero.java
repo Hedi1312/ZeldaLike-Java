@@ -25,6 +25,7 @@ public class Hero extends Personnage {
 		this.dy = -1;
 		this.armes = new ArrayList<>();
 		armes.add(new Batte());
+		armes.add(new Pistolet());
 		armeActuelle = armes.get(0);
 	}
 	
@@ -32,8 +33,8 @@ public class Hero extends Personnage {
 		return armeActuelle;
 	}
 	
-	public void setArmeActtuelle(int emplacement) {
-		armeActuelle = armes.get(emplacement-1);
+	public void setArmeActuelle(int emplacement) {
+		armeActuelle = armes.get(emplacement);
 	}
 	
 	public int getDx(){
@@ -98,7 +99,9 @@ public class Hero extends Personnage {
 	
 	
 	public void attaquer() {
+
 		armeActuelle.attaquer(getX(),getY(),dx,dy,env);
+		
 	}
 
 

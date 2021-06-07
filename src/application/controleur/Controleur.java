@@ -58,13 +58,16 @@ public class Controleur implements Initializable{
 	
 	private EnnemiBasiqueVue ennemiBasiqueVue;
 	
+
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		
+			
 		this.panneauDeTuiles.setPrefColumns(320);
 		
 		this.env = new Environnement();
+		
+		this.env.getBalles().addListener(new MonObservateurBalle(pane));
 		lancement();
 		
 		initAnimation();
@@ -74,39 +77,55 @@ public class Controleur implements Initializable{
 	public void deplacement(KeyEvent event){
 
 		switch (event.getCode()) {
-		case UP:    
-			System.out.println("haut");
-			heroVue.getHero().allerEnHaut(); 
-			break;
-		case DOWN:  
+			case UP:    
+				System.out.println("haut");
+				env.getHero().allerEnHaut(); 
+				break;
+			case DOWN:  
+				
+				System.out.println("bas");
+				env.getHero().allerEnBas();
+				break;
+			case LEFT: 
+				System.out.println("gauche");
+				env.getHero().allerAGauche();
+				break;
+			case RIGHT:
+				System.out.println("droite");
+				env.getHero().allerADroite();
+				break;
+			case P:
+				if (gameLoop.getStatus()==Status.PAUSED) {
+					System.out.println("UNPAUSE");
+					gameLoop.play();
+				}
+				else {
+					System.out.println("PAUSE");
+					gameLoop.pause();
+				}
+				break;
 			
-			System.out.println("bas");
-			heroVue.getHero().allerEnBas();
-			break;
-		case LEFT: 
-			System.out.println("gauche");
-			heroVue.getHero().allerAGauche();
-			break;
-		case RIGHT:
-			System.out.println("droite");
-			heroVue.getHero().allerADroite();
-			break;
-		case P:
-			if (gameLoop.getStatus()==Status.PAUSED) {
-				System.out.println("UNPAUSE");
-				gameLoop.play();
-			}
-			else {
-				System.out.println("PAUSE");
-				gameLoop.pause();
-			}
-			break;
-		
-		case SPACE:
+			case SPACE:
+				
+				env.getHero().attaquer();
+				break;
+				
 			
-			heroVue.getHero().attaquer();
-			break;
+			case DIGIT1:
+				System.out.println("1");
+				env.getHero().setArmeActuelle(0);
+				break;
+			
+			case DIGIT2:
+				System.out.println("2");
+				env.getHero().setArmeActuelle(1);
+				break;
+			case DIGIT3:
+				System.out.println("3");
+				break;
+			
 		}
+			
 			
 			
 	}
@@ -131,7 +150,7 @@ public class Controleur implements Initializable{
 					}
 					else if (temps%5==0){
 						//System.out.println("un tour");
-
+						env.unTourProjectile();
 					}
 					temps++;
 				})
@@ -144,6 +163,8 @@ public class Controleur implements Initializable{
 	public void lancement() {
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
 		terrainVue.chargerTerrain();
+		
+		this.env.getPersonnages().addListener(new MonObservateurEnnemi(this.pane));
 		
 		//hero
 		Hero hero = new Hero(160,112,env);
@@ -163,7 +184,7 @@ public class Controleur implements Initializable{
 		Ennemi ennemi2 = new EnnemiExplosif(16,16,env);
 		env.ajouterPerso(ennemi2);
 		
-		ennemiExplosifVue = new EnnemiExplosifVue(ennemi2,pane);
+		
 	}
 	
 	
