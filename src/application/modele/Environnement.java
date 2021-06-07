@@ -11,6 +11,7 @@ public class Environnement {
 
 	private ObservableList<Ennemi> ennemis;
 	private ObservableList<Balle> balles;
+	private ObservableList<Ramassable> ramassables;
 	private Terrain terrain;
 	
 	
@@ -19,6 +20,7 @@ public class Environnement {
 
 		this.ennemis= FXCollections.observableArrayList();
 		this.balles = FXCollections.observableArrayList();
+		this.ramassables = FXCollections.observableArrayList();
 		this.terrain= new Terrain();
 	}
 	
@@ -42,12 +44,20 @@ public class Environnement {
 		this.balles.add(balle);
 	}
 	
+	public void ajouterRamassable(Ramassable ramassable) {
+		this.ramassables.add(ramassable);
+	}
+	
 	public ObservableList<Ennemi> getPersonnages() {
 		return ennemis;
 	}
 	
 	public ObservableList<Balle> getBalles(){
 		return balles;
+	}
+	
+	public ObservableList<Ramassable> getRamassables(){
+		return ramassables;
 	}
 
 	public boolean dansTerrain(int x, int y) {
@@ -100,8 +110,7 @@ public class Environnement {
 	}
 	
 	public void unTour() {
-		getHero().agit();
-				
+						
 		for(Ennemi p : ennemis) {
 			p.agit();
 		}
@@ -115,7 +124,9 @@ public class Environnement {
 		
 	}
 	
-	public void unTourProjectile() {
+	public void unTourRapideMaisPasTrop() {
+		getHero().agit();
+		
 		for(Balle b : balles) {
 			b.attaquer();
 		}
@@ -124,6 +135,22 @@ public class Environnement {
 			Balle b = balles.get(i);
 			if(b.estLa()){
 				balles.remove(i);
+			}
+		}
+		
+	}
+	
+	public void unTourRapide() {
+		
+		for(Ramassable r : ramassables) {
+			r.agit();
+		}
+		
+		for(int i=ramassables.size()-1; i>=0;i--){
+			Ramassable r = ramassables.get(i);
+			if(!r.estLa()){
+				ramassables.remove(i);
+				getHero().getArmes().add(new Pistolet());
 			}
 		}
 	}

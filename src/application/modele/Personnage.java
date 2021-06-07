@@ -11,15 +11,15 @@ public abstract class Personnage {
 	protected Environnement env;
 	private DoubleProperty pv;
 	private String id;
-	public static int compteur=0;
+	public static int compteurA=0;
 	
 	public Personnage(int x, int y, Environnement env, int pv) {
 		this.x= new SimpleIntegerProperty(x);
 		this.y= new SimpleIntegerProperty(y);
 		this.env=env;
 		this.pv= new SimpleDoubleProperty(pv);
-		this.id="A"+compteur;
-		compteur++;
+		this.id="A"+compteurA;
+		compteurA++;
 	}
 	
 	public abstract void agit();

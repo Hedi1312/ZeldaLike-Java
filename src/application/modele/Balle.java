@@ -66,8 +66,6 @@ public class Balle {
 	
 	public void attaquer() {
 
-		
-		
 		Personnage p=env.trouverEnnemi(getXAttaque()/16, getYAttaque()/16);
 		System.out.println(p);
 		if(p!=null) {
@@ -86,7 +84,5 @@ public class Balle {
 			System.out.println("Hero Pas touché");
 		}
 	}
-	
-	
 }
 

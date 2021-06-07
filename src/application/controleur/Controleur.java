@@ -9,6 +9,8 @@ import src.application.modele.EnnemiExplosif;
 import src.application.modele.Environnement;
 import src.application.modele.Hero;
 import src.application.modele.Personnage;
+import src.application.modele.PistoletRamassable;
+import src.application.modele.Ramassable;
 import src.application.modele.Terrain;
 import src.application.vue.EnnemiBasiqueVue;
 import src.application.vue.EnnemiExplosifVue;
@@ -112,16 +114,17 @@ public class Controleur implements Initializable{
 				
 			
 			case DIGIT1:
-				System.out.println("1");
+				System.out.println("Je prends la batte");
 				env.getHero().setArmeActuelle(0);
 				break;
 			
 			case DIGIT2:
-				System.out.println("2");
+				System.out.println("Je prends le pistolet");
 				env.getHero().setArmeActuelle(1);
 				break;
 			case DIGIT3:
 				System.out.println("3");
+				env.getHero().setArmeActuelle(2);
 				break;
 			
 		}
@@ -150,7 +153,11 @@ public class Controleur implements Initializable{
 					}
 					else if (temps%5==0){
 						//System.out.println("un tour");
-						env.unTourProjectile();
+						env.unTourRapideMaisPasTrop();
+					}
+					else if (temps%1==0){
+						//System.out.println("un tour");
+						env.unTourRapide();
 					}
 					temps++;
 				})
@@ -165,6 +172,7 @@ public class Controleur implements Initializable{
 		terrainVue.chargerTerrain();
 		
 		this.env.getPersonnages().addListener(new MonObservateurEnnemi(this.pane));
+		this.env.getRamassables().addListener(new MonObservateurRamassable(this.pane));
 		
 		//hero
 		Hero hero = new Hero(160,112,env);
@@ -176,13 +184,15 @@ public class Controleur implements Initializable{
 		Ennemi ennemi = new EnnemiBasique(0,0,env);
 		env.ajouterPerso(ennemi);
 		
-		ennemiBasiqueVue = new EnnemiBasiqueVue(ennemi,pane);
-		
-		this.env.getPersonnages().addListener(new MonObservateurEnnemi(this.pane));
 		
 		//ennemiExplosif
 		Ennemi ennemi2 = new EnnemiExplosif(16,16,env);
 		env.ajouterPerso(ennemi2);
+		
+		//Pistolet ramassable
+		
+		Ramassable pistolet = new PistoletRamassable(128,128,env);
+		env.ajouterRamassable(pistolet);
 		
 		
 	}
