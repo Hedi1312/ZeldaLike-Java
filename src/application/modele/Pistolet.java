@@ -17,9 +17,6 @@ public class Pistolet extends Arme{
 	@Override
 	public void attaquer(int x, int y, int dx, int dy, Environnement env) {
 		
-
-
-		
 		if(env.getHero().getMunitions()>0) {
 			Projectile b = new Balle( x,  y,  dx,  dy, env, getPtAttaque());
 			env.ajouterProjectile(b);

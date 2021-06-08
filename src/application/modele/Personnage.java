@@ -12,12 +12,14 @@ public abstract class Personnage {
 	private DoubleProperty pv;
 	private String id;
 	public static int compteurA=0;
+	private int armure;
 	
-	public Personnage(int x, int y, Environnement env, int pv) {
+	public Personnage(int x, int y, Environnement env, int pv, int armure) {
 		this.x= new SimpleIntegerProperty(x);
 		this.y= new SimpleIntegerProperty(y);
 		this.env=env;
 		this.pv= new SimpleDoubleProperty(pv);
+		this.armure=armure;
 		this.id="A"+compteurA;
 		compteurA++;
 	}
@@ -58,7 +60,11 @@ public abstract class Personnage {
 	}
 	
 	public void setPv(double n) {
-		pv.setValue(n);
+		pv.setValue(n+armure);
+	}
+	
+	public void setArmure(int n) {
+		this.armure = n;
 	}
 	
 	public double getPv() {

@@ -7,6 +7,7 @@ import src.application.modele.Ennemi;
 import src.application.modele.EnnemiBasique;
 import src.application.modele.EnnemiExplosif;
 import src.application.modele.Environnement;
+import src.application.modele.Gilet;
 import src.application.modele.Hero;
 import src.application.modele.Personnage;
 import src.application.modele.PistoletRamassable;
@@ -192,7 +193,9 @@ public class Controleur implements Initializable{
 		Ennemi ennemi2 = new EnnemiExplosif(16,16,env);
 		env.ajouterPerso(ennemi2);
 		
-		
+		//gilet
+		Ramassable gilet= new Gilet(128,128,env);
+		env.ajouterRamassable(gilet);
 	}
 	
 	
