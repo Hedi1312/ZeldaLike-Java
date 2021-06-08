@@ -6,4 +6,10 @@ public class PistoletRamassable extends Ramassable{
 		super(x, y, env);
 	}
 
+	@Override
+	public void ramasser() {
+		getEnv().getHero().getArmes().add(new Pistolet());
+		
+	}
+
 }

@@ -118,6 +118,11 @@ public class Environnement {
 					Ramassable pistolet = new PistoletRamassable(p.getX(),p.getY(),this);
 					ajouterRamassable(pistolet);
 				}
+				else if (p instanceof EnnemiBasique) {
+					Ramassable bandage = new Bandage(p.getX()+1,p.getY(),this);
+					ajouterRamassable(bandage);
+				}
+				
 				ennemis.remove(i);
 			}
 		}
@@ -154,8 +159,10 @@ public class Environnement {
 		for(int i=ramassables.size()-1; i>=0;i--){
 			Ramassable r = ramassables.get(i);
 			if(!r.estLa()){
+				r.ramasser();
 				ramassables.remove(i);
-				getHero().getArmes().add(new Pistolet());
+				
+				
 			}
 		}
 	}

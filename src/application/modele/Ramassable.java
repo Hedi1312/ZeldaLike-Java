@@ -3,7 +3,7 @@ package src.application.modele;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-public class Ramassable {
+public abstract class Ramassable {
 
 	private IntegerProperty x,y;
 	private boolean estLa;
@@ -47,6 +47,10 @@ public class Ramassable {
 		return id;
 	}
 	
+	public Environnement getEnv() {
+		return env;
+	}
+	
 	public boolean estLa() {
 		return estLa;
 	}
@@ -56,4 +60,6 @@ public class Ramassable {
 			estLa=false;
 		}
 	}
+	
+	public abstract void ramasser();
 }
