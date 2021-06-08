@@ -4,15 +4,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import src.application.modele.Balle;
+import src.application.modele.Projectile;
 
 
 public class BalleVue {
-	private Balle balle;
+	private Projectile balle;
 	private Image img;
 	private ImageView iv ;
 	private Pane pane;
 	
-	public BalleVue(Balle balle, Pane pane) {
+	public BalleVue(Projectile balle, Pane pane) {
 		super();
 		if(balle.getDx()!=0) {
 			this.img = new Image("src/images/horizontal.png");

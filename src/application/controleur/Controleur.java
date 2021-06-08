@@ -69,7 +69,7 @@ public class Controleur implements Initializable{
 		
 		this.env = new Environnement();
 		
-		this.env.getBalles().addListener(new MonObservateurBalle(pane));
+		this.env.getProjectile().addListener(new MonObservateurProjectile(pane));
 		this.env.getRamassables().addListener(new MonObservateurRamassable(this.pane));
 		lancement();
 		
@@ -120,11 +120,11 @@ public class Controleur implements Initializable{
 				break;
 			
 			case DIGIT2:
-				System.out.println("Je prends le pistolet");
+				System.out.println("Je prends le grenade");
 				env.getHero().setArmeActuelle(1);
 				break;
 			case DIGIT3:
-				System.out.println("3");
+				System.out.println("Je prends le pistolet");
 				env.getHero().setArmeActuelle(2);
 				break;
 			
@@ -189,7 +189,6 @@ public class Controleur implements Initializable{
 		//ennemiExplosif
 		Ennemi ennemi2 = new EnnemiExplosif(16,16,env);
 		env.ajouterPerso(ennemi2);
-		
 		
 	}
 	
