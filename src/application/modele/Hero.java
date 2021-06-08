@@ -26,6 +26,7 @@ public class Hero extends Personnage {
 		this.dy = -1;
 		this.armes = new ArrayList<>();
 		armes.add(new Batte());
+		armes.add(new Grenade());
 		armeActuelle = armes.get(0);
 	}
 	
