@@ -7,7 +7,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 public class Pistolet extends Arme{
 	
-	private  int chargeur= 20;
 	
 	public Pistolet() {
 		super(50);
@@ -20,11 +19,11 @@ public class Pistolet extends Arme{
 		
 
 		
-		if(chargeur>0) {
+		if(env.getHero().getMunitions()>0) {
 			
 			Balle b = new Balle( x,  y,  dx,  dy, env, getPtAttaque());
 			env.ajouterBalle(b);
-			chargeur--;
+			env.getHero().setMunitions(env.getHero().getMunitions()-1);
 		}
 		else 
 			System.out.println("Plus de munitions");

@@ -117,10 +117,15 @@ public class Environnement {
 				if(p.getId().equals("A1")) {
 					Ramassable pistolet = new PistoletRamassable(p.getX(),p.getY(),this);
 					ajouterRamassable(pistolet);
+					getHero().setMunitions(getHero().getMunitions()+20);
 				}
 				else if (p instanceof EnnemiBasique) {
 					Ramassable bandage = new Bandage(p.getX()+1,p.getY(),this);
 					ajouterRamassable(bandage);
+				}
+				else if(p instanceof EnnemiExplosif) {
+					Ramassable munition = new Munition(p.getX()+1,p.getY(),this);
+					ajouterRamassable(munition);
 				}
 				
 				ennemis.remove(i);

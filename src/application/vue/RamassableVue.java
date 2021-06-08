@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import src.application.modele.Bandage;
+import src.application.modele.Munition;
 import src.application.modele.PistoletRamassable;
 import src.application.modele.Ramassable;
 
@@ -22,7 +23,9 @@ public class RamassableVue {
 		}
 		else if(ramassable instanceof Bandage)
 			this.img = new Image("src/images/bandage.png");
-		
+		else if(ramassable instanceof Munition)
+			this.img = new Image("src/images/munition.png");
+			
 		this.iv= new ImageView(img);
 		this.pane = pane;
 		

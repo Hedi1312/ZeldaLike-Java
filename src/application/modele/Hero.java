@@ -18,6 +18,7 @@ public class Hero extends Personnage {
 	private int dx,dy;
 	private ArrayList<Arme> armes;
 	private Arme armeActuelle;
+	private int munitions=0;
 	
 	public Hero(int x, int y , Environnement env) {
 		super(x,y,env,100);
@@ -26,6 +27,14 @@ public class Hero extends Personnage {
 		this.armes = new ArrayList<>();
 		armes.add(new Batte());
 		armeActuelle = armes.get(0);
+	}
+	
+	public int getMunitions() {
+		return munitions;
+	}
+	
+	public void setMunitions(int n) {
+		this.munitions=n;
 	}
 	
 	public Arme getArmeActuelle() {
