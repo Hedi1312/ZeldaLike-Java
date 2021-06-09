@@ -4,6 +4,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import src.application.modele.Bandage;
+import src.application.modele.Clef;
+import src.application.modele.Extincteur;
 import src.application.modele.Gilet;
 import src.application.modele.Munition;
 import src.application.modele.PistoletRamassable;
@@ -28,6 +30,10 @@ public class RamassableVue {
 			this.img = new Image("src/images/munition.png");
 		else if(ramassable instanceof Gilet)
 			this.img = new Image("src/images/gilet.png");
+		else if(ramassable instanceof Clef)
+			this.img = new Image("src/images/clef.png");
+		else if(ramassable instanceof Extincteur)
+			this.img = new Image("src/images/extincteur.png");
 				
 		this.iv= new ImageView(img);
 		this.pane = pane;

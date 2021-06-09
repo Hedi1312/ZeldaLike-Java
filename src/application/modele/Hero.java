@@ -19,7 +19,8 @@ public class Hero extends Personnage {
 	private ArrayList<Arme> armes;
 	private Arme armeActuelle;
 	private int munitions=0;
-	
+	private boolean clef=false;
+	private boolean extincteur=false;
 	
 	public Hero(int x, int y , Environnement env) {
 		super(x,y,env,100, 0);
@@ -29,6 +30,14 @@ public class Hero extends Personnage {
 		armes.add(new Batte());
 		armes.add(new Grenade());
 		armeActuelle = armes.get(0);
+	}
+	
+	public void obtenirClef() {
+		clef=true;
+	}
+	
+	public void obtenirExtincteur() {
+		extincteur=true;
 	}
 	
 	public int getMunitions() {

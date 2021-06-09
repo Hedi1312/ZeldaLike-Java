@@ -3,10 +3,12 @@ package src.application.controleur;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import src.application.modele.Clef;
 import src.application.modele.Ennemi;
 import src.application.modele.EnnemiBasique;
 import src.application.modele.EnnemiExplosif;
 import src.application.modele.Environnement;
+import src.application.modele.Extincteur;
 import src.application.modele.Gilet;
 import src.application.modele.Hero;
 import src.application.modele.Personnage;
@@ -67,7 +69,7 @@ public class Controleur implements Initializable{
 		this.env = new Environnement();
 		
 		this.env.getEnnemis().addListener(new MonObservateurEnnemi(this.pane));
-		this.env.getProjectile().addListener(new MonObservateurProjectile(pane));
+		this.env.getProjectile().addListener(new MonObservateurProjectile(this.pane));
 		this.env.getRamassables().addListener(new MonObservateurRamassable(this.pane));
 		lancement();
 		
@@ -117,7 +119,7 @@ public class Controleur implements Initializable{
 				break;
 			
 			case DIGIT2:
-				System.out.println("Je prends le grenade");
+				System.out.println("Je prends la grenade");
 				env.getHero().setArmeActuelle(1);
 				break;
 			case DIGIT3:
@@ -191,6 +193,15 @@ public class Controleur implements Initializable{
 		//gilet
 		Ramassable gilet= new Gilet(128,128,env);
 		env.ajouterRamassable(gilet);
+		
+		//clef
+		Ramassable clef = new Clef(144, 128, env);
+		env.ajouterRamassable(clef);
+		
+		//extincteur
+		Ramassable extincteur =new Extincteur(128, 144, env);
+		env.ajouterRamassable(extincteur);
+		
 	}
 	
 	

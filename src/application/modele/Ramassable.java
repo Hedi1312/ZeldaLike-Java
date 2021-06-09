@@ -11,6 +11,7 @@ public abstract class Ramassable {
 	public static int compteurC=0;
 	private Environnement env;
 	
+	
 	public Ramassable(int x, int y, Environnement env) {
 		this.x= new SimpleIntegerProperty(x);
 		this.y= new SimpleIntegerProperty(y);
@@ -18,6 +19,7 @@ public abstract class Ramassable {
 		this.env=env;
 		this.id="C"+compteurC;
 		compteurC++;
+		
 	}
 	
 	public int getX() {
