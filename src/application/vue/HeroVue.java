@@ -31,6 +31,7 @@ public class HeroVue {
 	
 		this.iv.translateXProperty().bind(hero.getXProperty());
 		this.iv.translateYProperty().bind(hero.getYProperty());
+		
 	}
 	
 	

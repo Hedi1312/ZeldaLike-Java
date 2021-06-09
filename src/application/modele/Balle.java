@@ -13,7 +13,7 @@ public class Balle extends Projectile{
 	public void attaquer() {
 
 		Personnage p=getEnv().trouverEnnemi(getXAttaque()/16, getYAttaque()/16);
-		System.out.println(p);
+		
 		if(p!=null) {
 			System.out.println("touché");
 			p.setPv(p.getPv()-getPtAttaque());
@@ -27,7 +27,7 @@ public class Balle extends Projectile{
 			}
 			setXAttaque(nposX);
 			setYAttaque(nposY);		
-			System.out.println("Hero Pas touché");
+			
 		}
 	}
 }

@@ -60,7 +60,17 @@ public abstract class Personnage {
 	}
 	
 	public void setPv(double n) {
-		pv.setValue(n+armure);
+		if(getPv()-n>armure) {
+			pv.setValue(n+armure);
+		}
+		if(n>getPv()) {
+			if(n>100) {
+				n=100;
+			}
+			pv.setValue(n);
+		}
+		
+		
 	}
 	
 	public void setArmure(int n) {

@@ -40,10 +40,6 @@ public class Terrain {
 		return height;
 	}
 	
-	
-	
-
-	
 	public int[][] getMap() {
 		return map;
 	}

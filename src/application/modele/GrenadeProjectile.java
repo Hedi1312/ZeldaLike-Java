@@ -30,11 +30,11 @@ public class GrenadeProjectile extends Projectile {
 	}
 	
 	public void explosion() {
-		for(int i=0;i<getEnv().getPersonnages().size();i++) {
-			if(		(getYAttaque()-32<= getEnv().getPersonnages().get(i).getY() && getEnv().getPersonnages().get(i).getY()<=getYAttaque()+32) &&
-					(getXAttaque()-32<= getEnv().getPersonnages().get(i).getX() && getEnv().getPersonnages().get(i).getX()<=getXAttaque()+32)  
+		for(int i=0;i<getEnv().getEnnemis().size();i++) {
+			if(		(getYAttaque()-32<= getEnv().getEnnemis().get(i).getY() && getEnv().getEnnemis().get(i).getY()<=getYAttaque()+32) &&
+					(getXAttaque()-32<= getEnv().getEnnemis().get(i).getX() && getEnv().getEnnemis().get(i).getX()<=getXAttaque()+32)  
 					){
-				getEnv().getPersonnages().get(i).setPv(getEnv().getPersonnages().get(i).getPv()-getPtAttaque());
+				getEnv().getEnnemis().get(i).setPv(getEnv().getEnnemis().get(i).getPv()-getPtAttaque());
 			}
 		}
 		

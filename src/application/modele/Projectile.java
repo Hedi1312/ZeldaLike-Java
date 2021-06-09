@@ -66,7 +66,7 @@ public abstract class Projectile {
 		return ptAttaque;
 	}
 	
-	public boolean estLa() {
+	public boolean aDisparu() {
 		return toucher;
 	}
 	

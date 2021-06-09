@@ -20,7 +20,7 @@ public class MonObservateurEnnemi implements ListChangeListener<Ennemi>{
 	}
 
 	private void enleverPerso(Personnage mort) {
-		System.out.println(mort.getId());
+		
 		this.pane.getChildren().remove(this.pane.lookup("#"+mort.getId()));
 		
 	} 
@@ -31,7 +31,7 @@ public class MonObservateurEnnemi implements ListChangeListener<Ennemi>{
 		while(c.next()) {
 			for(Ennemi nouveau: c.getAddedSubList()){
 				
-				System.out.println(nouveau);
+				
 				creerVue(nouveau);
 				
 			}

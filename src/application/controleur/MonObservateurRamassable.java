@@ -17,7 +17,7 @@ public class MonObservateurRamassable implements ListChangeListener<Ramassable> 
 	}
 
 	private void enleverRamassable(Ramassable recupere) {
-		System.out.println(recupere.getId());
+		
 		this.pane.getChildren().remove(this.pane.lookup("#"+recupere.getId()));
 		
 	} 
@@ -28,7 +28,6 @@ public class MonObservateurRamassable implements ListChangeListener<Ramassable> 
 		while(c.next()) {
 			for(Ramassable nouveau: c.getAddedSubList()){
 				
-				System.out.println(nouveau);
 				creerVue(nouveau);
 				
 			}

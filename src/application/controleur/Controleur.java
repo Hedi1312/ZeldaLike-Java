@@ -56,11 +56,7 @@ public class Controleur implements Initializable{
 	private TerrainVue terrainVue;
 	
 	private HeroVue heroVue;
-	
-	private EnnemiExplosifVue ennemiExplosifVue;
-	
-	private EnnemiBasiqueVue ennemiBasiqueVue;
-	
+
 
 	
 	@Override
@@ -70,6 +66,7 @@ public class Controleur implements Initializable{
 		
 		this.env = new Environnement();
 		
+		this.env.getEnnemis().addListener(new MonObservateurEnnemi(this.pane));
 		this.env.getProjectile().addListener(new MonObservateurProjectile(pane));
 		this.env.getRamassables().addListener(new MonObservateurRamassable(this.pane));
 		lancement();
@@ -82,20 +79,19 @@ public class Controleur implements Initializable{
 
 		switch (event.getCode()) {
 			case UP:    
-				System.out.println("haut");
+				//System.out.println("haut");
 				env.getHero().allerEnHaut(); 
 				break;
-			case DOWN:  
-				
-				System.out.println("bas");
+			case DOWN:  				
+				//System.out.println("bas");
 				env.getHero().allerEnBas();
 				break;
 			case LEFT: 
-				System.out.println("gauche");
+				//System.out.println("gauche");
 				env.getHero().allerAGauche();
 				break;
 			case RIGHT:
-				System.out.println("droite");
+				//System.out.println("droite");
 				env.getHero().allerADroite();
 				break;
 			case P:
@@ -125,7 +121,7 @@ public class Controleur implements Initializable{
 				env.getHero().setArmeActuelle(1);
 				break;
 			case DIGIT3:
-				System.out.println("3");
+				System.out.println("Je prends le pistolet");
 				env.getHero().setArmeActuelle(2);
 				break;
 			
@@ -170,10 +166,9 @@ public class Controleur implements Initializable{
 
 	
 	public void lancement() {
+		//terrain
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
 		terrainVue.chargerTerrain();
-		
-		this.env.getPersonnages().addListener(new MonObservateurEnnemi(this.pane));
 		
 		
 		//hero
@@ -182,11 +177,11 @@ public class Controleur implements Initializable{
 		heroVue = new HeroVue(env.getHero(), pane);
 		
 		
-		//ennemi
-		Ennemi ennemi = new EnnemiBasique(0,0,env);
+		//ennemiBasique
+		Ennemi ennemi = new EnnemiBasique(128,112,env);
 		env.ajouterPerso(ennemi);
 		
-		Ennemi ennemiB = new EnnemiBasique(0,0,env);
+		Ennemi ennemiB = new EnnemiBasique(32,32,env);
 		env.ajouterPerso(ennemiB);
 		
 		//ennemiExplosif

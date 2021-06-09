@@ -16,7 +16,6 @@ public class Environnement {
 	
 	
 	public Environnement() {
-//		this.hero=null;
 
 		this.ennemis= FXCollections.observableArrayList();
 		this.projectiles = FXCollections.observableArrayList();
@@ -48,7 +47,7 @@ public class Environnement {
 		this.ramassables.add(ramassable);
 	}
 	
-	public ObservableList<Ennemi> getPersonnages() {
+	public ObservableList<Ennemi> getEnnemis() {
 		return ennemis;
 	}
 	
@@ -115,19 +114,10 @@ public class Environnement {
 			Ennemi p = ennemis.get(i);
 			if(!p.estVivant()){
 				if(p.getId().equals("A1")) {
-					Ramassable pistolet = new PistoletRamassable(p.getX(),p.getY(),this);
+					Ramassable pistolet = new PistoletRamassable(p.getX()+16,p.getY(),this);
 					ajouterRamassable(pistolet);
-					getHero().setMunitions(getHero().getMunitions()+20);
 				}
-				else if (p instanceof EnnemiBasique) {
-					Ramassable bandage = new Bandage(p.getX()+1,p.getY(),this);
-					ajouterRamassable(bandage);
-				}
-				else if(p instanceof EnnemiExplosif) {
-					Ramassable munition = new Munition(p.getX()+1,p.getY(),this);
-					ajouterRamassable(munition);
-				}
-				
+				ennemis.get(i).drop();
 				ennemis.remove(i);
 			}
 		}
@@ -148,7 +138,7 @@ public class Environnement {
 		
 		for(int i=projectiles.size()-1; i>=0;i--){
 			Projectile p = projectiles.get(i);
-			if(p.estLa()){
+			if(p.aDisparu()){
 				projectiles.remove(i);
 			}
 		}

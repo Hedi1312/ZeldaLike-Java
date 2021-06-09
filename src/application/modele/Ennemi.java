@@ -12,7 +12,6 @@ import javafx.scene.layout.Pane;
 
 public abstract class Ennemi extends Personnage {
 	
-	private String id;
 	private int dx,dy;
 	
 	
@@ -79,5 +78,7 @@ public abstract class Ennemi extends Personnage {
 
 	
 	public abstract void attaquer();
+	
+	public abstract void drop();
 		
 }

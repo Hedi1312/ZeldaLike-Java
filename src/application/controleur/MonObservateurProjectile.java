@@ -18,7 +18,7 @@ public class MonObservateurProjectile implements ListChangeListener<Projectile>{
 	}
 
 	private void enleverProjectile(Projectile disparu) {
-		System.out.println(disparu.getId());
+		
 		this.pane.getChildren().remove(this.pane.lookup("#"+disparu.getId()));
 		
 	} 
@@ -29,7 +29,7 @@ public class MonObservateurProjectile implements ListChangeListener<Projectile>{
 		while(c.next()) {
 			for(Projectile nouveau: c.getAddedSubList()){
 				
-				System.out.println(nouveau);
+				
 				creerVue(nouveau);
 				
 			}

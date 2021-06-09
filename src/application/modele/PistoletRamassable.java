@@ -9,6 +9,7 @@ public class PistoletRamassable extends Ramassable{
 	@Override
 	public void ramasser() {
 		getEnv().getHero().getArmes().add(new Pistolet());
+		getEnv().getHero().setMunitions(getEnv().getHero().getMunitions()+20);
 		
 	}
 

@@ -29,11 +29,9 @@ public class EnnemiExplosif extends Ennemi {
 		
 		if(xAttaque/16==env.getHero().getX()/16 && yAttaque/16== env.getHero().getY()/16) {
 			explosion=true;
-			System.out.println("Touch�");
-			System.out.println("Hero touch� " + env.getHero().getPv() + " hp");
+
 		}
-		else
-			System.out.println("Hero Pas touch�");
+
 	}
 	
 	public void explosion() {
@@ -42,10 +40,16 @@ public class EnnemiExplosif extends Ennemi {
 			){
 			env.getHero().setPv(env.getHero().getPv()-35);
 			setPv(0);
-			System.out.println("Hero explos� " + env.getHero().getPv() + " hp");
+
 		}
-		else
-			System.out.println("Explosion esquiv�");
+		
+	}
+
+	@Override
+	public void drop() {
+		Ramassable munition = new Munition(getX(),getY(),env);
+		env.ajouterRamassable(munition);
+		
 	}
 }
 
