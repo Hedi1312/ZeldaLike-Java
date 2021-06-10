@@ -4,14 +4,17 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ListChangeListener.Change;
 import javafx.scene.layout.Pane;
 import src.application.modele.Balle;
+import src.application.modele.Fiole;
 import src.application.modele.Projectile;
 import src.application.vue.BalleVue;
+import src.application.vue.FioleVue;
 import src.application.vue.GrenadeProjectileVue;
 
 public class MonObservateurProjectile implements ListChangeListener<Projectile>{
 	private Pane pane;
 	private BalleVue balleVue;
 	private GrenadeProjectileVue grenadeProjectileVue;
+	private FioleVue fioleVue;
 
 	public MonObservateurProjectile(Pane pane) {
 		this.pane=pane;
@@ -42,8 +45,11 @@ public class MonObservateurProjectile implements ListChangeListener<Projectile>{
 	
 	private void creerVue(Projectile p) {
 		//System.out.println("ajouter sprite");
-		
-		if( p instanceof Balle){
+		if( p instanceof Fiole){
+			fioleVue = new FioleVue(p,pane);
+			
+		}
+		else if( p instanceof Balle){
 			balleVue = new BalleVue(p,pane);
 			
 		}

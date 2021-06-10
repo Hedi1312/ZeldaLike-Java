@@ -16,7 +16,6 @@ public class Environnement {
 	
 	
 	public Environnement() {
-
 		this.ennemis= FXCollections.observableArrayList();
 		this.projectiles = FXCollections.observableArrayList();
 		this.ramassables = FXCollections.observableArrayList();

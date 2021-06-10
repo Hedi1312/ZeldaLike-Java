@@ -10,7 +10,7 @@ public class Pistolet extends Arme{
 
 	
 	public Pistolet() {
-		super(50);
+		super(10);
 
 	}
 	

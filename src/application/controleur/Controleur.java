@@ -3,6 +3,7 @@ package src.application.controleur;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import src.application.modele.Boss;
 import src.application.modele.ClefRamassable;
 import src.application.modele.Ennemi;
 import src.application.modele.EnnemiBasique;
@@ -182,7 +183,6 @@ public class Controleur implements Initializable{
 		env.ajouterHero(hero);
 		heroVue = new HeroVue(env.getHero(), pane);
 		
-		
 		//ennemiBasique
 		Ennemi ennemi = new EnnemiBasique(128,112,env);
 		env.ajouterPerso(ennemi);
@@ -193,6 +193,10 @@ public class Controleur implements Initializable{
 		//ennemiExplosif
 		Ennemi ennemi2 = new EnnemiExplosif(16,16,env);
 		env.ajouterPerso(ennemi2);
+		
+		//boss
+		Ennemi boss = new Boss(176,0,env);
+		env.ajouterPerso(boss);
 		
 		//gilet
 		Ramassable gilet= new Gilet(128,128,env);
