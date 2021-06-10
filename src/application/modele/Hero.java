@@ -126,7 +126,7 @@ public class Hero extends Personnage {
 	public void interagir() {
 		for(int i=0;i<objets.length;i++) {
 			if(objets[i]!=null) {
-				objets[i].interagir(getX(), getY(), getDx(), getDy(), env);
+				objets[i].interagir(getX(), getY(), dx, dy, env);
 			}
 		}
 	}

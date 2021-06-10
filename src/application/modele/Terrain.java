@@ -44,4 +44,7 @@ public class Terrain {
 		return map;
 	}
 	
+	public void setMap(int x, int y, int tuile) {
+		this.map[y][x]=tuile;
+	}
 }
