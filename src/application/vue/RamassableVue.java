@@ -4,9 +4,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import src.application.modele.Bandage;
-import src.application.modele.Clef;
-import src.application.modele.Extincteur;
+import src.application.modele.ClefRamassable;
+import src.application.modele.ExtincteurRamassable;
 import src.application.modele.Gilet;
+import src.application.modele.GrenadeRamassable;
 import src.application.modele.Munition;
 import src.application.modele.PistoletRamassable;
 import src.application.modele.Ramassable;
@@ -30,11 +31,12 @@ public class RamassableVue {
 			this.img = new Image("src/images/munition.png");
 		else if(ramassable instanceof Gilet)
 			this.img = new Image("src/images/gilet.png");
-		else if(ramassable instanceof Clef)
+		else if(ramassable instanceof ClefRamassable)
 			this.img = new Image("src/images/clef.png");
-		else if(ramassable instanceof Extincteur)
+		else if(ramassable instanceof ExtincteurRamassable)
 			this.img = new Image("src/images/extincteur.png");
-				
+		else if(ramassable instanceof GrenadeRamassable)
+			this.img = new Image("src/images/grenade.png");
 		this.iv= new ImageView(img);
 		this.pane = pane;
 		

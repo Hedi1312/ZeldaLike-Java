@@ -19,8 +19,7 @@ public class Hero extends Personnage {
 	private ArrayList<Arme> armes;
 	private Arme armeActuelle;
 	private int munitions=0;
-	private boolean clef=false;
-	private boolean extincteur=false;
+	private Objet[] objets = new Objet[2];
 	
 	public Hero(int x, int y , Environnement env) {
 		super(x,y,env,100, 0);
@@ -28,16 +27,13 @@ public class Hero extends Personnage {
 		this.dy = -1;
 		this.armes = new ArrayList<>();
 		armes.add(new Batte());
-		armes.add(new Grenade());
 		armeActuelle = armes.get(0);
+		objets[0]= null;
+		objets[1]= null;
 	}
 	
-	public void obtenirClef() {
-		clef=true;
-	}
-	
-	public void obtenirExtincteur() {
-		extincteur=true;
+	public Objet[] getObjets() {
+		return objets;
 	}
 	
 	public int getMunitions() {
@@ -127,6 +123,13 @@ public class Hero extends Personnage {
 		armeActuelle.attaquer(getX(),getY(),dx,dy,env);
 	}
 
+	public void interagir() {
+		for(int i=0;i<objets.length;i++) {
+			if(objets[i]!=null) {
+				objets[i].interagir(getX(), getY(), getDx(), getDy(), env);
+			}
+		}
+	}
 
 	@Override
 	public void agit() {

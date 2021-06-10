@@ -1,17 +1,13 @@
 package src.application.modele;
 
-public class Extincteur extends Ramassable{
+public class Extincteur implements Objet {
 
-	public Extincteur(int x, int y, Environnement env) {
-		super(x, y, env);
+	public Extincteur() {
 		
 	}
-
 	@Override
-	public void ramasser() {
-		getEnv().getHero().obtenirExtincteur();
-		
+	public void interagir(int x, int y, int dx, int dy, Environnement env) {
+		System.out.println("J'utilise l'extincteur");
 	}
-	
 
 }

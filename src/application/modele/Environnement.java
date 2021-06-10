@@ -58,6 +58,7 @@ public class Environnement {
 	public ObservableList<Ramassable> getRamassables(){
 		return ramassables;
 	}
+	
 
 	public boolean dansTerrain(int x, int y) {
 		return (0 <= x && x<terrain.getWidth()*16 && 0<=y && y<terrain.getHeight()*16);
@@ -89,6 +90,19 @@ public class Environnement {
 		
 		return false;
 	}
+	
+	public boolean casePorte(int x, int y) {
+		int[] tab = {007};
+		if(dansTerrain(x, y)) {
+			int tuile= terrain.getMap()[y/16][x/16];
+			for(int element : tab) {
+				if(tuile==element)
+					return true;
+			}
+		}
+		
+		return false;
+    }
 	
 	public boolean caseVide(int x , int y) {
         for(Ennemi p : ennemis) {

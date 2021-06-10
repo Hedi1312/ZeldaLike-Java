@@ -3,13 +3,14 @@ package src.application.controleur;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import src.application.modele.Clef;
+import src.application.modele.ClefRamassable;
 import src.application.modele.Ennemi;
 import src.application.modele.EnnemiBasique;
 import src.application.modele.EnnemiExplosif;
 import src.application.modele.Environnement;
-import src.application.modele.Extincteur;
+import src.application.modele.ExtincteurRamassable;
 import src.application.modele.Gilet;
+import src.application.modele.GrenadeRamassable;
 import src.application.modele.Hero;
 import src.application.modele.Personnage;
 import src.application.modele.PistoletRamassable;
@@ -112,6 +113,9 @@ public class Controleur implements Initializable{
 				env.getHero().attaquer();
 				break;
 				
+			case F:
+				env.getHero().interagir();
+				break;
 			
 			case DIGIT1:
 				System.out.println("Je prends la batte");
@@ -195,12 +199,16 @@ public class Controleur implements Initializable{
 		env.ajouterRamassable(gilet);
 		
 		//clef
-		Ramassable clef = new Clef(144, 128, env);
+		Ramassable clef = new ClefRamassable(144, 128, env);
 		env.ajouterRamassable(clef);
 		
 		//extincteur
-		Ramassable extincteur =new Extincteur(128, 144, env);
+		Ramassable extincteur =new ExtincteurRamassable(128, 144, env);
 		env.ajouterRamassable(extincteur);
+		
+		//extincteur
+		Ramassable grenade =new GrenadeRamassable(144, 144, env);
+		env.ajouterRamassable(grenade);
 		
 	}
 	

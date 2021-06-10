@@ -1,15 +1,14 @@
 package src.application.modele;
 
-public class Clef extends Ramassable{
+public class Clef implements Objet {
 
-	public Clef(int x, int y, Environnement env) {
-		super(x, y, env);
+	public Clef() {
 		
 	}
-
+	
 	@Override
-	public void ramasser() {
-		getEnv().getHero().obtenirClef();
+	public void interagir(int x, int y, int dx, int dy, Environnement env) {
+		System.out.println("J'utilise la clef");
 		
 	}
 

@@ -45,6 +45,13 @@ public class TerrainVue {
 					iv3.setViewport(tuile3);
 					mapARemplir.getChildren().add(iv3);
 					break;
+					
+				case 007: 
+					ImageView iv4 = new ImageView(img);
+					Rectangle2D tuile4 = new Rectangle2D(3*16,0*16,16,16);		 		
+					iv4.setViewport(tuile4);
+					mapARemplir.getChildren().add(iv4);
+					break;
 				}
 			}
 		}
