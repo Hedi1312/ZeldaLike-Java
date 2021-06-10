@@ -1,6 +1,11 @@
 package src.application.modele;
 
+import java.lang.Math;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Random;
+import java.util.concurrent.ArrayBlockingQueue;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
@@ -66,6 +71,7 @@ public abstract class Ennemi extends Personnage {
 		setX(nposX);;
 		setY(nposY);		
 	}
+		
 	
 	public static boolean reussitProba(double pourcent){
 		double x= Math.random();
