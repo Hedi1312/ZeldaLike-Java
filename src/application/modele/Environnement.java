@@ -1,5 +1,7 @@
 package src.application.modele;
 
+import java.util.Random;
+
 import javafx.beans.value.ObservableSetValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
@@ -129,19 +131,26 @@ public class Environnement {
 	}
 
 	public void spawnEnnemi() {
+		Random random=new Random();
+		int x = random.nextInt(getTerrain().getWidth())*16;
+		int y = random.nextInt(getTerrain().getHeight())*16;
+		while(!(caseVide(x/16, y/16) && dansTerrain(x, y) && traversable(x, y)) ){
+			x = random.nextInt(getTerrain().getWidth())*16;
+			y = random.nextInt(getTerrain().getHeight())*16;
+		}
 		if(reussitProba(60)){
-			Ennemi ennemi = new EnnemiBasique(128,112,this);
+			Ennemi ennemi = new EnnemiBasique(x,y,this);
 			ajouterPerso(ennemi);
 		}
 		else {
-			Ennemi ennemiExplosif = new EnnemiExplosif(16,16,this);
+			Ennemi ennemiExplosif = new EnnemiExplosif(x,y,this);
 			ajouterPerso(ennemiExplosif);
 		}
 	}
 
 	
 	public void unTour() {
-		if(reussitProba(10)){
+		if(reussitProba(20)){
 			spawnEnnemi();
 		}
 		for(int i=ennemis.size()-1; i>=0;i--){

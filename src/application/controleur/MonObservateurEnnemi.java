@@ -4,11 +4,13 @@ import javafx.collections.ListChangeListener;
 
 import javafx.scene.layout.Pane;
 import src.application.modele.Boss;
+import src.application.modele.BossZombie;
 import src.application.modele.Ennemi;
 import src.application.modele.EnnemiBasique;
 import src.application.modele.EnnemiExplosif;
 import src.application.modele.Personnage;
 import src.application.vue.BossVue;
+import src.application.vue.BossZombieVue;
 import src.application.vue.EnnemiBasiqueVue;
 import src.application.vue.EnnemiExplosifVue;
 
@@ -17,6 +19,7 @@ public class MonObservateurEnnemi implements ListChangeListener<Ennemi>{
 	private EnnemiBasiqueVue ennemiBasiqueVue;
 	private EnnemiExplosifVue ennemiExplosifVue;
 	private BossVue bossVue;
+	private BossZombieVue bossZombieVue;
 
 	public MonObservateurEnnemi(Pane pane) {
 		this.pane=pane;
@@ -49,6 +52,10 @@ public class MonObservateurEnnemi implements ListChangeListener<Ennemi>{
 		//System.out.println("ajouter sprite");
 		if( a instanceof Boss){
 			bossVue = new BossVue(a,pane);
+			
+		}
+		else if( a instanceof BossZombie){
+			bossZombieVue = new BossZombieVue(a,pane);
 			
 		}
 		else if( a instanceof EnnemiExplosif){

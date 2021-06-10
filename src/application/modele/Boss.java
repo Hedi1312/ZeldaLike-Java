@@ -22,7 +22,8 @@ public class Boss extends Ennemi {
 
 	@Override
 	public void drop() {
-		
+		Ennemi bossZombie = new BossZombie(getX(),getY(),env);
+		env.ajouterPerso(bossZombie);
 	}
 
 }

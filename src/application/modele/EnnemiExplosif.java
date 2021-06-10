@@ -40,7 +40,6 @@ public class EnnemiExplosif extends Ennemi {
 			){
 			env.getHero().setPv(env.getHero().getPv()-35);
 			setPv(0);
-
 		}
 		
 	}

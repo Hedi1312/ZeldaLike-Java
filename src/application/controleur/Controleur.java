@@ -189,7 +189,7 @@ public class Controleur implements Initializable{
 		
 		
 		//boss
-		Ennemi boss = new Boss(176,0,env);
+		Ennemi boss = new Boss(176,176,env);
 		env.ajouterPerso(boss);
 		
 		//gilet
