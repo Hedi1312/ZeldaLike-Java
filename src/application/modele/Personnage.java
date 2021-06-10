@@ -73,6 +73,7 @@ public abstract class Personnage {
 		
 	}
 	
+	
 	public void setArmure(int n) {
 		this.armure = n;
 	}

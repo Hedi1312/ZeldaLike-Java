@@ -187,12 +187,6 @@ public class Controleur implements Initializable{
 		Ennemi ennemi = new EnnemiBasique(128,112,env);
 		env.ajouterPerso(ennemi);
 		
-		Ennemi ennemiB = new EnnemiBasique(32,32,env);
-		env.ajouterPerso(ennemiB);
-		
-		//ennemiExplosif
-		Ennemi ennemi2 = new EnnemiExplosif(16,16,env);
-		env.ajouterPerso(ennemi2);
 		
 		//boss
 		Ennemi boss = new Boss(176,0,env);

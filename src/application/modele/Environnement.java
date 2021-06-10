@@ -121,8 +121,29 @@ public class Environnement {
 		return null;
 	}
 	
-	public void unTour() {
 
+	public static boolean reussitProba(double pourcent){
+		double x= Math.random();
+		double pp=pourcent/100;
+		return (x<=pp);
+	}
+
+	public void spawnEnnemi() {
+		if(reussitProba(60)){
+			Ennemi ennemi = new EnnemiBasique(128,112,this);
+			ajouterPerso(ennemi);
+		}
+		else {
+			Ennemi ennemiExplosif = new EnnemiExplosif(16,16,this);
+			ajouterPerso(ennemiExplosif);
+		}
+	}
+
+	
+	public void unTour() {
+		if(reussitProba(10)){
+			spawnEnnemi();
+		}
 		for(int i=ennemis.size()-1; i>=0;i--){
 			Ennemi p = ennemis.get(i);
 			if(!p.estVivant()){

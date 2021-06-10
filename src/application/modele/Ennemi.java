@@ -37,6 +37,14 @@ public abstract class Ennemi extends Personnage {
 		return this.dy;
 	}
 	
+	public void setDx(int n) {
+		this.dx=n;
+	}
+	
+	public void setDy(int n) {
+		this.dy=n;
+	}
+	
 	public void tirerDirection(){
 		Random random=new Random();
 		int randomInt = random.nextInt(3);
@@ -55,7 +63,7 @@ public abstract class Ennemi extends Personnage {
 		}
 	}
 	
-	public void seDeplace(){
+	public void seDeplaceAleatoire(){
 		// 20% de chance de changer de direction
 		// if(Math.random()*100< pourentageRepro )
 		if(reussitProba(20)) {
@@ -72,7 +80,79 @@ public abstract class Ennemi extends Personnage {
 		setY(nposY);		
 	}
 		
-	
+	public void seDeplace() {
+		int nposXGauche=getX()+(-1*16);
+		int nposXDroite=getX()+(1*16);    
+		int nposYHaut=getY()+(-1*16);
+		int nposYBas=getY()+(1*16);
+
+		double caseGauche=0,caseDroite=0,caseHaut=0,caseBas=0,caseCentre=0;
+		ArrayList<Double> listeCase = new ArrayList<>(); 
+
+		caseCentre=calculeDistance(env.getHero().getX(), env.getHero().getY(), getX(), getY());
+		listeCase.add(caseCentre);
+
+
+		if(env.traversable(getX()-16, getY()) && env.caseVide(getX()/16-1, getY()/16) && env.dansTerrain(getX()-16, getY()) ){
+			caseGauche=calculeDistance(env.getHero().getX(), env.getHero().getY(), nposXGauche, getY());
+			listeCase.add(caseGauche);
+
+		}
+		if(env.traversable(getX()+16, getY()) && env.caseVide(getX()/16+1, getY()/16) && env.dansTerrain(getX()+16, getY())){
+			caseDroite=calculeDistance(env.getHero().getX(), env.getHero().getY(), nposXDroite, getY());
+			listeCase.add(caseDroite);
+		}
+		if(env.traversable(getX(), getY()-16) && env.caseVide(getX()/16, getY()/16-1)  && env.dansTerrain(getX(), getY()-16)){
+			caseHaut=calculeDistance(env.getHero().getX(), env.getHero().getY(), getX(), nposYHaut);
+			listeCase.add(caseHaut);
+		}
+		if(env.traversable(getX(), getY()+16) && env.caseVide(getX()/16, getY()/16+1)  && env.dansTerrain(getX(), getY()+16) ){
+			caseBas=calculeDistance(env.getHero().getX(), env.getHero().getY(), getX(), nposYBas);
+			listeCase.add(caseBas);
+		}
+
+		Collections.sort(listeCase);
+		if(listeCase.get(0)==caseCentre ) {
+
+			setDx(env.getHero().getX()-getX());
+			setDy(env.getHero().getY()-getY());
+
+		}
+
+		else if(listeCase.get(0)==caseGauche) {
+
+			setX(nposXGauche);
+			setY(getY());
+			setDx(-1);
+			setDy(0);
+		}
+		else if(listeCase.get(0)==caseDroite) {
+			setX(nposXDroite);
+			setY(getY());
+			setDx(1);
+			setDy(0);
+		}
+		else if(listeCase.get(0)==caseHaut) {
+			setX(getX());
+			setY(nposYHaut);
+			setDx(0);
+			setDy(-1);
+		}
+		else {
+			setX(getX());
+			setY(nposYBas);
+			setDx(0);
+			setDy(1);
+		}
+
+
+	}
+
+	public double calculeDistance(int xHero , int yHero , int xEnnemi, int yEnnemi) {
+
+		return Math.sqrt(Math.pow((xHero-xEnnemi),2)+Math.pow((yHero-yEnnemi),2));
+	}
+
 	public static boolean reussitProba(double pourcent){
 		double x= Math.random();
 		double pp=pourcent/100;
