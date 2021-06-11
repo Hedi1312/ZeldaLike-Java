@@ -64,5 +64,17 @@ public class TerrainVue {
 	public TilePane getMapARemplir() {
 		return mapARemplir;
 	}
+	
+	public void getTuileVue(int x , int y) {
+		mapARemplir.getChildren().get((y*20+x));
+		
+	}
+	
+	public void setTuileVue(int y , int x) {
+		ImageView iv = new ImageView(img);
+		Rectangle2D tuile = new Rectangle2D(0*16,0*16,16,16);		 		
+		iv.setViewport(tuile);
+		mapARemplir.getChildren().set(y*20+x, iv);
+	}
 }
 

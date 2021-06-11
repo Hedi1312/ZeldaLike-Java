@@ -21,8 +21,8 @@ public class BossZombieVue {
 		pane.getChildren().add(this.iv);
 
 		iv.setId(bossZombie.getId());
-		this.iv.translateXProperty().bind(bossZombie.getXProperty());
-		this.iv.translateYProperty().bind(bossZombie.getYProperty());
+		this.iv.translateXProperty().bind(bossZombie.getXProperty().add(-16));
+		this.iv.translateYProperty().bind(bossZombie.getYProperty().add(-16));
 	}
 	
 	public Personnage getEnnemi() {

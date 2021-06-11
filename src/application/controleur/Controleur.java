@@ -73,6 +73,9 @@ public class Controleur implements Initializable{
 		this.env.getEnnemis().addListener(new MonObservateurEnnemi(this.pane));
 		this.env.getProjectile().addListener(new MonObservateurProjectile(this.pane));
 		this.env.getRamassables().addListener(new MonObservateurRamassable(this.pane));
+		
+		
+		
 		lancement();
 		
 		initAnimation();
@@ -118,7 +121,7 @@ public class Controleur implements Initializable{
 				env.getHero().interagir();
 				break;
 			
-			case DIGIT1:
+			case DIGIT1: //ajouter case A
 				System.out.println("Je prends la batte");
 				env.getHero().setArmeActuelle(0);
 				break;
@@ -176,6 +179,11 @@ public class Controleur implements Initializable{
 		//terrain
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
 		terrainVue.chargerTerrain();
+		env.getTerrain().caseChangéeProperty().addListener((obs,old,nouv)->
+			terrainVue.setTuileVue(nouv.intValue()/20, nouv.intValue()%20)
+		);
+
+		
 		
 		
 		//hero
