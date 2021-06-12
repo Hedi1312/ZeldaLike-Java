@@ -179,7 +179,7 @@ public class Controleur implements Initializable{
 		//terrain
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
 		terrainVue.chargerTerrain();
-		env.getTerrain().caseChangéeProperty().addListener((obs,old,nouv)->
+		env.getTerrain().caseChangeeProperty().addListener((obs,old,nouv)->
 			terrainVue.setTuileVue(nouv.intValue()/20, nouv.intValue()%20)
 		);
 
@@ -194,7 +194,6 @@ public class Controleur implements Initializable{
 		//ennemiBasique
 		Ennemi ennemi = new EnnemiBasique(128,112,env);
 		env.ajouterPerso(ennemi);
-		
 		
 		//boss
 		Ennemi boss = new Boss(176,0,env);

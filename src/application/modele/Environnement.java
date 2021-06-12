@@ -66,7 +66,7 @@ public class Environnement {
 	}
 	
 	public boolean traversable(int x,int y) {
-		int[] tab = {352};
+		int[] tab = {352,007};
 		if(dansTerrain(x, y)) {
 			int tuile= terrain.getMap()[y/16][x/16];
 			for(int element : tab) {
@@ -113,6 +113,8 @@ public class Environnement {
         }
         return true;
     }
+	
+	
 	
 	public Ennemi trouverEnnemi(int x , int y) {
 		for(Ennemi p : ennemis) {
