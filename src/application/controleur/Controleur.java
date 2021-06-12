@@ -24,11 +24,13 @@ import src.application.vue.TerrainVue;
 import javafx.animation.Animation.Status;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -70,32 +72,9 @@ public class Controleur implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 			
-		
-		this.env = new Environnement();
-		
-		this.panneauDeTuiles.setPrefColumns(env.getTerrain().getWidth()*16);
-		
-		this.env.getEnnemis().addListener(new MonObservateurEnnemi(this.pane));
-		this.env.getProjectile().addListener(new MonObservateurProjectile(this.pane));
-		this.env.getRamassables().addListener(new MonObservateurRamassable(this.pane));
-		
-		
-		
 		lancement();
 
 		
-		initAnimation();
-		gameLoop.play();
-		
-
-		this.env.getHero().getPvProperty().addListener((obs,old,nouv)->{
-			if(nouv.doubleValue()<=0) {
-				Image imgGameOver = new Image("src/images/gameOver.png",20*16,15*16,true,true);
-				ImageView gameOver = new ImageView(imgGameOver);
-				gameLoop.stop();
-				pane.getChildren().add(gameOver);
-			}
-		});
 	}
 	
 	public void deplacement(KeyEvent event){
@@ -201,6 +180,17 @@ public class Controleur implements Initializable{
 
 	
 	public void lancement() {
+		
+		this.panneauDeTuiles.getChildren();
+		
+		
+		this.env = new Environnement();
+		
+		this.panneauDeTuiles.setPrefColumns(env.getTerrain().getWidth()*16);
+		
+		this.env.getEnnemis().addListener(new MonObservateurEnnemi(this.pane));
+		this.env.getProjectile().addListener(new MonObservateurProjectile(this.pane));
+		this.env.getRamassables().addListener(new MonObservateurRamassable(this.pane));
 		//terrain
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
 		terrainVue.chargerTerrain(0);
@@ -263,6 +253,34 @@ public class Controleur implements Initializable{
 		//extincteur
 		Ramassable extincteur =new ExtincteurRamassable(128, 144, env);
 		env.ajouterRamassable(extincteur);
+		
+		initAnimation();
+		gameLoop.play();
+		
+
+		this.env.getHero().getPvProperty().addListener((obs,old,nouv)->{
+			if(nouv.doubleValue()<=0) {
+				Image imgGameOver = new Image("src/images/gameOver.png",20*16,15*16,true,true);
+				ImageView gameOver = new ImageView(imgGameOver);
+				gameLoop.stop();
+				pane.getChildren().add(gameOver);
+				this.pane.getChildren().remove(this.pane.lookup("#"+this.env.getHero().getId()));
+				Button restart = new Button("Restart");
+				restart.setOnAction(new EventHandler<ActionEvent>() {
+				    @Override public void handle(ActionEvent e) {
+				    	panneauDeTuiles.getChildren().clear();
+				    	env.killAll();
+				    	
+				    	pane.getChildren().remove(gameOver);
+				        lancement();
+				        restart.setVisible(false);
+				        restart.setManaged(false);
+				    }
+				});
+				pane.getChildren().add(restart);
+				
+			}
+		});
 		
 	}
 	

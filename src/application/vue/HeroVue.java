@@ -30,7 +30,8 @@ public class HeroVue {
 
 		this.hero.getArmes().add(new Batte());
 		this.hero.setArmeActuelle(0);
-
+		
+		iv.setId(hero.getId());
 		pane.getChildren().add(this.iv);
 		pane.getChildren().add(getBarreDeVie());
 
