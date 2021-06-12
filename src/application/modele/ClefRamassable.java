@@ -9,8 +9,7 @@ public class ClefRamassable extends Ramassable{
 
 	@Override
 	public void ramasser() {
-		getEnv().getHero().getObjets()[0] = new Clef();
-		
+		getEnv().getHero().getObjets().add(new Clef());
 	}
 
 }

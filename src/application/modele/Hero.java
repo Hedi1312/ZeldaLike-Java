@@ -21,22 +21,16 @@ public class Hero extends Personnage {
 	private ObservableList<Arme> armes;
 	private Arme armeActuelle;
 	private int munitions=0;
-	private Objet[] objets = new Objet[2];
+	private ObservableList<Objet> objets;
 	
 	public Hero(int x, int y , Environnement env) {
 		super(x,y,env,100, 0);
 		this.dx = 0;
 		this.dy = -1;
 		this.armes =FXCollections.observableArrayList();
-		
-	
-		objets[0]= null;
-		objets[1]= null;
+		this.objets =FXCollections.observableArrayList();
 	}
 	
-	public Objet[] getObjets() {
-		return objets;
-	}
 	
 	public int getMunitions() {
 		return munitions;
@@ -58,6 +52,11 @@ public class Hero extends Personnage {
 	
 	public ObservableList<Arme> getArmes() {
 		return armes;
+	}
+	
+
+	public ObservableList<Objet> getObjets() {
+		return objets;
 	}
 	
 	public int getDx(){
@@ -126,9 +125,9 @@ public class Hero extends Personnage {
 	}
 
 	public void interagir() {
-		for(int i=0;i<objets.length;i++) {
-			if(objets[i]!=null) {
-				objets[i].interagir(getX(), getY(), dx, dy, env);
+		for(int i=0;i<objets.size();i++) {
+			if(objets.get(i)!=null) {
+				objets.get(i).interagir(getX(), getY(), dx, dy, env);
 			}
 		}
 	}

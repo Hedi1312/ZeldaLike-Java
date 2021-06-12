@@ -9,8 +9,7 @@ public class ExtincteurRamassable extends Ramassable{
 
 	@Override
 	public void ramasser() {
-		getEnv().getHero().getObjets()[1]=new Extincteur();
-		
+		getEnv().getHero().getObjets().add(new Extincteur());
 	}
 	
 
