@@ -112,38 +112,44 @@ public abstract class Ennemi extends Personnage {
 		}
 
 		Collections.sort(listeCase);
-		if(listeCase.get(0)==caseCentre ) {
-
-			setDx(env.getHero().getX()-getX());
-			setDy(env.getHero().getY()-getY());
-
+		if(listeCase.get(0)<6*16) {
+			if(listeCase.get(0)==caseCentre ) {
+	
+				setDx((env.getHero().getX()-getX())/16);
+				setDy((env.getHero().getY()-getY())/16);
+				System.out.println(this.dx + " : " + this.dy);
+				
+	
+			}
+	
+			else if(listeCase.get(0)==caseGauche) {
+	
+				setX(nposXGauche);
+				setY(getY());
+				setDx(-1);
+				setDy(0);
+			}
+			else if(listeCase.get(0)==caseDroite) {
+				setX(nposXDroite);
+				setY(getY());
+				setDx(1);
+				setDy(0);
+			}
+			else if(listeCase.get(0)==caseHaut) {
+				setX(getX());
+				setY(nposYHaut);
+				setDx(0);
+				setDy(-1);
+			}
+			else {
+				setX(getX());
+				setY(nposYBas);
+				setDx(0);
+				setDy(1);
+			}
 		}
-
-		else if(listeCase.get(0)==caseGauche) {
-
-			setX(nposXGauche);
-			setY(getY());
-			setDx(-1);
-			setDy(0);
-		}
-		else if(listeCase.get(0)==caseDroite) {
-			setX(nposXDroite);
-			setY(getY());
-			setDx(1);
-			setDy(0);
-		}
-		else if(listeCase.get(0)==caseHaut) {
-			setX(getX());
-			setY(nposYHaut);
-			setDx(0);
-			setDy(-1);
-		}
-		else {
-			setX(getX());
-			setY(nposYBas);
-			setDx(0);
-			setDy(1);
-		}
+		else
+			seDeplaceAleatoire();
 
 
 	}
