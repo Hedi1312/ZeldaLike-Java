@@ -36,15 +36,16 @@ public class HeroVue {
 		this.hero.getDxProperty().addListener((obs,old,nouv)->{
 			if(nouv.intValue()==1)
 				setImgDroite();
-			else
+			else if(nouv.intValue()==-1)
 				setImgGauche();
+			
 		}
 			);
 		
 		this.hero.getDyProperty().addListener((obs,old,nouv)->{
 			if(nouv.intValue()==1)
 				setImgBas();
-			else
+			else if(nouv.intValue()==-1)
 				setImgHaut();
 		}
 			);
@@ -65,22 +66,28 @@ public class HeroVue {
 	}
 	
 	public void setImgDroite() {
+		
 		this.img= new Image("src/images/boss.png");
-		this.iv= new ImageView(img);
+	
+		this.iv.setImage(img);
+		
 	}
 	
 	public void setImgGauche() {
 		this.img= new Image("src/images/Sans titre.png");
-		this.iv= new ImageView(img);
+		
+		this.iv.setImage(img);
 	}
 	
 	public void setImgHaut() {
-		this.img= new Image("src/images/clef.png");
-		this.iv= new ImageView(img);
+		this.img= new Image("src/images/vertical.png");
+		
+		this.iv.setImage(img);
 	}
 	public void setImgBas() {
-		this.img= new Image("src/images/vertical.png");
-		this.iv= new ImageView(img);
+		this.img= new Image("src/images/horizontal.png");
+		
+		this.iv.setImage(img);
 	}
 	
 	public ProgressBar getBarreDeVie() {
