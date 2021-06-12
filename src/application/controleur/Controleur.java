@@ -131,6 +131,7 @@ public class Controleur implements Initializable{
 			case SPACE:
 				
 				env.getHero().attaquer();
+				
 				break;
 				
 			case F:
@@ -152,11 +153,19 @@ public class Controleur implements Initializable{
 				break;
 			
 		}
-			
-			
-			
+		
 	}
-
+	
+	public void released(KeyEvent keyEvent) {
+		switch (keyEvent.getCode()) {
+			case SPACE:    		
+				env.getHero().releasedLock();
+				break;
+			
+			
+		}
+	}
+	
 	public void initAnimation() {
 		gameLoop = new Timeline();
 		temps=0;
@@ -185,7 +194,7 @@ public class Controleur implements Initializable{
 					}
 					temps++;
 				})
-				);
+		);
 
 		gameLoop.getKeyFrames().add(kf);
 	}
@@ -218,6 +227,7 @@ public class Controleur implements Initializable{
 					env.getHero().setX(10*16);
 					env.getHero().setY(10*16);
 					terrainVue.chargerTerrain(1);
+					env.PoserDrop();
 					System.out.println("TEST");
 				}
 			}
@@ -228,6 +238,7 @@ public class Controleur implements Initializable{
 					env.getHero().setX(10*16);
 					env.getHero().setY(10*16);
 					terrainVue.chargerTerrain(2);
+					env.PoserDrop();
 					System.out.println("TEST");
 				}
 			}
@@ -252,10 +263,6 @@ public class Controleur implements Initializable{
 		//extincteur
 		Ramassable extincteur =new ExtincteurRamassable(128, 144, env);
 		env.ajouterRamassable(extincteur);
-		
-		//extincteur
-		Ramassable grenade =new GrenadeRamassable(144, 144, env);
-		env.ajouterRamassable(grenade);
 		
 	}
 	

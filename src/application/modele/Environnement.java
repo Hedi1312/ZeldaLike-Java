@@ -164,7 +164,14 @@ public class Environnement {
 			ajouterPerso(ennemiExplosif);
 		}
 	}
-
+	
+	public void PoserDrop() {
+		if(terrain.getMapActuelle()==terrain.getMap(1)) {
+			Ramassable grenade =new GrenadeRamassable(144, 144, this);
+			ajouterRamassable(grenade);
+		}
+	}
+	
 	public void killAll() {
 
 		ennemis.clear();

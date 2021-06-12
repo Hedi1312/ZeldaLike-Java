@@ -22,6 +22,7 @@ public class Main extends Application {
 			 
 			
 			 scene.setOnKeyPressed(keyAction -> controller.deplacement(keyAction));
+			 scene.setOnKeyReleased(keyActionReleased -> controller.released(keyActionReleased));
 			 
 			primaryStage.setScene(scene);
 			primaryStage.show();

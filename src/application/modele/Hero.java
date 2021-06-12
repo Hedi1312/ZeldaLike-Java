@@ -22,6 +22,7 @@ public class Hero extends Personnage {
 	private Arme armeActuelle;
 	private int munitions=0;
 	private ObservableList<Objet> objets;
+	private boolean lock;
 	
 	public Hero(int x, int y , Environnement env) {
 		super(x,y,env,100, 0);
@@ -29,6 +30,8 @@ public class Hero extends Personnage {
 		this.dy = new SimpleIntegerProperty(1);
 		this.armes =FXCollections.observableArrayList();
 		this.objets =FXCollections.observableArrayList();
+		this.lock=false;
+		
 		
 	}
 	
@@ -83,7 +86,11 @@ public class Hero extends Personnage {
 	public IntegerProperty getDyProperty() {
 		return this.dy;
 	}
-
+	
+	public void releasedLock() {
+		this.lock=false;
+	}
+	
 	public void allerEnHaut() {
 		int nposY=getY()-16;
 		
@@ -129,7 +136,10 @@ public class Hero extends Personnage {
 	
 	
 	public void attaquer() {
-		armeActuelle.attaquer(getX(),getY(),getDx(), getDy(),env);
+		if(!lock) {
+			armeActuelle.attaquer(getX(),getY(),getDx(), getDy(),env);
+			lock=true;
+		}
 	}
 
 	public void interagir() {
