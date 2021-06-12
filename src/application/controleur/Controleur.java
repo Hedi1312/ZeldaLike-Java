@@ -67,9 +67,11 @@ public class Controleur implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 			
-		this.panneauDeTuiles.setPrefColumns(320);
+		
 		
 		this.env = new Environnement();
+		
+		this.panneauDeTuiles.setPrefColumns(env.getTerrain().getWidth()*16);
 		
 		this.env.getEnnemis().addListener(new MonObservateurEnnemi(this.pane));
 		this.env.getProjectile().addListener(new MonObservateurProjectile(this.pane));
@@ -179,7 +181,7 @@ public class Controleur implements Initializable{
 	public void lancement() {
 		//terrain
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
-		terrainVue.chargerTerrain();
+		terrainVue.chargerTerrain(2);
 		env.getTerrain().caseChangeeProperty().addListener((obs,old,nouv)->
 			terrainVue.setTuileVue(nouv.intValue()/20, nouv.intValue()%20)
 		);
