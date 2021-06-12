@@ -22,6 +22,7 @@ public class Hero extends Personnage {
 	private Arme armeActuelle;
 	private int munitions=0;
 	private Objet[] objets = new Objet[2];
+	private IntegerProperty position;
 	
 	public Hero(int x, int y , Environnement env) {
 		super(x,y,env,100, 0);
@@ -29,7 +30,7 @@ public class Hero extends Personnage {
 		this.dy = -1;
 		this.armes =FXCollections.observableArrayList();
 		
-	
+		this.position= new SimpleIntegerProperty((getY()*20+getX()));
 		objets[0]= null;
 		objets[1]= null;
 	}

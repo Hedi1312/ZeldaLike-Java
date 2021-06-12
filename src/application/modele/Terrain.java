@@ -87,6 +87,17 @@ public class Terrain {
 		return mapActuelle;
 	}
 	
+	public int[][] getMap0(){
+		return map;
+	}
+	
+	public int[][] getMap1(){
+		return map1;
+	}
+	public int[][] getMap2(){
+		return map2;
+	}
+	
 	public int[][] getMap(int numeroMap) {
 		if(numeroMap==0) {
 			this.mapActuelle=map;

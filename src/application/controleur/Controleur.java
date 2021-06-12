@@ -181,20 +181,34 @@ public class Controleur implements Initializable{
 	public void lancement() {
 		//terrain
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
-		terrainVue.chargerTerrain(2);
+		terrainVue.chargerTerrain(0);
 		env.getTerrain().caseChangeeProperty().addListener((obs,old,nouv)->
 			terrainVue.setTuileVue(nouv.intValue()/20, nouv.intValue()%20)
 		);
 
 		
 		
-		
 		//hero
 		Hero hero = new Hero(160,112,env);
 		env.ajouterHero(hero);
+		
 		this.env.getHero().getArmes().addListener(new MonObservateurArme(listeArme));
+		
 		heroVue = new HeroVue(env.getHero(), pane);
 		
+		env.getTourProperty().addListener((obs,old,nouv)->{
+			if(env.getTerrain().getMap()==env.getTerrain().getMap0()) {
+				if(env.getHero().getX()==0*16 && env.getHero().getY()==6*16) {
+					panneauDeTuiles.getChildren().clear();
+					env.killAll();
+					env.getHero().setX(10*16);
+					env.getHero().setY(10*16);
+					terrainVue.chargerTerrain(1);
+					System.out.println("TEST");
+				}
+			}
+		}
+		);
 		//ennemiBasique
 		Ennemi ennemi = new EnnemiBasique(128,112,env);
 		env.ajouterPerso(ennemi);
