@@ -179,9 +179,7 @@ public class Controleur implements Initializable{
 		//terrain
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
 		terrainVue.chargerTerrain();
-		env.getTerrain().caseChangéeProperty().addListener((obs,old,nouv)->
-			terrainVue.setTuileVue(nouv.intValue()/20, nouv.intValue()%20)
-		);
+		
 
 		
 		
@@ -190,6 +188,13 @@ public class Controleur implements Initializable{
 		Hero hero = new Hero(160,112,env);
 		env.ajouterHero(hero);
 		heroVue = new HeroVue(env.getHero(), pane);
+		
+		env.getHero().getDxProperty().addListener((obs,old,nouv)->{
+			if(nouv.intValue()==1)
+				heroVue.setImgDroite();
+		}
+			);
+		
 		
 		//ennemiBasique
 		Ennemi ennemi = new EnnemiBasique(128,112,env);

@@ -15,7 +15,7 @@ import javafx.scene.layout.TilePane;
 
 public class Hero extends Personnage {
 	
-	private int dx,dy;
+	private IntegerProperty dx,dy;
 	private ArrayList<Arme> armes;
 	private Arme armeActuelle;
 	private int munitions=0;
@@ -23,8 +23,8 @@ public class Hero extends Personnage {
 	
 	public Hero(int x, int y , Environnement env) {
 		super(x,y,env,100, 0);
-		this.dx = 0;
-		this.dy = -1;
+		this.dx = new SimpleIntegerProperty(0);
+		this.dy = new SimpleIntegerProperty(-1);
 		this.armes = new ArrayList<>();
 		armes.add(new Batte());
 		armeActuelle = armes.get(0);
@@ -32,6 +32,28 @@ public class Hero extends Personnage {
 		objets[1]= null;
 	}
 	
+	public final int getDx() {
+		return dx.getValue();
+	}
+	
+	public final int getDy() {
+		return dy.getValue();
+	}
+	
+	public void setDx(int n) {
+		dx.setValue(n);
+	}
+	public void setDy(int n) {
+		dy.setValue(n);
+	}
+	
+	public IntegerProperty getDxProperty() {
+		return this.dx;
+	}
+	
+	public IntegerProperty getDyProperty() {
+		return this.dy;
+	}
 	public Objet[] getObjets() {
 		return objets;
 	}
@@ -58,21 +80,6 @@ public class Hero extends Personnage {
 		return armes;
 	}
 	
-	public int getDx(){
-		return dx;
-	}
-	
-	public int getDy() {
-		return dy;
-	}
-	
-	public void setDx(int n) {
-		this.dx=n;
-	}
-	
-	public void setDy(int n) {
-		this.dy=n;
-	}
 	
 
 	public void allerEnHaut() {
@@ -120,13 +127,13 @@ public class Hero extends Personnage {
 	
 	
 	public void attaquer() {
-		armeActuelle.attaquer(getX(),getY(),dx,dy,env);
+		armeActuelle.attaquer(getX(),getY(),getDx(),getDy(),env);
 	}
 
 	public void interagir() {
 		for(int i=0;i<objets.length;i++) {
 			if(objets[i]!=null) {
-				objets[i].interagir(getX(), getY(), dx, dy, env);
+				objets[i].interagir(getX(), getY(), getDx(), getDy(), env);
 			}
 		}
 	}

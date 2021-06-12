@@ -16,6 +16,9 @@ public class TerrainVue {
 		this.img = new Image("src/images/tileset.png");
 		this.mapARemplir = tP;
 		this.terrain=terrain;
+		this.terrain.caseChangéeProperty().addListener((obs,old,nouv)->
+		setTuileVue(nouv.intValue()/20, nouv.intValue()%20)
+		);
 	}
 	
 	public void chargerTerrain() {
