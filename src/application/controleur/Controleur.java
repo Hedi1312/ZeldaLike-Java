@@ -30,6 +30,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -80,9 +81,20 @@ public class Controleur implements Initializable{
 		
 		
 		lancement();
+
 		
 		initAnimation();
 		gameLoop.play();
+		
+
+		this.env.getHero().getPvProperty().addListener((obs,old,nouv)->{
+			if(nouv.doubleValue()<=0) {
+				Image imgGameOver = new Image("src/images/gameover.jpg",20*16,15*16,true,true);
+				ImageView gameOver = new ImageView(imgGameOver);
+				gameLoop.stop();
+				pane.getChildren().add(gameOver);
+			}
+		});
 	}
 	
 	public void deplacement(KeyEvent event){

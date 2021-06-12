@@ -61,16 +61,21 @@ public abstract class Personnage {
 	
 	public void setPv(double n) {
 		if(getPv()-n>armure) {
+			if(n+armure<0) {
+				n=armure;
+			}
 			pv.setValue(n+armure);
 		}
 		if(n>getPv()) {
 			if(n>100) {
 				n=100;
 			}
+			if(n<0) {
+				n=0;
+			}
 			pv.setValue(n);
-		}
-		
-		
+		}	
+		System.out.println();
 	}
 	
 	
@@ -87,7 +92,11 @@ public abstract class Personnage {
 	}
 	
 	public void perdrePv(double n) {
-		pv.setValue(pv.getValue()-n);
+		if(pv.getValue()-n<0) {
+			pv.setValue(0);
+		}
+		else
+			pv.setValue(pv.getValue()-n);
 	}
 	
 	public boolean estVivant() {

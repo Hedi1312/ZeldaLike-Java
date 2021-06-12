@@ -15,7 +15,7 @@ public class HeroVue {
 	private ImageView iv;
 	private ProgressBar barreDeVie;
 	private Pane pane;
-	
+
 	public HeroVue(Hero hero, Pane pane) {
 		super();
 		this.pane = pane;
@@ -27,15 +27,16 @@ public class HeroVue {
 		barreDeVie.setStyle("-fx-accent: red;");
 		barreDeVie.progressProperty().bind(hero.getPvProperty().divide(100));
 		
+
 		this.hero.getArmes().add(new Batte());
 		this.hero.setArmeActuelle(0);
-		
+
 		pane.getChildren().add(this.iv);
 		pane.getChildren().add(getBarreDeVie());
-	
+
 		this.iv.translateXProperty().bind(hero.getXProperty());
 		this.iv.translateYProperty().bind(hero.getYProperty());
-		
+
 		this.hero.getDxProperty().addListener((obs,old,nouv)->{
 			if(nouv.intValue()==1) {
 				setImgDroite();
@@ -43,44 +44,44 @@ public class HeroVue {
 			else if(nouv.intValue()==-1)
 				setImgGauche();
 		}
-			);
-		
+				);
+
 		this.hero.getDyProperty().addListener((obs,old,nouv)->{
 			if(nouv.intValue()==1)
 				setImgBas();
 			else if(nouv.intValue()==-1)
 				setImgHaut();
 		}
-			);
+				);
 	}
-	
-	
+
+
 	public ImageView getIV() {
 		return iv;
 	}
-	
+
 	public Hero getHero() {
 		return this.hero;
 	}
-	
+
 	public Image getImg() {
 		return img;
 	}
-	
+
 	public ProgressBar getBarreDeVie() {
 		return barreDeVie;
 	}
-	
+
 	public void setImgDroite() {
 		this.img= new Image("src/images/Sans titre.png");
 		this.iv.setImage(img);
 	}
-	
+
 	public void setImgGauche() {
 		this.img= new Image("src/images/Sans titre.png");
 		this.iv.setImage(img);
 	}
-	
+
 	public void setImgHaut() {
 		this.img= new Image("src/images/clef.png");
 		this.iv.setImage(img);
@@ -89,5 +90,5 @@ public class HeroVue {
 		this.img= new Image("src/images/hero.png");
 		this.iv.setImage(img);
 	}
-	
+
 }
