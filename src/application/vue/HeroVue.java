@@ -19,7 +19,7 @@ public class HeroVue {
 	public HeroVue(Hero hero, Pane pane) {
 		super();
 		this.pane = pane;
-		this.img = new Image("src/images/moi16x16.png");
+		this.img = new Image("src/images/hero.png");
 		this.iv= new ImageView(img);
 		this.hero=hero;
 		this.barreDeVie=new ProgressBar(1);
