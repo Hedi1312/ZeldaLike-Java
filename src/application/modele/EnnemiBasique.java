@@ -22,14 +22,20 @@ public class EnnemiBasique extends Ennemi {
 
 	@Override
 	public void agit() {
+
 		seDeplace();
+		if(env.dansLeFeu(getX(),getY())) {
+			perdrePv(30);
+		}
 		attaquer();
 	}
 
 	@Override
 	public void drop() {
-		Ramassable bandage = new Bandage(getX(),getY(),env);
-		env.ajouterRamassable(bandage);
+		if(!getId().equals("A1")) {
+			Ramassable bandage = new Bandage(getX(),getY(),env);
+			env.ajouterRamassable(bandage);
+		}
 		
 	}
 }

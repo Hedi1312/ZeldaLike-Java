@@ -90,7 +90,7 @@ public class Controleur implements Initializable{
 
 		this.env.getHero().getPvProperty().addListener((obs,old,nouv)->{
 			if(nouv.doubleValue()<=0) {
-				Image imgGameOver = new Image("src/images/gameover.jpg",20*16,15*16,true,true);
+				Image imgGameOver = new Image("src/images/gameOver.png",20*16,15*16,true,true);
 				ImageView gameOver = new ImageView(imgGameOver);
 				gameLoop.stop();
 				pane.getChildren().add(gameOver);
@@ -211,13 +211,23 @@ public class Controleur implements Initializable{
 		
 		
 		env.getTourProperty().addListener((obs,old,nouv)->{
-			if(env.getTerrain().getMap()==env.getTerrain().getMap0()) {
+			if(env.getTerrain().getMapActuelle()==env.getTerrain().getMap(0)) {
 				if(env.getHero().getX()==0*16 && env.getHero().getY()==6*16) {
 					panneauDeTuiles.getChildren().clear();
 					env.killAll();
 					env.getHero().setX(10*16);
 					env.getHero().setY(10*16);
 					terrainVue.chargerTerrain(1);
+					System.out.println("TEST");
+				}
+			}
+			else if(env.getTerrain().getMapActuelle()==env.getTerrain().getMap(1)) {
+				if(env.getHero().getX()==0*16 && env.getHero().getY()==6*16) {
+					panneauDeTuiles.getChildren().clear();
+					env.killAll();
+					env.getHero().setX(10*16);
+					env.getHero().setY(10*16);
+					terrainVue.chargerTerrain(2);
 					System.out.println("TEST");
 				}
 			}

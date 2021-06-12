@@ -83,7 +83,7 @@ public class Environnement {
 	public boolean traversable(int x,int y) {
 		int[] tab = {352,007};
 		if(dansTerrain(x, y)) {
-			int tuile= terrain.getMap()[y/16][x/16];
+			int tuile= terrain.getMapActuelle()[y/16][x/16];
 			for(int element : tab) {
 				if(tuile==element)
 					return false;
@@ -97,7 +97,7 @@ public class Environnement {
 	public boolean dansLeFeu(int x, int y ) {
 		int[] tab = {914};
 		if(dansTerrain(x, y)) {
-			int tuile= terrain.getMap()[y/16][x/16];
+			int tuile= terrain.getMapActuelle()[y/16][x/16];
 			for(int element : tab) {
 				if(tuile==element)
 					return true;
@@ -110,7 +110,7 @@ public class Environnement {
 	public boolean casePorte(int x, int y) {
 		int[] tab = {007};
 		if(dansTerrain(x, y)) {
-			int tuile= terrain.getMap()[y/16][x/16];
+			int tuile= terrain.getMapActuelle()[y/16][x/16];
 			for(int element : tab) {
 				if(tuile==element)
 					return true;
@@ -173,14 +173,14 @@ public class Environnement {
 		
 	}
 	public void unTour() {
-		if(reussitProba(20)){
+		if(reussitProba(20) && terrain.getMapActuelle()!=terrain.getMap(2)){
 			spawnEnnemi();
 		}
 		for(int i=ennemis.size()-1; i>=0;i--){
 			Ennemi p = ennemis.get(i);
 			if(!p.estVivant()){
 				if(p.getId().equals("A1")) {
-					Ramassable pistolet = new PistoletRamassable(p.getX()+16,p.getY(),this);
+					Ramassable pistolet = new PistoletRamassable(p.getX(),p.getY(),this);
 					ajouterRamassable(pistolet);
 				}
 				ennemis.get(i).drop();

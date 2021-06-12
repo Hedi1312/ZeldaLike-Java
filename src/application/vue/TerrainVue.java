@@ -19,11 +19,11 @@ public class TerrainVue {
 	}
 	
 	public void chargerTerrain(int numeroMap) {
-		
+		terrain.setMap(numeroMap);
 		int idTuile;
-		for(int i = 0; i < terrain.getMap(numeroMap).length; i++){
-			for(int j=0 ; j <terrain.getMap(numeroMap)[i].length; j++) {
-				idTuile = terrain.getMap(numeroMap)[i][j];
+		for(int i = 0; i < terrain.getMapActuelle().length; i++){
+			for(int j=0 ; j <terrain.getMapActuelle()[i].length; j++) {
+				idTuile = terrain.getMapActuelle()[i][j];
 				switch(idTuile) { 
 				case 505 :
 					ImageView iv = new ImageView(img);

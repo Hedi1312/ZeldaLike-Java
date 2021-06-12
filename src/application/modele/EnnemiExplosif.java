@@ -14,7 +14,11 @@ public class EnnemiExplosif extends Ennemi {
 	@Override
 	public void agit() {
 		if(!explosion) {
+
 			seDeplace();
+			if(env.dansLeFeu(getX(),getY())) {
+				perdrePv(30);
+			}
 			attaquer();
 		}
 		else {

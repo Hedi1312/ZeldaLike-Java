@@ -83,33 +83,38 @@ public class Terrain {
 		return height;
 	}
 	
-	public int[][] getMap() {
+	public int[][] getMapActuelle() {
 		return mapActuelle;
 	}
 	
-	public int[][] getMap0(){
-		return map;
-	}
-	
-	public int[][] getMap1(){
-		return map1;
-	}
-	public int[][] getMap2(){
-		return map2;
-	}
-	
-	public int[][] getMap(int numeroMap) {
+	public void setMap(int numeroMap) {
 		if(numeroMap==0) {
 			this.mapActuelle=map;
-			return map;
+			
 		}
 		else if(numeroMap==1) {
 			this.mapActuelle=map1;
-			return map1;
+			
 		}
 		else {
 		
 			this.mapActuelle=map2;
+		
+		}
+	}
+	
+	public int[][] getMap(int numeroMap) {
+		if(numeroMap==0) {
+			
+			return map;
+		}
+		else if(numeroMap==1) {
+			
+			return map1;
+		}
+		else {
+		
+			
 			return map2;
 		}
 	}
