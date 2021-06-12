@@ -196,6 +196,7 @@ public class Controleur implements Initializable{
 		this.env.getHero().getObjets().addListener(new MonObservateurObjet(listeObjet));
 		heroVue = new HeroVue(env.getHero(), pane);
 		
+		
 		//ennemiBasique
 		Ennemi ennemi = new EnnemiBasique(128,112,env);
 		env.ajouterPerso(ennemi);

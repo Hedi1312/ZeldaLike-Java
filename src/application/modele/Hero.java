@@ -17,7 +17,7 @@ import javafx.scene.layout.TilePane;
 
 public class Hero extends Personnage {
 	
-	private int dx,dy;
+	private IntegerProperty dx,dy;
 	private ObservableList<Arme> armes;
 	private Arme armeActuelle;
 	private int munitions=0;
@@ -25,8 +25,8 @@ public class Hero extends Personnage {
 	
 	public Hero(int x, int y , Environnement env) {
 		super(x,y,env,100, 0);
-		this.dx = 0;
-		this.dy = -1;
+		this.dx =new SimpleIntegerProperty(0);
+		this.dy = new SimpleIntegerProperty(1);
 		this.armes =FXCollections.observableArrayList();
 		this.objets =FXCollections.observableArrayList();
 	}
@@ -60,21 +60,28 @@ public class Hero extends Personnage {
 	}
 	
 	public int getDx(){
-		return dx;
+		return dx.getValue();
 	}
 	
 	public int getDy() {
-		return dy;
+		return dy.getValue();
 	}
 	
 	public void setDx(int n) {
-		this.dx=n;
+		this.dx.setValue(n);
 	}
 	
 	public void setDy(int n) {
-		this.dy=n;
+		this.dy.setValue(n);
 	}
 	
+	public IntegerProperty getDxProperty() {
+		return this.dx;
+	}
+	
+	public IntegerProperty getDyProperty() {
+		return this.dy;
+	}
 
 	public void allerEnHaut() {
 		int nposY=getY()-16;
@@ -121,13 +128,13 @@ public class Hero extends Personnage {
 	
 	
 	public void attaquer() {
-		armeActuelle.attaquer(getX(),getY(),dx,dy,env);
+		armeActuelle.attaquer(getX(),getY(),getDx(), getDy(),env);
 	}
 
 	public void interagir() {
 		for(int i=0;i<objets.size();i++) {
 			if(objets.get(i)!=null) {
-				objets.get(i).interagir(getX(), getY(), dx, dy, env);
+				objets.get(i).interagir(getX(), getY(), getDx(), getDy(), env);
 			}
 		}
 	}

@@ -36,6 +36,22 @@ public class HeroVue {
 		this.iv.translateXProperty().bind(hero.getXProperty());
 		this.iv.translateYProperty().bind(hero.getYProperty());
 		
+		this.hero.getDxProperty().addListener((obs,old,nouv)->{
+			if(nouv.intValue()==1) {
+				setImgDroite();
+			}
+			else if(nouv.intValue()==-1)
+				setImgGauche();
+		}
+			);
+		
+		this.hero.getDyProperty().addListener((obs,old,nouv)->{
+			if(nouv.intValue()==1)
+				setImgBas();
+			else if(nouv.intValue()==-1)
+				setImgHaut();
+		}
+			);
 	}
 	
 	
@@ -55,5 +71,23 @@ public class HeroVue {
 		return barreDeVie;
 	}
 	
+	public void setImgDroite() {
+		this.img= new Image("src/images/Sans titre.png");
+		this.iv.setImage(img);
+	}
+	
+	public void setImgGauche() {
+		this.img= new Image("src/images/Sans titre.png");
+		this.iv.setImage(img);
+	}
+	
+	public void setImgHaut() {
+		this.img= new Image("src/images/clef.png");
+		this.iv.setImage(img);
+	}
+	public void setImgBas() {
+		this.img= new Image("src/images/hero.png");
+		this.iv.setImage(img);
+	}
 	
 }
