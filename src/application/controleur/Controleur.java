@@ -53,7 +53,8 @@ public class Controleur implements Initializable{
 	
 	@FXML
 	private TilePane panneauDeTuiles;
-	
+	@FXML
+	private TilePane listeArme;
 	private Timeline gameLoop;
 	private int temps;
 	
@@ -179,7 +180,7 @@ public class Controleur implements Initializable{
 		//terrain
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
 		terrainVue.chargerTerrain();
-		env.getTerrain().caseChangÃ©eProperty().addListener((obs,old,nouv)->
+		env.getTerrain().caseChangéeProperty().addListener((obs,old,nouv)->
 			terrainVue.setTuileVue(nouv.intValue()/20, nouv.intValue()%20)
 		);
 
@@ -189,6 +190,7 @@ public class Controleur implements Initializable{
 		//hero
 		Hero hero = new Hero(160,112,env);
 		env.ajouterHero(hero);
+		this.env.getHero().getArmes().addListener(new MonObservateurArme(listeArme));
 		heroVue = new HeroVue(env.getHero(), pane);
 		
 		//ennemiBasique
