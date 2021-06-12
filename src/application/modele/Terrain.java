@@ -27,13 +27,16 @@ public class Terrain {
 	
 	private int width;
 	private int height;
+
 	private IntegerProperty caseChangee;
 	
 	public Terrain() {
 		super();
 		this.width = map[0].length;
 		this.height = map.length;
+
 		caseChangee = new SimpleIntegerProperty();
+
 	}
 	
 	public int getWidth() {
@@ -50,9 +53,11 @@ public class Terrain {
 	
 	public void setMap(int x, int y, int tuile) {
 		this.map[y][x]=tuile;
+
 		caseChangee.setValue(y*20+x);
 	}
 	
+
 	public IntegerProperty caseChangeeProperty() {
 		return caseChangee;
 	}

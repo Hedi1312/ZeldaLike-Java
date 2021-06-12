@@ -7,6 +7,8 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,7 +18,7 @@ import javafx.scene.layout.TilePane;
 public class Hero extends Personnage {
 	
 	private int dx,dy;
-	private ArrayList<Arme> armes;
+	private ObservableList<Arme> armes;
 	private Arme armeActuelle;
 	private int munitions=0;
 	private Objet[] objets = new Objet[2];
@@ -25,9 +27,9 @@ public class Hero extends Personnage {
 		super(x,y,env,100, 0);
 		this.dx = 0;
 		this.dy = -1;
-		this.armes = new ArrayList<>();
-		armes.add(new Batte());
-		armeActuelle = armes.get(0);
+		this.armes =FXCollections.observableArrayList();
+		
+	
 		objets[0]= null;
 		objets[1]= null;
 	}
@@ -54,7 +56,7 @@ public class Hero extends Personnage {
 		}
 	}
 	
-	public ArrayList<Arme> getArmes() {
+	public ObservableList<Arme> getArmes() {
 		return armes;
 	}
 	

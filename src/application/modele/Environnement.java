@@ -152,9 +152,9 @@ public class Environnement {
 
 	
 	public void unTour() {
-//		if(reussitProba(20)){
-//			spawnEnnemi();
-//		}
+		if(reussitProba(20)){
+			spawnEnnemi();
+		}
 		for(int i=ennemis.size()-1; i>=0;i--){
 			Ennemi p = ennemis.get(i);
 			if(!p.estVivant()){

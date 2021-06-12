@@ -14,7 +14,7 @@ public class EnnemiBasiqueVue {
 	
 	public EnnemiBasiqueVue(Ennemi ennemi, Pane pane) {
 		super();
-		this.img = new Image("src/images/pixil-frame-0.png");
+		this.img = new Image("src/images/zombie.png");
 		this.iv= new ImageView(img);
 		this.ennemi=ennemi;
 		this.pane = pane;

@@ -6,6 +6,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import src.application.modele.Batte;
 import src.application.modele.Hero;
 
 public class HeroVue {
@@ -18,13 +19,16 @@ public class HeroVue {
 	public HeroVue(Hero hero, Pane pane) {
 		super();
 		this.pane = pane;
-		this.img = new Image("src/images/moi16x16.png");
+		this.img = new Image("src/images/hero.png");
 		this.iv= new ImageView(img);
 		this.hero=hero;
 		this.barreDeVie=new ProgressBar(1);
 		barreDeVie.setLayoutY(-40);
 		barreDeVie.setStyle("-fx-accent: red;");
 		barreDeVie.progressProperty().bind(hero.getPvProperty().divide(100));
+		
+		this.hero.getArmes().add(new Batte());
+		this.hero.setArmeActuelle(0);
 		
 		pane.getChildren().add(this.iv);
 		pane.getChildren().add(getBarreDeVie());

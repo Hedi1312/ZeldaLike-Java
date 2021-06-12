@@ -53,7 +53,8 @@ public class Controleur implements Initializable{
 	
 	@FXML
 	private TilePane panneauDeTuiles;
-	
+	@FXML
+	private TilePane listeArme;
 	private Timeline gameLoop;
 	private int temps;
 	
@@ -189,6 +190,7 @@ public class Controleur implements Initializable{
 		//hero
 		Hero hero = new Hero(160,112,env);
 		env.ajouterHero(hero);
+		this.env.getHero().getArmes().addListener(new MonObservateurArme(listeArme));
 		heroVue = new HeroVue(env.getHero(), pane);
 		
 		//ennemiBasique
