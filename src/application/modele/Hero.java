@@ -29,6 +29,7 @@ public class Hero extends Personnage {
 		this.dy = new SimpleIntegerProperty(1);
 		this.armes =FXCollections.observableArrayList();
 		this.objets =FXCollections.observableArrayList();
+		
 	}
 	
 	

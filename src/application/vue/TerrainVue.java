@@ -18,12 +18,12 @@ public class TerrainVue {
 		this.terrain=terrain;
 	}
 	
-	public void chargerTerrain() {
+	public void chargerTerrain(int numeroMap) {
 		
 		int idTuile;
-		for(int i = 0; i < terrain.getMap().length; i++){
-			for(int j=0 ; j <terrain.getMap()[i].length; j++) {
-				idTuile = terrain.getMap()[i][j];
+		for(int i = 0; i < terrain.getMap(numeroMap).length; i++){
+			for(int j=0 ; j <terrain.getMap(numeroMap)[i].length; j++) {
+				idTuile = terrain.getMap(numeroMap)[i][j];
 				switch(idTuile) { 
 				case 505 :
 					ImageView iv = new ImageView(img);

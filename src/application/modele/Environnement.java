@@ -2,6 +2,8 @@ package src.application.modele;
 
 import java.util.Random;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableSetValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
@@ -15,13 +17,26 @@ public class Environnement {
 	private ObservableList<Projectile> projectiles;
 	private ObservableList<Ramassable> ramassables;
 	private Terrain terrain;
-	
+	private IntegerProperty tour;
 	
 	public Environnement() {
 		this.ennemis= FXCollections.observableArrayList();
 		this.projectiles = FXCollections.observableArrayList();
 		this.ramassables = FXCollections.observableArrayList();
+		this.tour= new SimpleIntegerProperty();
 		this.terrain= new Terrain();
+	}
+	
+	public int getTour() {
+		return tour.getValue();
+	}
+	
+	public IntegerProperty getTourProperty() {
+		return tour;
+	}
+	
+	public void setTour(int n) {
+		this.tour.setValue(n);
 	}
 	
 	public Terrain getTerrain() {
@@ -150,7 +165,13 @@ public class Environnement {
 		}
 	}
 
-	
+	public void killAll() {
+
+		ennemis.clear();
+		projectiles.clear();
+		ramassables.clear();
+		
+	}
 	public void unTour() {
 		if(reussitProba(20)){
 			spawnEnnemi();
@@ -171,7 +192,7 @@ public class Environnement {
 			p.agit();
 		}
 		
-		
+		setTour(getTour()+1);
 	}
 	
 	public void unTourRapideMaisPasTrop() {

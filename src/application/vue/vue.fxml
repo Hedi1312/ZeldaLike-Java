@@ -25,7 +25,7 @@
                <children>
                   <ImageView fitHeight="152.0" fitWidth="148.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../Pictures/inventaire.png" />
+                        <Image url="src/images/inventaire.png" />
                      </image>
                   </ImageView>
                   <TilePane fx:id="listeArme" layoutX="2.0" layoutY="64.0" prefHeight="22.0" prefWidth="102.0" />
