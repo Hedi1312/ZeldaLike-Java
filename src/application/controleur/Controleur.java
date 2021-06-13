@@ -185,6 +185,7 @@ public class Controleur implements Initializable{
 		this.env = new Environnement();
 		
 		this.panneauDeTuiles.setPrefColumns(env.getTerrain().getWidth()*16);
+		this.panneauDeTuiles.setPrefSize(env.getTerrain().getWidth()*16, env.getTerrain().getHeight()*16);
 		
 		this.env.getEnnemis().addListener(new MonObservateurEnnemi(this.pane));
 		this.env.getProjectile().addListener(new MonObservateurProjectile(this.pane));
