@@ -14,7 +14,7 @@ public class EnnemiExplosifVue {
 	
 	public EnnemiExplosifVue(Ennemi ennemi, Pane pane) {
 		super();
-		this.img = new Image("src/images/Explosif.png");
+		this.img = new Image("src/images/zombieExplosif.png");
 		this.iv= new ImageView(img);
 		this.ennemi=ennemi;
 		this.pane = pane;

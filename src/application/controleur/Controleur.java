@@ -140,8 +140,6 @@ public class Controleur implements Initializable{
 			case SPACE:    		
 				env.getHero().releasedLock();
 				break;
-			
-			
 		}
 	}
 	

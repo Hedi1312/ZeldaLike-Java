@@ -3,6 +3,7 @@ package src.application.vue;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import src.application.modele.Antidote;
 import src.application.modele.Bandage;
 import src.application.modele.ClefRamassable;
 import src.application.modele.ExtincteurRamassable;
@@ -37,6 +38,8 @@ public class RamassableVue {
 			this.img = new Image("src/images/extincteur.png");
 		else if(ramassable instanceof GrenadeRamassable)
 			this.img = new Image("src/images/grenade.png");
+		else if(ramassable instanceof Antidote)
+			this.img = new Image("src/images/antidote.png");
 		this.iv= new ImageView(img);
 		this.pane = pane;
 		

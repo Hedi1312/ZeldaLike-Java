@@ -2,7 +2,13 @@ package src.application.controleur;
 
 import javafx.collections.ListChangeListener;
 import javafx.collections.ListChangeListener.Change;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import src.application.modele.Antidote;
 import src.application.modele.Ennemi;
 import src.application.modele.Ramassable;
 import src.application.vue.EnnemiExplosifVue;
@@ -33,6 +39,12 @@ public class MonObservateurRamassable implements ListChangeListener<Ramassable> 
 			}
 			
 			for(Ramassable enleve: c.getRemoved()){
+				if(enleve instanceof Antidote) {
+					Image imgFin = new Image("src/images/gameOver.png",20*16,15*16,true,true);
+					ImageView fin = new ImageView(imgFin);
+					pane.getChildren().add(fin);
+					
+				}
 				enleverRamassable(enleve);
 			}
 		}

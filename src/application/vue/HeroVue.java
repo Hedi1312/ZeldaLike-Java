@@ -74,21 +74,21 @@ public class HeroVue {
 	}
 
 	public void setImgDroite() {
-		this.img= new Image("src/images/Sans titre.png");
+		this.img= new Image("src/images/heroDroite.png");
 		this.iv.setImage(img);
 	}
 
 	public void setImgGauche() {
-		this.img= new Image("src/images/Sans titre.png");
+		this.img= new Image("src/images/heroGauche.png");
 		this.iv.setImage(img);
 	}
 
 	public void setImgHaut() {
-		this.img= new Image("src/images/clef.png");
+		this.img= new Image("src/images/heroHaut.png");
 		this.iv.setImage(img);
 	}
 	public void setImgBas() {
-		this.img= new Image("src/images/hero.png");
+		this.img= new Image("src/images/heroBas.png");
 		this.iv.setImage(img);
 	}
 

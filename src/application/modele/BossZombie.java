@@ -27,7 +27,8 @@ public class BossZombie extends Ennemi{
 
 	@Override
 	public void drop() {
-		
+		Ramassable antidote = new Antidote(getX(),getY(),env);
+		env.ajouterRamassable(antidote);
 	}
 
 }

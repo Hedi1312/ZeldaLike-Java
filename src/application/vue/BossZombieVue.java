@@ -22,7 +22,7 @@ public class BossZombieVue {
 
 		iv.setId(bossZombie.getId());
 		this.iv.translateXProperty().bind(bossZombie.getXProperty().add(-16));
-		this.iv.translateYProperty().bind(bossZombie.getYProperty().add(-16));
+		this.iv.translateYProperty().bind(bossZombie.getYProperty().add(-32));
 	}
 	
 	public Personnage getEnnemi() {
