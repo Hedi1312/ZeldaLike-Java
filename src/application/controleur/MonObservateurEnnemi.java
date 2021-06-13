@@ -3,12 +3,12 @@ package src.application.controleur;
 import javafx.collections.ListChangeListener;
 
 import javafx.scene.layout.Pane;
-import src.application.modele.Boss;
-import src.application.modele.BossZombie;
-import src.application.modele.Ennemi;
-import src.application.modele.EnnemiBasique;
-import src.application.modele.EnnemiExplosif;
-import src.application.modele.Personnage;
+import src.application.modele.personnage.Boss;
+import src.application.modele.personnage.BossZombie;
+import src.application.modele.personnage.Ennemi;
+import src.application.modele.personnage.EnnemiBasique;
+import src.application.modele.personnage.EnnemiExplosif;
+import src.application.modele.personnage.Personnage;
 import src.application.vue.BossVue;
 import src.application.vue.BossZombieVue;
 import src.application.vue.EnnemiBasiqueVue;

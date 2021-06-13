@@ -3,7 +3,7 @@ package src.application.vue;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import src.application.modele.Projectile;
+import src.application.modele.projectile.Projectile;
 
 public class GrenadeProjectileVue {
 	private Projectile grenadeProjectile;

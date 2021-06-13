@@ -3,9 +3,9 @@ package src.application.vue;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
-import src.application.modele.Clef;
-import src.application.modele.Extincteur;
-import src.application.modele.Objet;
+import src.application.modele.objet.Clef;
+import src.application.modele.objet.Extincteur;
+import src.application.modele.objet.Objet;
 
 public class ObjetVue {
 	private Objet objet;

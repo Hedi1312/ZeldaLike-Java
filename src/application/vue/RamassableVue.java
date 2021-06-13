@@ -3,15 +3,15 @@ package src.application.vue;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import src.application.modele.Antidote;
-import src.application.modele.Bandage;
-import src.application.modele.ClefRamassable;
-import src.application.modele.ExtincteurRamassable;
-import src.application.modele.Gilet;
-import src.application.modele.GrenadeRamassable;
-import src.application.modele.Munition;
-import src.application.modele.PistoletRamassable;
-import src.application.modele.Ramassable;
+import src.application.modele.ramassable.Antidote;
+import src.application.modele.ramassable.Bandage;
+import src.application.modele.ramassable.ClefRamassable;
+import src.application.modele.ramassable.ExtincteurRamassable;
+import src.application.modele.ramassable.Gilet;
+import src.application.modele.ramassable.GrenadeRamassable;
+import src.application.modele.ramassable.Munition;
+import src.application.modele.ramassable.PistoletRamassable;
+import src.application.modele.ramassable.Ramassable;
 
 public class RamassableVue {
 	

@@ -6,8 +6,8 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import src.application.modele.Batte;
-import src.application.modele.Hero;
+import src.application.modele.arme.Batte;
+import src.application.modele.personnage.Hero;
 
 public class HeroVue {
 	private Hero hero;
@@ -19,7 +19,7 @@ public class HeroVue {
 	public HeroVue(Hero hero, Pane pane) {
 		super();
 		this.pane = pane;
-		this.img = new Image("src/images/hero.png");
+		this.img = new Image("src/images/heroBas.png");
 		this.iv= new ImageView(img);
 		this.hero=hero;
 		this.barreDeVie=new ProgressBar(1);

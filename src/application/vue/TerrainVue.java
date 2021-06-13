@@ -17,9 +17,32 @@ public class TerrainVue {
 		this.mapARemplir = tP;
 		this.terrain=terrain;
 		chargerTerrain(0);
-		this.terrain.caseChangeeProperty().addListener((obs,old,nouv)->
-		setTuileVue(nouv.intValue()/20, nouv.intValue()%20)
-	);
+		this.terrain.caseChangeeProperty().addListener((obs,old,nouv)-> setTuileVue(nouv.intValue()/30, nouv.intValue()%30));
+	}
+
+	public Image getImage() {
+		return img;
+	}
+
+	public TilePane getMapARemplir() {
+		return mapARemplir;
+	}
+	
+	public void getTuileVue(int x , int y) {
+		mapARemplir.getChildren().get((y*30+x));
+		
+	}
+	
+	public void setTuileVue(int y , int x) {
+		ImageView iv = new ImageView(img);
+		Rectangle2D tuile = null;
+		if(terrain.getMapActuelle()[y][x]==112) {
+			tuile = new Rectangle2D(16*16,3*16,16,16);
+		}
+		else
+			tuile = new Rectangle2D(2*16,1*16,16,16);		 		
+		iv.setViewport(tuile);
+		mapARemplir.getChildren().set(y*30+x, iv);
 	}
 	
 	public void chargerTerrain(int numeroMap) {
@@ -714,24 +737,5 @@ public class TerrainVue {
 		}
 	}
 	
-	public Image getImage() {
-		return img;
-	}
-
-	public TilePane getMapARemplir() {
-		return mapARemplir;
-	}
-	
-	public void getTuileVue(int x , int y) {
-		mapARemplir.getChildren().get((y*20+x));
-		
-	}
-	
-	public void setTuileVue(int y , int x) {
-		ImageView iv = new ImageView(img);
-		Rectangle2D tuile = new Rectangle2D(0*16,0*16,16,16);		 		
-		iv.setViewport(tuile);
-		mapARemplir.getChildren().set(y*20+x, iv);
-	}
 }
 

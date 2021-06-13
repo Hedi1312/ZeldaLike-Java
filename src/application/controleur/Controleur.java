@@ -3,20 +3,20 @@ package src.application.controleur;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import src.application.modele.Boss;
-import src.application.modele.ClefRamassable;
-import src.application.modele.Ennemi;
-import src.application.modele.EnnemiBasique;
-import src.application.modele.EnnemiExplosif;
 import src.application.modele.Environnement;
-import src.application.modele.ExtincteurRamassable;
-import src.application.modele.Gilet;
-import src.application.modele.GrenadeRamassable;
-import src.application.modele.Hero;
-import src.application.modele.Personnage;
-import src.application.modele.PistoletRamassable;
-import src.application.modele.Ramassable;
 import src.application.modele.Terrain;
+import src.application.modele.personnage.Boss;
+import src.application.modele.personnage.Ennemi;
+import src.application.modele.personnage.EnnemiBasique;
+import src.application.modele.personnage.EnnemiExplosif;
+import src.application.modele.personnage.Hero;
+import src.application.modele.personnage.Personnage;
+import src.application.modele.ramassable.ClefRamassable;
+import src.application.modele.ramassable.ExtincteurRamassable;
+import src.application.modele.ramassable.Gilet;
+import src.application.modele.ramassable.GrenadeRamassable;
+import src.application.modele.ramassable.PistoletRamassable;
+import src.application.modele.ramassable.Ramassable;
 import src.application.vue.EnnemiBasiqueVue;
 import src.application.vue.EnnemiExplosifVue;
 import src.application.vue.HeroVue;
@@ -193,7 +193,7 @@ public class Controleur implements Initializable{
 		//terrain
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
 		
-		Ennemi ennemi = new EnnemiBasique(128,112,env);
+		Ennemi ennemi = new EnnemiBasique(20*16,10*16,env);
 		env.ajouterPerso(ennemi);
 		
 		
@@ -201,28 +201,28 @@ public class Controleur implements Initializable{
 		this.env.getHero().getArmes().addListener(new MonObservateurArme(listeArme));
 		this.env.getHero().getObjets().addListener(new MonObservateurObjet(listeObjet));
 		heroVue = new HeroVue(env.getHero(), pane);
-		Ramassable extincteur =new ExtincteurRamassable(128, 144, env);
+		Ramassable extincteur =new ExtincteurRamassable(15*16, 3*16, env);
 		env.ajouterRamassable(extincteur);
 		
 		
 		env.getTourProperty().addListener((obs,old,nouv)->{
 			if(env.getTerrain().getMapActuelle()==env.getTerrain().getMap(0)) {
-				if(env.getHero().getX()==0*16 && env.getHero().getY()==6*16) {
+				if(env.getHero().getX()==0*16) {
 					panneauDeTuiles.getChildren().clear();
 					env.killAll();
-					env.getHero().setX(10*16);
-					env.getHero().setY(10*16);
+					env.getHero().setX(29*16);
+					env.getHero().setY(7*16);
 					terrainVue.chargerTerrain(1);
 					env.initialiserMap();
 					
 				}
 			}
 			else if(env.getTerrain().getMapActuelle()==env.getTerrain().getMap(1)) {
-				if(env.getHero().getX()==0*16 && env.getHero().getY()==6*16) {
+				if(env.getHero().getX()==5*16 && env.getHero().getY()==11*16) {
 					panneauDeTuiles.getChildren().clear();
 					env.killAll();
-					env.getHero().setX(10*16);
-					env.getHero().setY(10*16);
+					env.getHero().setX(14*16);
+					env.getHero().setY(18*16);
 					terrainVue.chargerTerrain(2);
 					env.initialiserMap();
 					
@@ -239,7 +239,7 @@ public class Controleur implements Initializable{
 
 		this.env.getHero().getPvProperty().addListener((obs,old,nouv)->{
 			if(nouv.doubleValue()<=0) {
-				Image imgGameOver = new Image("src/images/gameOver.png",20*16,15*16,true,true);
+				Image imgGameOver = new Image("src/images/gameOver.png");
 				ImageView gameOver = new ImageView(imgGameOver);
 				gameLoop.stop();
 				pane.getChildren().add(gameOver);

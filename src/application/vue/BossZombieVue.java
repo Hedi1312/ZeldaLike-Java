@@ -3,7 +3,7 @@ package src.application.vue;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import src.application.modele.Personnage;
+import src.application.modele.personnage.Personnage;
 
 public class BossZombieVue {
 	private Personnage bossZombie;

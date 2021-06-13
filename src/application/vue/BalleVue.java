@@ -3,8 +3,8 @@ package src.application.vue;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import src.application.modele.Balle;
-import src.application.modele.Projectile;
+import src.application.modele.projectile.Balle;
+import src.application.modele.projectile.Projectile;
 
 
 public class BalleVue {
@@ -16,10 +16,10 @@ public class BalleVue {
 	public BalleVue(Projectile balle, Pane pane) {
 		super();
 		if(balle.getDx()!=0) {
-			this.img = new Image("src/images/horizontal.png");
+			this.img = new Image("src/images/balleHorizontal.png");
 		}
 		else
-			this.img = new Image("src/images/vertical.png");
+			this.img = new Image("src/images/balleVertical.png");
 		
 		this.iv= new ImageView(img);
 		this.balle=balle;

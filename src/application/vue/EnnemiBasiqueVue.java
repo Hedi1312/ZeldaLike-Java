@@ -3,8 +3,8 @@ package src.application.vue;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import src.application.modele.Ennemi;
-import src.application.modele.Personnage;
+import src.application.modele.personnage.Ennemi;
+import src.application.modele.personnage.Personnage;
 
 public class EnnemiBasiqueVue {
 	private Personnage ennemi;

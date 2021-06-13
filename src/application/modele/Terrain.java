@@ -135,9 +135,9 @@ public class Terrain {
 	}
 	
 	public void setMap(int x, int y, int tuile) {
-		this.map[y][x]=tuile;
+		this.mapActuelle[y][x]=tuile;
 
-		caseChangee.setValue(y*20+x);
+		caseChangee.setValue(y*30+x);
 	}
 	
 

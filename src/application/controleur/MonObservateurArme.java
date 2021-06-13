@@ -4,8 +4,8 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ListChangeListener.Change;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
-import src.application.modele.Arme;
-import src.application.modele.Ramassable;
+import src.application.modele.arme.Arme;
+import src.application.modele.ramassable.Ramassable;
 import src.application.vue.ArmeVue;
 import src.application.vue.RamassableVue;
 

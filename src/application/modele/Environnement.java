@@ -8,6 +8,17 @@ import javafx.beans.value.ObservableSetValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import src.application.modele.personnage.Boss;
+import src.application.modele.personnage.Ennemi;
+import src.application.modele.personnage.EnnemiBasique;
+import src.application.modele.personnage.EnnemiExplosif;
+import src.application.modele.personnage.Hero;
+import src.application.modele.projectile.Projectile;
+import src.application.modele.ramassable.ClefRamassable;
+import src.application.modele.ramassable.Gilet;
+import src.application.modele.ramassable.GrenadeRamassable;
+import src.application.modele.ramassable.PistoletRamassable;
+import src.application.modele.ramassable.Ramassable;
 import src.application.vue.HeroVue;
 
 public class Environnement {
@@ -26,7 +37,7 @@ public class Environnement {
 		this.tour= new SimpleIntegerProperty();
 		this.terrain= new Terrain();
 		
-		Hero hero = new Hero(160,112,this);
+		Hero hero = new Hero(29*16,14*16,this);
 		ajouterHero(hero);
 		
 	}
@@ -85,21 +96,21 @@ public class Environnement {
 	}
 	
 	public boolean traversable(int x,int y) {
-		int[] tab = {352,007};
+		int[] tab = {7,34,35,36,37,42,43,44,45,56,55,57,63,64,65,73,74,81,96,97,102,103,104,105,106,107,108,109,110,111,112};
 		if(dansTerrain(x, y)) {
 			int tuile= terrain.getMapActuelle()[y/16][x/16];
 			for(int element : tab) {
 				if(tuile==element)
-					return false;
+					return true;
 			}
 		}
-		return true;
+		return false;
 	}
 	
 
 
 	public boolean dansLeFeu(int x, int y ) {
-		int[] tab = {914};
+		int[] tab = {96,97};
 		if(dansTerrain(x, y)) {
 			int tuile= terrain.getMapActuelle()[y/16][x/16];
 			for(int element : tab) {
@@ -112,7 +123,7 @@ public class Environnement {
 	}
 	
 	public boolean casePorte(int x, int y) {
-		int[] tab = {007};
+		int[] tab = {87};
 		if(dansTerrain(x, y)) {
 			int tuile= terrain.getMapActuelle()[y/16][x/16];
 			for(int element : tab) {
@@ -170,27 +181,17 @@ public class Environnement {
 	}
 	
 	public void initialiserMap() {
-		if(terrain.getMapActuelle()==terrain.getMap(0)) {
-			Hero hero = new Hero(160,112,this);
-			ajouterHero(hero);
-			Ennemi ennemi = new EnnemiBasique(128,112,this);
-			ajouterPerso(ennemi);
-			Ramassable extincteur =new ExtincteurRamassable(128, 144, this);
-			ajouterRamassable(extincteur);
-			
-		}
-		
 		if(terrain.getMapActuelle()==terrain.getMap(1)) {
-			Ramassable grenade =new GrenadeRamassable(144, 144, this);
+			Ramassable grenade =new GrenadeRamassable(29*16, 16*16, this);
 			ajouterRamassable(grenade);
-			Ramassable clef = new ClefRamassable(144, 128, this);
+			Ramassable clef = new ClefRamassable(26*16, 3*16, this);
 			ajouterRamassable(clef);
-			Ramassable gilet= new Gilet(128,128,this);
+			Ramassable gilet= new Gilet(15*16,1*16,this);
 			ajouterRamassable(gilet);
 		}
 		
 		if(terrain.getMapActuelle()==terrain.getMap(2)) {
-			Ennemi boss = new Boss(176,0,this);
+			Ennemi boss = new Boss(14*16,9*16,this);
 			ajouterPerso(boss);
 		}
 		

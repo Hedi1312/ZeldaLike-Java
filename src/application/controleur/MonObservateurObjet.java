@@ -3,7 +3,7 @@ package src.application.controleur;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ListChangeListener.Change;
 import javafx.scene.layout.TilePane;
-import src.application.modele.Objet;
+import src.application.modele.objet.Objet;
 import src.application.vue.ObjetVue;
 import src.application.vue.RamassableVue;
 
