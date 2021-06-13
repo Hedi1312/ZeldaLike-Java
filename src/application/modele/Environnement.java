@@ -205,7 +205,7 @@ public class Environnement {
 		
 	}
 	public void unTour() {
-		if(reussitProba(20) && terrain.getMapActuelle()!=terrain.getMap(2)){
+		if(reussitProba(33) && terrain.getMapActuelle()!=terrain.getMap(2)){
 			spawnEnnemi();
 		}
 		for(int i=ennemis.size()-1; i>=0;i--){
