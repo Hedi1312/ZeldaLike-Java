@@ -25,6 +25,10 @@ public class Environnement {
 		this.ramassables = FXCollections.observableArrayList();
 		this.tour= new SimpleIntegerProperty();
 		this.terrain= new Terrain();
+		
+		Hero hero = new Hero(160,112,this);
+		ajouterHero(hero);
+		
 	}
 	
 	public int getTour() {
@@ -165,11 +169,31 @@ public class Environnement {
 		}
 	}
 	
-	public void PoserDrop() {
+	public void initialiserMap() {
+		if(terrain.getMapActuelle()==terrain.getMap(0)) {
+			Hero hero = new Hero(160,112,this);
+			ajouterHero(hero);
+			Ennemi ennemi = new EnnemiBasique(128,112,this);
+			ajouterPerso(ennemi);
+			Ramassable extincteur =new ExtincteurRamassable(128, 144, this);
+			ajouterRamassable(extincteur);
+			
+		}
+		
 		if(terrain.getMapActuelle()==terrain.getMap(1)) {
 			Ramassable grenade =new GrenadeRamassable(144, 144, this);
 			ajouterRamassable(grenade);
+			Ramassable clef = new ClefRamassable(144, 128, this);
+			ajouterRamassable(clef);
+			Ramassable gilet= new Gilet(128,128,this);
+			ajouterRamassable(gilet);
 		}
+		
+		if(terrain.getMapActuelle()==terrain.getMap(2)) {
+			Ennemi boss = new Boss(176,0,this);
+			ajouterPerso(boss);
+		}
+		
 	}
 	
 	public void killAll() {

@@ -193,20 +193,17 @@ public class Controleur implements Initializable{
 		this.env.getRamassables().addListener(new MonObservateurRamassable(this.pane));
 		//terrain
 		terrainVue = new TerrainVue(panneauDeTuiles, env.getTerrain());
-		terrainVue.chargerTerrain(0);
-		env.getTerrain().caseChangeeProperty().addListener((obs,old,nouv)->
-			terrainVue.setTuileVue(nouv.intValue()/20, nouv.intValue()%20)
-		);
-
 		
+		Ennemi ennemi = new EnnemiBasique(128,112,env);
+		env.ajouterPerso(ennemi);
 		
 		
 		//hero
-		Hero hero = new Hero(160,112,env);
-		env.ajouterHero(hero);
 		this.env.getHero().getArmes().addListener(new MonObservateurArme(listeArme));
 		this.env.getHero().getObjets().addListener(new MonObservateurObjet(listeObjet));
 		heroVue = new HeroVue(env.getHero(), pane);
+		Ramassable extincteur =new ExtincteurRamassable(128, 144, env);
+		env.ajouterRamassable(extincteur);
 		
 		
 		env.getTourProperty().addListener((obs,old,nouv)->{
@@ -217,8 +214,8 @@ public class Controleur implements Initializable{
 					env.getHero().setX(10*16);
 					env.getHero().setY(10*16);
 					terrainVue.chargerTerrain(1);
-					env.PoserDrop();
-					System.out.println("TEST");
+					env.initialiserMap();
+					
 				}
 			}
 			else if(env.getTerrain().getMapActuelle()==env.getTerrain().getMap(1)) {
@@ -228,31 +225,14 @@ public class Controleur implements Initializable{
 					env.getHero().setX(10*16);
 					env.getHero().setY(10*16);
 					terrainVue.chargerTerrain(2);
-					env.PoserDrop();
-					System.out.println("TEST");
+					env.initialiserMap();
+					
 				}
 			}
+				
 		}
 		);
-		//ennemiBasique
-		Ennemi ennemi = new EnnemiBasique(128,112,env);
-		env.ajouterPerso(ennemi);
 		
-		//boss
-		Ennemi boss = new Boss(176,0,env);
-		env.ajouterPerso(boss);
-		
-		//gilet
-		Ramassable gilet= new Gilet(128,128,env);
-		env.ajouterRamassable(gilet);
-		
-		//clef
-		Ramassable clef = new ClefRamassable(144, 128, env);
-		env.ajouterRamassable(clef);
-		
-		//extincteur
-		Ramassable extincteur =new ExtincteurRamassable(128, 144, env);
-		env.ajouterRamassable(extincteur);
 		
 		initAnimation();
 		gameLoop.play();
