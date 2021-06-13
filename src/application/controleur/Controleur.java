@@ -256,7 +256,6 @@ public class Controleur implements Initializable{
 				    }
 				});
 				pane.getChildren().add(restart);
-				
 			}
 		});
 		
