@@ -25,8 +25,6 @@ public class Pistolet extends Arme{
 			env.ajouterProjectile(b);
 			env.getHero().setMunitions(env.getHero().getMunitions()-1);
 		}
-		else 
-			System.out.println("Plus de munitions");
 	}
 	
 }

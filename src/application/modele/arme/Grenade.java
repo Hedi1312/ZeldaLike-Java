@@ -20,8 +20,6 @@ public class Grenade extends Arme{
 			env.ajouterProjectile(g);
 			quantite--;
 		}
-		else 
-			System.out.println("Plus de grenade");
 	}
 
 }

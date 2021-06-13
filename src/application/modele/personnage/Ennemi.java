@@ -118,7 +118,6 @@ public abstract class Ennemi extends Personnage {
 	
 				setDx((env.getHero().getX()-getX())/16);
 				setDy((env.getHero().getY()-getY())/16);
-				System.out.println(this.dx + " : " + this.dy);
 				
 	
 			}

@@ -17,7 +17,6 @@ public class Balle extends Projectile{
 		Personnage p=getEnv().trouverEnnemi(getXAttaque()/16, getYAttaque()/16);
 		
 		if(p!=null) {
-			System.out.println("touché");
 			p.setPv(p.getPv()-getPtAttaque());
 			toucher=true;
 		}

@@ -38,11 +38,9 @@ public class GrenadeProjectile extends Projectile {
 					
 					){
 				
-				System.out.println(i +" position"+ getEnv().getEnnemis().get(i).getPv() +" PV" + getEnv().getEnnemis().get(i).getX()+" x" + getEnv().getEnnemis().get(i).getY() +" y");
-				System.out.println(getXAttaque()+" xAttaque" + getYAttaque() +" yAttaque");
+				
 				getEnv().getEnnemis().get(i).setPv(getEnv().getEnnemis().get(i).getPv()-getPtAttaque());
-				System.out.println(i +" position"+ getEnv().getEnnemis().get(i).getPv() +" PV" + getEnv().getEnnemis().get(i).getX()+" x" + getEnv().getEnnemis().get(i).getY() +" y");
-			}
+				}
 		}
 		
 		if(		(getYAttaque()-32<= getEnv().getHero().getY() && getEnv().getHero().getY()<=getYAttaque()+32) &&

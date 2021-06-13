@@ -76,7 +76,6 @@ public abstract class Personnage {
 			}
 			pv.setValue(n);
 		}	
-		System.out.println();
 	}
 	
 	
