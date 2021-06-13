@@ -22,7 +22,7 @@ public abstract class Ennemi extends Personnage {
 	
 	
 	public Ennemi(int x, int y, Environnement env, int pv) {
-		super(x,y,env,30,0);
+		super(x,y,env,pv,0);
 		this.tirerDirection();
 	}
 	

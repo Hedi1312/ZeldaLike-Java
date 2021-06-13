@@ -5,11 +5,13 @@ import java.util.ResourceBundle;
 
 import src.application.modele.Environnement;
 import src.application.modele.Terrain;
+import src.application.modele.personnage.ArmeActuelleException;
 import src.application.modele.personnage.Boss;
 import src.application.modele.personnage.Ennemi;
 import src.application.modele.personnage.EnnemiBasique;
 import src.application.modele.personnage.EnnemiExplosif;
 import src.application.modele.personnage.Hero;
+
 import src.application.modele.personnage.Personnage;
 import src.application.modele.ramassable.ClefRamassable;
 import src.application.modele.ramassable.ExtincteurRamassable;
@@ -31,6 +33,8 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -60,6 +64,9 @@ public class Controleur implements Initializable{
 	private TilePane listeArme;
 	@FXML
 	private TilePane listeObjet;
+	
+	@FXML
+    private Label labelErreur;
 	private Timeline gameLoop;
 	private int temps;
 	
@@ -114,21 +121,37 @@ public class Controleur implements Initializable{
 				break;
 				
 			case F:
+				
 				env.getHero().interagir();
 				break;
 			
 			case DIGIT1: //ajouter case A
-				System.out.println("Je prends la batte");
+				
+			try {
 				env.getHero().setArmeActuelle(0);
+			} catch (ArmeActuelleException e) {
+				
+				labelErreur.setText("Vous n'avez pas d'arme"); 
+			}
 				break;
 			
 			case DIGIT2:
-				System.out.println("Je prends la grenade");
+				
+			try {
 				env.getHero().setArmeActuelle(1);
+			} catch (ArmeActuelleException e) {
+			
+				labelErreur.setText("Pas de deuxième arme"); 
+
+			}
 				break;
 			case DIGIT3:
-				System.out.println("Je prends le pistolet");
+				
+			try {
 				env.getHero().setArmeActuelle(2);
+			} catch (ArmeActuelleException e) {
+				labelErreur.setText("Pas de troisième arme"); 
+			}
 				break;
 			
 		}
@@ -157,7 +180,7 @@ public class Controleur implements Initializable{
 				// c'est un eventHandler d'ou le lambda
 				(ev ->{
 					if(temps%60==0){
-						
+						labelErreur.setText(null);
 						env.unTour();
 						
 					}
@@ -251,6 +274,8 @@ public class Controleur implements Initializable{
 				    	env.killAll();
 				    	
 				    	pane.getChildren().remove(gameOver);
+				    	listeArme.getChildren().clear();
+				    	listeObjet.getChildren().clear();
 				        lancement();
 				        restart.setVisible(false);
 				        restart.setManaged(false);

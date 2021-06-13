@@ -51,10 +51,10 @@ public class Hero extends Personnage {
 		return armeActuelle;
 	}
 	
-	public void setArmeActuelle(int emplacement) {
-		if(emplacement<armes.size()) {
+	public void setArmeActuelle(int emplacement) throws ArmeActuelleException {
+		if(emplacement>=armes.size()) throw new ArmeActuelleException();
 			armeActuelle = armes.get(emplacement);
-		}
+		//}
 	}
 	
 	public ObservableList<Arme> getArmes() {
@@ -147,9 +147,9 @@ public class Hero extends Personnage {
 
 	public void interagir() {
 		for(int i=0;i<objets.size();i++) {
-			if(objets.get(i)!=null) {
+			
 				objets.get(i).interagir(getX(), getY(), getDx(), getDy(), env);
-			}
+			
 		}
 	}
 

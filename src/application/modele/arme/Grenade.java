@@ -9,7 +9,7 @@ public class Grenade extends Arme{
 	private int quantite= 2;
 	
 	public Grenade() {
-		super(200);
+		super(50);
 	}
 
 	@Override

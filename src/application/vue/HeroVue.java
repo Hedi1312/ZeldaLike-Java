@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import src.application.modele.arme.Batte;
+import src.application.modele.personnage.ArmeActuelleException;
 import src.application.modele.personnage.Hero;
 
 public class HeroVue {
@@ -29,7 +30,12 @@ public class HeroVue {
 		
 
 		this.hero.getArmes().add(new Batte());
-		this.hero.setArmeActuelle(0);
+		try {
+			this.hero.setArmeActuelle(0);
+		} catch (ArmeActuelleException e) {
+			
+			e.printStackTrace();
+		}
 		
 		iv.setId(hero.getId());
 		pane.getChildren().add(this.iv);
